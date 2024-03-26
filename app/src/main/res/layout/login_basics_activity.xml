@@ -79,13 +79,13 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="@string/id"
-                            android:textSize="15sp"
+                            android:textSize="20sp"
                             android:textStyle="bold" />
 
                         <EditText
                             android:id="@+id/editTextText"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="60dp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:layout_weight="7"
@@ -114,7 +114,7 @@
                         <EditText
                             android:id="@+id/editTextTextPassword"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="60dp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:layout_weight="7"
