@@ -8,5 +8,13 @@
     <string name="newuser">회원가입</string>
     <string name="password">PASSWORD</string>
     <string name="button_name">확인</string>
+    <string name="joinid">ID</string>
+    <string name="joinpass">PASSWORD</string>
+    <string name="joinpassconfirm">PASSWORD 확인</string>
+    <string name="joinemail">EMAIL</string>
+    <string name="joinid_hint">ID를 입력해주세요</string>
+    <string name="joinpass_hint">PASSWORD를 입력해주세요</string>
+    <string name="joinpassconfirm_hint">PASSWORD를 다시 입력해주세요</string>
+    <string name="joinemail_hint">EMAIL을 입력해주세요</string>
 
 </resources>
