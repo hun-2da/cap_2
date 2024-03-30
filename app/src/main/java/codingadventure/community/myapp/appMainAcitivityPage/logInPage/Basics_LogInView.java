@@ -56,9 +56,10 @@ public class Basics_LogInView extends AppCompatActivity {
             }
         });
 
-
-        find_id.setOnClickListener(new id_clickListener());
-        new_id.setOnClickListener(new id_clickListener());
+        id_clickListener idClickListener = new id_clickListener();
+        
+        find_id.setOnClickListener(idClickListener);
+        new_id.setOnClickListener(idClickListener);
 
     }
     /***/

@@ -32,6 +32,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginBottom="10dp"
                 android:text="@string/login"
+                android:textColor="#000000"
                 android:textSize="25sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/cardview_id"
@@ -79,6 +80,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="@string/id"
+                            android:textColor="#000000"
                             android:textSize="20sp"
                             android:textStyle="bold" />
 
@@ -108,6 +110,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="@string/password"
+                            android:textColor="#000000"
                             android:textSize="15sp"
                             android:textStyle="bold" />
 
@@ -141,6 +144,7 @@
                 android:layout_marginStart="17dp"
                 android:layout_marginTop="15dp"
                 android:text="@string/find"
+                android:textColor="#000000"
                 android:textStyle="bold|italic"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardview_id" />
@@ -153,6 +157,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="20dp"
                 android:text="@string/newuser"
+                android:textColor="#000000"
                 android:textStyle="bold|italic"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -185,7 +190,7 @@
             android:id="@+id/login_layouto"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#FFFFFF"
+            android:background="#75FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

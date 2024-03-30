@@ -8,5 +8,6 @@
     <string name="newuser">회원가입</string>
     <string name="password">PASSWORD</string>
     <string name="button_name">확인</string>
-
+    <string name="e_mail_f1">아이디 찾기</string>
+    <string name="id_f">이메일을 입력해 주십쇼</string>
 </resources>
