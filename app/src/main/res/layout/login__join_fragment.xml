@@ -1,7 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="300dp"
-    android:background="#7AFFD9D9"
-    tools:context=".appMainAcitivityPage.logInPage.Login_Join" />
+    tools:context=".appMainAcitivityPage.logInPage.Login_Join">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/join_idtext_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/joinid" />
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/join_inputid_editText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:ems="10"
+                    android:hint="@string/joinid_hint"
+                    android:inputType="text" />
+
+                <android.widget.Button
+                    android:id="@+id/join_idconfirm_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_weight="1"
+                    android:background="#7983A6" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/join_passwordtext_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/joinpass" />
+
+            <EditText
+                android:id="@+id/join_inputpassword_editText"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:ems="10"
+                android:hint="@string/joinpass_hint"
+                android:inputType="textPassword" />
+
+            <TextView
+                android:id="@+id/join_passwordconfirm_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/joinpassconfirm" />
+
+            <EditText
+                android:id="@+id/join_inputpasswordconfirm_editText"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:ems="10"
+                android:hint="@string/joinpassconfirm_hint"
+                android:inputType="textPassword" />
+
+            <TextView
+                android:id="@+id/join_email_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/joinemail" />
+
+            <EditText
+                android:id="@+id/join_inputemail_editText"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:ems="10"
+                android:hint="@string/joinemail_hint"
+                android:inputType="textEmailAddress" />
+
+            <Button
+                android:id="@+id/join_confirm_button"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
+        </LinearLayout>
+
+    </ScrollView>
+</FrameLayout>
