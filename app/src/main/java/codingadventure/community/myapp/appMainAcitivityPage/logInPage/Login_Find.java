@@ -16,7 +16,12 @@ import codingadventure.community.myapp.R;
 public class Login_Find extends Fragment {
 
     EditText email,email2,id;
-    Button ok_button, check_button;
+
+    /**비밀번호 찾기를 위한 버튼*/
+    Button ok_button;
+
+    /**아이디만 찾기 위한 버튼*/
+    Button check_button;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
