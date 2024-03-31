@@ -33,6 +33,8 @@ public class Basics_LogInView extends AppCompatActivity {
 
     /**기본 로그인 레이아웃*/
     CardView login_layout;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,8 +46,8 @@ public class Basics_LogInView extends AppCompatActivity {
         id_layout = findViewById(R.id.clayouto);
         login_layout = findViewById(R.id.login_cardView);
 
-        loginFind = new Login_Find();
-        loginJoin = new Login_Join();
+        loginFind = new Login_Find(id_layout);
+        loginJoin = new Login_Join(id_layout);
 
         close_button = findViewById(R.id.closeButton);
         close_button.setOnClickListener(new View.OnClickListener() {
@@ -62,7 +64,7 @@ public class Basics_LogInView extends AppCompatActivity {
         new_id.setOnClickListener(idClickListener);
 
     }
-    /***/
+    /**어떤 TextView를 선택했는지 확인하는 이벤트 리스너*/
     class id_clickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {

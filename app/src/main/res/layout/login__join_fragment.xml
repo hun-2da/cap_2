@@ -6,13 +6,13 @@
     android:layout_height="300dp"
     tools:context=".appMainAcitivityPage.logInPage.Login_Join">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
@@ -25,9 +25,9 @@
 
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="370dp"
                 android:layout_height="match_parent"
-                android:layout_marginStart="20dp"
+                android:layout_gravity="center"
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal">
 
@@ -54,14 +54,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="20dp"
                 android:text="@string/joinpass" />
 
             <EditText
                 android:id="@+id/join_inputpassword_editText"
-                android:layout_width="320dp"
+                android:layout_width="370dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_gravity="center"
                 android:layout_marginTop="5dp"
                 android:ems="10"
                 android:hint="@string/joinpass_hint"
@@ -72,14 +72,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="20dp"
                 android:text="@string/joinpassconfirm" />
 
             <EditText
                 android:id="@+id/join_inputpasswordconfirm_editText"
-                android:layout_width="320dp"
+                android:layout_width="370dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_gravity="center"
                 android:layout_marginTop="5dp"
                 android:ems="10"
                 android:hint="@string/joinpassconfirm_hint"
@@ -90,26 +90,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="20dp"
                 android:text="@string/joinemail" />
 
             <EditText
                 android:id="@+id/join_inputemail_editText"
-                android:layout_width="320dp"
+                android:layout_width="370dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_gravity="center"
                 android:layout_marginTop="5dp"
                 android:ems="10"
                 android:hint="@string/joinemail_hint"
                 android:inputType="textEmailAddress" />
 
-            <Button
+            <android.widget.Button
                 android:id="@+id/join_confirm_button"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp" />
 
         </LinearLayout>
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 </FrameLayout>

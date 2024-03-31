@@ -2,6 +2,7 @@ package codingadventure.community.myapp.appMainAcitivityPage.logInPage;
 
 import android.os.Bundle;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -15,7 +16,9 @@ import codingadventure.community.myapp.R;
 
 public class Login_Find extends Fragment {
 
-    EditText email,email2,id;
+    /**basics에서 사용된 레이아웃*/
+    ConstraintLayout constraintLayout;
+    EditText email,id;
 
     /**비밀번호 찾기를 위한 버튼*/
     Button ok_button;
@@ -23,13 +26,16 @@ public class Login_Find extends Fragment {
     /**아이디만 찾기 위한 버튼*/
     Button check_button;
 
+    public Login_Find(ConstraintLayout constraintLayout){
+        this.constraintLayout = constraintLayout;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ViewGroup view = (ViewGroup) inflater.inflate(R.layout.login__find_fragment, container, false);
 
         email = view.findViewById(R.id.find_email_editText);
-        email2 = view.findViewById(R.id.find_email_editext2);
         id = view.findViewById(R.id.find_id_editText);
 
 
@@ -37,7 +43,6 @@ public class Login_Find extends Fragment {
         ok_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email2_string = email2.getText().toString();
                 String id_string = id.getText().toString();
             }
         });
@@ -50,6 +55,12 @@ public class Login_Find extends Fragment {
                 String email1_string = email.getText().toString();
             }
         });
+
+        Key_Check_EditText key_edit = new Key_Check_EditText(constraintLayout);
+        email.setOnFocusChangeListener(key_edit);
+        id.setOnFocusChangeListener(key_edit);
+
+
 
         return view;
     }

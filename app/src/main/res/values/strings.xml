@@ -8,8 +8,14 @@
     <string name="newuser">회원가입</string>
     <string name="password">PASSWORD</string>
     <string name="button_name">확인</string>
-    <string name="e_mail_f1">아이디 찾기</string>
-    <string name="id_f">이메일을 입력해 주십쇼</string>
+
+    <!-- find Fragment에서 사용 -->
+    <string name="find_id_textView">아이디 찾기 (이메일 작성)</string>
+    <string name="find_email_EditText">이메일을 입력해 주십쇼</string>
+    <string name="find_password_textView">비밀번호 찾기 (ID 입력)</string>
+    <string name="find_id_editText">아이디를 입력해주십시오</string>
+
+    <!-- 조인 Fragment에서 사용 -->
     <string name="joinid">ID</string>
     <string name="joinpass">PASSWORD</string>
     <string name="joinpassconfirm">PASSWORD 확인</string>

@@ -2,6 +2,8 @@ package codingadventure.community.myapp.appMainAcitivityPage.logInPage;
 
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -14,12 +16,15 @@ import codingadventure.community.myapp.R;
 
 
 public class Login_Join extends Fragment {
-
+    ConstraintLayout constraintLayout;
     EditText id, pass, passconfirm, email;
     Button idconfirm, confirm;
 
     private boolean id_check = false;
 
+    public Login_Join(ConstraintLayout constraintLayout){
+        this.constraintLayout = constraintLayout;
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -41,6 +46,8 @@ public class Login_Join extends Fragment {
                 if(check_password(password1) && id_check) {
                     String idconfirm = id.getText().toString();
                     String emailconfirm = email.getText().toString();
+                    // 서버 적용
+                    
                 }
             }
         });
@@ -51,9 +58,17 @@ public class Login_Join extends Fragment {
         idconfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                //id_check 하는 boolean 값을 변경해 줄 수 있는 로직 작성 필요
             }
         });
+
+
+        Key_Check_EditText key_edit = new Key_Check_EditText(constraintLayout);
+        pass.setOnFocusChangeListener(key_edit);
+        passconfirm.setOnFocusChangeListener(key_edit);
+        email.setOnFocusChangeListener(key_edit);
+        id.setOnFocusChangeListener(key_edit);
+
 
         return view;
     }

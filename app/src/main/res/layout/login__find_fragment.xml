@@ -17,30 +17,33 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/e_mail_f1" />
+            android:layout_marginTop="20dp"
+            android:text="@string/find_id_textView"
+            android:textColor="#000000"
+            />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="370dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
             android:orientation="horizontal">
 
             <EditText
                 android:id="@+id/find_email_editText"
-                android:layout_width="300dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="5dp"
-                android:ems="10"
-                android:hint="@string/id_f"
-                android:inputType="textEmailAddress" />
+                android:layout_weight="6"
+                android:hint="@string/find_email_EditText"
+                android:inputType="textEmailAddress"
+                android:textSize="17sp" />
 
             <android.widget.Button
                 android:id="@+id/find_idSearch_Button"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_weight="1"
                 android:background="#4D7580" />
 
@@ -52,34 +55,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:text="TextView" />
+            android:layout_marginTop="30dp"
+            android:text="@string/find_password_textView"
+            android:textColor="#000000"
+            />
 
         <EditText
             android:id="@+id/find_id_editText"
-            android:layout_width="wrap_content"
+            android:layout_width="370dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="10dp"
-            android:ems="10"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:ems="13"
+            android:hint="@string/find_id_editText"
             android:inputType="text"
-            android:text="Name" />
-
-        <EditText
-            android:id="@+id/find_email_editext2"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="10dp"
-            android:ems="10"
-            android:inputType="textEmailAddress" />
+            android:textSize="17sp" />
 
         <android.widget.Button
             android:id="@+id/find_ok_Button"
             android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="15dp"
+            android:background="#4D757F" />
 
     </LinearLayout>
 
