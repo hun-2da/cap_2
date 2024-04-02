@@ -1,5 +1,6 @@
 package codingadventure.community.myapp.appMainAcitivityPage.logInPage;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -8,11 +9,20 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import codingadventure.community.myapp.R;
 
@@ -26,8 +36,10 @@ public class Basics_LogInView extends AppCompatActivity {
     /**id를 생성하기위한 textview, clickListener연결되어 있음*/
     TextView new_id;
 
-    /**login 관련 객체들*/
-    Login_Find loginFind;   Login_Join loginJoin;
+    /**회원 찾기 페이지 객체*/
+    Login_Find loginFind;
+    /**회원 생성 페이지 객체*/
+    Login_Join loginJoin;
 
     /**로그인 관련 layout 을 닫는 버튼*/
     Button close_button;
@@ -38,20 +50,59 @@ public class Basics_LogInView extends AppCompatActivity {
     /**키보드가 나왔을 때 이미지뷰*/
     ImageView imageView;
 
+    /**ok버튼*/
+    Button loginButton;
+
+    /**아이디 창*/
+    EditText id_edit;
+
+    /**비밀번호 창*/
+    EditText password_edit;
+
+    /**파이어베이스 로그인을 위한 객체*/
+    private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_basics_activity);
 
+
+        // Initialize Firebase Auth
+        mAuth = FirebaseAuth.getInstance();
+
+
+        id_edit = findViewById(R.id.basiclogin_id_editTextText);
+        password_edit = findViewById(R.id.basiclogin_password_editTextText);
+
+
         imageView = findViewById(R.id.basic_layout_ImageView);
 
         find_id = findViewById(R.id.find_id_textView);
         new_id = findViewById(R.id.new_user_textView);
+
         id_layout = findViewById(R.id.clayouto);
         login_layout = findViewById(R.id.login_cardView);
 
         loginFind = new Login_Find(id_layout,imageView);
-        loginJoin = new Login_Join(id_layout,imageView);
+        loginJoin = new Login_Join(id_layout,imageView,mAuth);
+
+
+        loginButton = findViewById(R.id.basiclogin_ok_button);
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!id_edit.equals("")&&!password_edit.equals("")){
+                    String email = id_edit.getText().toString();
+                    String password = password_edit.getText().toString();
+
+                    login_m(email,password);
+                }
+            }
+        });
+
+
+
 
         close_button = findViewById(R.id.closeButton);
         close_button.setOnClickListener(new View.OnClickListener() {
@@ -62,14 +113,50 @@ public class Basics_LogInView extends AppCompatActivity {
             }
         });
 
-        id_clickListener idClickListener = new id_clickListener();
+        id_clickListene idClickListener = new id_clickListene();
         
         find_id.setOnClickListener(idClickListener);
         new_id.setOnClickListener(idClickListener);
 
+
+
+
     }
+    private void login_m(String email,String password){
+        Log.e("test","시작");
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            //Toast.makeText(getApplicationContext(),"로그인 성공",Toast.LENGTH_LONG).show();
+                            Log.e("tㄷst","성공");
+                            //updateUI(user);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            //Toast.makeText(EmailPasswordActivity.this, "Authentication failed.",Toast.LENGTH_SHORT).show(); // 실패 로직
+                            //updateUI(null);
+                            //Toast.makeText(getApplicationContext(),"실패",Toast.LENGTH_LONG).show();
+                            Log.e("test","실패");
+                        }
+                    }
+                });
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            // reload(); 재 로그인 로직 알아서 짜십쇼 _ 토스트 메시지로 알림 주고 로그인 화면으로 이동
+        }
+    }
+
+
     /**어떤 TextView를 선택했는지 확인하는 이벤트 리스너*/
-    class id_clickListener implements View.OnClickListener {
+    class id_clickListene implements View.OnClickListener {
         @Override
         public void onClick(View v) {
             Fragment fragment = null;

@@ -57,7 +57,7 @@
                                 android:paddingStart="5dp"
                                 android:paddingEnd="5dp"
                                 android:text="@string/find_id_textView"
-                                android:textColor="#F1EDFD"
+                                android:textColor="#DCF1EDFD"
                                 android:textStyle="bold" />
                         </androidx.cardview.widget.CardView>
 
@@ -109,7 +109,7 @@
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp"
                     android:text="@string/find_password_textView"
-                    android:textColor="#F1EDFD"
+                    android:textColor="#DCF1EDFD"
                     android:textStyle="bold" />
             </androidx.cardview.widget.CardView>
 
@@ -138,11 +138,11 @@
 
         <android.widget.Button
             android:id="@+id/find_ok_Button"
-            android:layout_width="200dp"
+            android:layout_width="130dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="40dp"
-            android:background="#6F0D14A5" />
+            android:background="#950D14A5" />
 
     </LinearLayout>
 

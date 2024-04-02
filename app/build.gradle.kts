@@ -30,9 +30,16 @@ android {
 }
 
 dependencies {
+
+    //----------------------------------------------------------------------- 파이어베이스 로그인용
+    implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
+    implementation("com.google.firebase:firebase-auth")
+
+    //------------------------------------------------------------------------ 파이어베이스 접근용
     implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
     implementation("com.google.firebase:firebase-analytics")
 
+    //--------------------------------------------------------------------------
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
