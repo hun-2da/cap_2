@@ -73,6 +73,7 @@ public class Login_Join extends Fragment {
         email.setOnFocusChangeListener(key_edit);
         id.setOnFocusChangeListener(key_edit);
 
+        imageView.setImageResource(R.drawable.key_image2);
 
         return view;
     }

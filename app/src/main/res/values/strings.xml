@@ -6,7 +6,7 @@
     <string name="id">ID</string>
     <string name="find"> 아이디/비밀번호 찾기</string>
     <string name="newuser">회원가입</string>
-    <string name="password">PASSWORD</string>
+    <string name="password">PW</string>
     <string name="button_name">확인</string>
 
     <!-- find Fragment에서 사용 -->

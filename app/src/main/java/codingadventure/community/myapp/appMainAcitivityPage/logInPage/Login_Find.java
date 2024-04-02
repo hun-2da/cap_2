@@ -43,6 +43,8 @@ public class Login_Find extends Fragment {
         id = view.findViewById(R.id.find_id_editText);
 
 
+        imageView.setImageResource(R.drawable.key_image);
+
         ok_button = view.findViewById(R.id.find_ok_Button);
         ok_button.setOnClickListener(new View.OnClickListener() {
             @Override
