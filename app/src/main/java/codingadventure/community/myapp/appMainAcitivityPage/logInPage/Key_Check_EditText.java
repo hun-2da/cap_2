@@ -2,6 +2,7 @@ package codingadventure.community.myapp.appMainAcitivityPage.logInPage;
 
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -9,9 +10,11 @@ public class Key_Check_EditText implements View.OnFocusChangeListener {
 
     ConstraintLayout constraintLayout;
     ConstraintLayout.LayoutParams params;
+    ImageView imageView;
 
-    public Key_Check_EditText(ConstraintLayout constraintLayout) {
+    public Key_Check_EditText(ConstraintLayout constraintLayout, ImageView imageView) {
         this.constraintLayout = constraintLayout;
+        this.imageView = imageView;
         params = (ConstraintLayout.LayoutParams) constraintLayout.getLayoutParams();
     }
 
@@ -24,9 +27,11 @@ public class Key_Check_EditText implements View.OnFocusChangeListener {
 
         int top_size_dp = 0,bottom_size_dp = 0;
         if(hasFocus){
+            imageView.setVisibility(View.VISIBLE);
             top_size_dp = 100;
             bottom_size_dp = 425;
         } else {
+            imageView.setVisibility(View.INVISIBLE);
             top_size_dp = 300;
             bottom_size_dp = 225;
         }

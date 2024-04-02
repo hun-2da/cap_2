@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import codingadventure.community.myapp.R;
@@ -34,20 +35,23 @@ public class Basics_LogInView extends AppCompatActivity {
     /**기본 로그인 레이아웃*/
     CardView login_layout;
 
+    /**키보드가 나왔을 때 이미지뷰*/
+    ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_basics_activity);
 
+        imageView = findViewById(R.id.basic_layout_ImageView);
 
         find_id = findViewById(R.id.find_id_textView);
         new_id = findViewById(R.id.new_user_textView);
         id_layout = findViewById(R.id.clayouto);
         login_layout = findViewById(R.id.login_cardView);
 
-        loginFind = new Login_Find(id_layout);
-        loginJoin = new Login_Join(id_layout);
+        loginFind = new Login_Find(id_layout,imageView);
+        loginJoin = new Login_Join(id_layout,imageView);
 
         close_button = findViewById(R.id.closeButton);
         close_button.setOnClickListener(new View.OnClickListener() {

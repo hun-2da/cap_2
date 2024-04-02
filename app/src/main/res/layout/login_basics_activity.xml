@@ -165,6 +165,18 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
+    <ImageView
+        android:id="@+id/basic_layout_ImageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/key_image" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clayouto"
         android:layout_width="match_parent"
@@ -190,7 +202,7 @@
             android:id="@+id/login_layouto"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#BFFFFFFF"
+            android:background="#99FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

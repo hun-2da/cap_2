@@ -15,101 +15,247 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/join_idtext_textView"
+            <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:text="@string/joinid" />
 
-
-            <LinearLayout
-                android:layout_width="370dp"
-                android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal">
+                android:layout_marginTop="55dp"
+                android:backgroundTint="#E5E5F8"
+                app:cardCornerRadius="6dp">
 
-                <EditText
-                    android:id="@+id/join_inputid_editText"
-                    android:layout_width="0dp"
+                <androidx.cardview.widget.CardView
+                    android:layout_width="370dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center"
+
+                    android:backgroundTint="#E5E5F8"
+                    app:cardCornerRadius="2dp"
+                    app:cardElevation="-5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <FrameLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="6">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:backgroundTint="#9A78F6"
+                                android:gravity="bottom"
+                                app:cardCornerRadius="7dp"
+                                app:cardElevation="3dp">
+
+                                <TextView
+                                    android:id="@+id/join_idtext_textView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    android:elevation="3dp"
+                                    android:paddingStart="5dp"
+                                    android:paddingEnd="5dp"
+                                    android:text="@string/joinid"
+                                    android:textColor="#E6E0F8"
+                                    android:textStyle="bold" />
+                            </androidx.cardview.widget.CardView>
+
+                            <EditText
+                                android:id="@+id/join_inputid_editText"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="5dp"
+                                android:hint="@string/joinid_hint"
+                                android:inputType="text"
+                                android:paddingStart="5dp"
+                                android:textSize="19sp" />
+                        </FrameLayout>
+
+                        <android.widget.Button
+                            android:id="@+id/join_idconfirm_button"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:background="#6F0D14A5" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
+
+
+
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_gravity="center"
+                android:layout_marginTop="35dp"
+                android:backgroundTint="#E5E5F8"
+                app:cardCornerRadius="6dp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="6"
-                    android:ems="10"
-                    android:hint="@string/joinid_hint"
-                    android:inputType="text" />
+                    android:backgroundTint="#9A78F6"
+                    android:gravity="bottom"
+                    app:cardCornerRadius="7dp"
+                    app:cardElevation="3dp">
 
-                <android.widget.Button
-                    android:id="@+id/join_idconfirm_button"
-                    android:layout_width="0dp"
+                    <TextView
+                        android:id="@+id/join_passwordtext_textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="5dp"
+                        android:paddingEnd="5dp"
+                        android:text="@string/joinpass"
+                        android:textColor="#E6E0F8"
+                        android:textStyle="bold" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="370dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_weight="1"
-                    android:background="#7983A6" />
-            </LinearLayout>
+                    android:layout_gravity="center"
 
-            <TextView
-                android:id="@+id/join_passwordtext_textView"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="#E5E5F8"
+                    app:cardCornerRadius="4dp"
+                    app:cardElevation="-5dp">
+
+                    <EditText
+                        android:id="@+id/join_inputpassword_editText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:ems="13"
+                        android:hint="@string/joinpass_hint"
+                        android:inputType="textPassword"
+                        android:textSize="19sp" />
+                </androidx.cardview.widget.CardView>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:text="@string/joinpass" />
 
-            <EditText
-                android:id="@+id/join_inputpassword_editText"
-                android:layout_width="370dp"
-                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:ems="10"
-                android:hint="@string/joinpass_hint"
-                android:inputType="textPassword" />
+                android:layout_marginTop="35dp"
+                android:backgroundTint="#E5E5F8"
+                app:cardCornerRadius="6dp">
 
-            <TextView
-                android:id="@+id/join_passwordconfirm_textView"
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#9A78F6"
+                    android:gravity="bottom"
+                    app:cardCornerRadius="7dp"
+                    app:cardElevation="3dp">
+
+                    <TextView
+                        android:id="@+id/join_passwordconfirm_textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="5dp"
+                        android:paddingEnd="5dp"
+                        android:text="@string/joinpassconfirm"
+                        android:textColor="#E6E0F8"
+                        android:textStyle="bold" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="370dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="#E5E5F8"
+                    app:cardCornerRadius="4dp"
+                    app:cardElevation="-5dp">
+
+                    <EditText
+                        android:id="@+id/join_inputpasswordconfirm_editText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:ems="13"
+                        android:hint="@string/joinpassconfirm_hint"
+                        android:inputType="textPassword"
+                        android:textSize="19sp" />
+                </androidx.cardview.widget.CardView>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:text="@string/joinpassconfirm" />
 
-            <EditText
-                android:id="@+id/join_inputpasswordconfirm_editText"
-                android:layout_width="370dp"
-                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:ems="10"
-                android:hint="@string/joinpassconfirm_hint"
-                android:inputType="textPassword" />
+                android:layout_marginTop="35dp"
+                android:backgroundTint="#E5E5F8"
+                app:cardCornerRadius="6dp">
 
-            <TextView
-                android:id="@+id/join_email_textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:text="@string/joinemail" />
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#9A78F6"
+                    android:gravity="bottom"
+                    app:cardCornerRadius="7dp"
+                    app:cardElevation="3dp">
 
-            <EditText
-                android:id="@+id/join_inputemail_editText"
-                android:layout_width="370dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:ems="10"
-                android:hint="@string/joinemail_hint"
-                android:inputType="textEmailAddress" />
+                    <TextView
+                        android:id="@+id/join_email_textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="5dp"
+                        android:paddingEnd="5dp"
+                        android:text="@string/joinemail"
+                        android:textColor="#E6E0F8"
+                        android:textStyle="bold" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="370dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="#E5E5F8"
+                    app:cardCornerRadius="4dp"
+                    app:cardElevation="-5dp">
+
+                    <EditText
+                        android:id="@+id/join_inputemail_editText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:ems="13"
+                        android:hint="@string/joinemail_hint"
+                        android:inputType="textEmailAddress"
+                        android:textSize="19sp" />
+                </androidx.cardview.widget.CardView>
+
+            </androidx.cardview.widget.CardView>
+
 
             <android.widget.Button
                 android:id="@+id/join_confirm_button"
                 android:layout_width="150dp"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp" />
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="#6F0D14A5" />
 
         </LinearLayout>
 

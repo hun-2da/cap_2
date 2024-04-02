@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "220062871527",
+    "firebase_url": "https://cdadv-e528e-default-rtdb.firebaseio.com",
+    "project_id": "cdadv-e528e",
+    "storage_bucket": "cdadv-e528e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:220062871527:android:4cd1e9e6007f7fbe6c5742",
+        "android_client_info": {
+          "package_name": "codingadventure.community.myapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "220062871527-oqpv7svk2sf39islgkmvqgoau86p6t73.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdfu1vrANMCrBieTvtMLGpk3TV4MXSYZ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "220062871527-oqpv7svk2sf39islgkmvqgoau86p6t73.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import codingadventure.community.myapp.R;
 
@@ -26,8 +27,11 @@ public class Login_Find extends Fragment {
     /**아이디만 찾기 위한 버튼*/
     Button check_button;
 
-    public Login_Find(ConstraintLayout constraintLayout){
+    ImageView imageView;
+
+    public Login_Find(ConstraintLayout constraintLayout, ImageView imageView){
         this.constraintLayout = constraintLayout;
+        this.imageView = imageView;
     }
 
     @Override
@@ -56,7 +60,7 @@ public class Login_Find extends Fragment {
             }
         });
 
-        Key_Check_EditText key_edit = new Key_Check_EditText(constraintLayout);
+        Key_Check_EditText key_edit = new Key_Check_EditText(constraintLayout,imageView);
         email.setOnFocusChangeListener(key_edit);
         id.setOnFocusChangeListener(key_edit);
 

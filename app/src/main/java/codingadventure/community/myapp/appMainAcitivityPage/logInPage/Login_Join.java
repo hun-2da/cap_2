@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import codingadventure.community.myapp.R;
 
@@ -22,8 +23,11 @@ public class Login_Join extends Fragment {
 
     private boolean id_check = false;
 
-    public Login_Join(ConstraintLayout constraintLayout){
+    ImageView imageView;
+
+    public Login_Join(ConstraintLayout constraintLayout, ImageView imageView){
         this.constraintLayout = constraintLayout;
+        this.imageView = imageView;
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -63,7 +67,7 @@ public class Login_Join extends Fragment {
         });
 
 
-        Key_Check_EditText key_edit = new Key_Check_EditText(constraintLayout);
+        Key_Check_EditText key_edit = new Key_Check_EditText(constraintLayout,imageView);
         pass.setOnFocusChangeListener(key_edit);
         passconfirm.setOnFocusChangeListener(key_edit);
         email.setOnFocusChangeListener(key_edit);
