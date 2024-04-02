@@ -29,11 +29,11 @@ public class Key_Check_EditText implements View.OnFocusChangeListener {
         if(hasFocus){
             imageView.setVisibility(View.VISIBLE);
             top_size_dp = 100;
-            bottom_size_dp = 425;
+            bottom_size_dp = 375;
         } else {
             imageView.setVisibility(View.INVISIBLE);
             top_size_dp = 300;
-            bottom_size_dp = 225;
+            bottom_size_dp = 175;
         }
         int top_size_px = dpToPx(top_size_dp);
         int bottom_size_px = dpToPx(bottom_size_dp); // 하단 마진을 일정하게 유지

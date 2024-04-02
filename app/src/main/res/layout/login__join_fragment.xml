@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="300dp"
+    android:layout_height="350dp"
     tools:context=".appMainAcitivityPage.logInPage.Login_Join">
 
     <androidx.core.widget.NestedScrollView
@@ -87,9 +87,6 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
             </androidx.cardview.widget.CardView>
-
-
-
 
 
             <androidx.cardview.widget.CardView
