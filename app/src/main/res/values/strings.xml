@@ -2,18 +2,19 @@
     <string name="app_name">Confession Diary</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="login">로그인</string>
+    <string name="login">Confession Diary</string>
     <string name="id">ID</string>
     <string name="find"> 아이디/비밀번호 찾기</string>
     <string name="newuser">회원가입</string>
     <string name="password">PW</string>
-    <string name="button_name">확인</string>
+    <string name="button_name">LOGIN</string>
 
     <!-- find Fragment에서 사용 -->
     <string name="find_id_textView">아이디 찾기 </string>
     <string name="find_email_EditText">이메일을 입력해 주십쇼</string>
     <string name="find_password_textView">비밀번호 찾기 </string>
     <string name="find_id_editText">아이디를 입력해주십시오</string>
+    <string name="find_id_check_textView">비밀번호를 찾으려면 이메일을 체크</string>
 
     <!-- 조인 Fragment에서 사용 -->
     <string name="joinid">ID</string>
@@ -24,5 +25,9 @@
     <string name="joinpass_hint">PASSWORD를 입력해주세요</string>
     <string name="joinpassconfirm_hint">PASSWORD를 다시 입력해주세요</string>
     <string name="joinemail_hint">EMAIL을 입력해주세요</string>
+
+    <!-- choice Fragment에서 사용 -->
+    <string name="choiceText_Diary">Diary</string>
+    <string name="choiceText_Community">Community</string>
 
 </resources>

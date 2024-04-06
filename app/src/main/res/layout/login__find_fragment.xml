@@ -17,15 +17,16 @@
             android:layout_height="wrap_content"
 
             android:layout_gravity="center"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="45dp"
             android:backgroundTint="#E5E5F8"
-            app:cardCornerRadius="6dp">
+            app:cardCornerRadius="6dp"
+            app:cardElevation="5dp">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="370dp"
-                android:layout_height="55dp"
-                android:layout_gravity="center"
+                android:layout_height="60dp"
 
+                android:layout_gravity="center"
                 android:backgroundTint="#E5E5F8"
                 app:cardCornerRadius="2dp"
                 app:cardElevation="-5dp">
@@ -37,14 +38,15 @@
 
                     <FrameLayout
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
+
                         android:layout_weight="6">
 
                         <androidx.cardview.widget.CardView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:backgroundTint="#5435AA"
-                            android:gravity="bottom"
+                            android:gravity="top"
                             app:cardCornerRadius="2dp"
                             app:cardElevation="3dp">
 
@@ -61,16 +63,23 @@
                                 android:textStyle="bold" />
                         </androidx.cardview.widget.CardView>
 
-                        <EditText
-                            android:id="@+id/find_email_editText"
+                        <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginTop="10dp"
                             android:layout_marginRight="5dp"
-                            android:hint="@string/find_email_EditText"
-                            android:inputType="textEmailAddress"
-                            android:paddingStart="5dp"
-                            android:textSize="19sp" />
+                            android:backgroundTint="#E5E5F8">
+
+                            <EditText
+                                android:id="@+id/find_email_editText"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:hint="@string/find_email_EditText"
+                                android:inputType="textEmailAddress"
+                                android:paddingStart="5dp"
+                                android:textSize="19sp" />
+                        </androidx.cardview.widget.CardView>
+
                     </FrameLayout>
 
                     <android.widget.Button
@@ -88,10 +97,31 @@
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:backgroundTint="#D75435A9"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:padding="5dp"
+                android:text="@string/find_id_check_textView"
+                android:textColor="#CEFFFFFF"
+                android:textSize="14sp" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
             android:layout_gravity="center"
-            android:layout_marginTop="40dp"
-            android:backgroundTint="#E5E5F8"
+            android:layout_marginTop="35dp"
+            android:backgroundTint="#E4E4F7"
             app:cardCornerRadius="6dp">
 
             <androidx.cardview.widget.CardView
@@ -138,11 +168,11 @@
 
         <android.widget.Button
             android:id="@+id/find_ok_Button"
-            android:layout_width="130dp"
-            android:layout_height="50dp"
+            android:layout_width="85dp"
+            android:layout_height="52dp"
             android:layout_gravity="center"
             android:layout_marginTop="40dp"
-            android:background="#950D14A5" />
+            android:background="@drawable/ok_button" />
 
     </LinearLayout>
 

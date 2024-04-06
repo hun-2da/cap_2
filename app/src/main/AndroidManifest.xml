@@ -16,7 +16,7 @@
             android:name=".appMainAcitivityPage.logInPage.Basics_LogInView"
             android:exported="false" />
         <activity
-            android:name=".appMainAcitivityPage.Basics_Activity"
+            android:name=".appMainAcitivityPage.Choice_Activity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

@@ -13,10 +13,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -24,6 +22,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import codingadventure.community.myapp.ChoiceDialog;
 import codingadventure.community.myapp.R;
 
 public class Basics_LogInView extends AppCompatActivity {
@@ -62,10 +61,17 @@ public class Basics_LogInView extends AppCompatActivity {
     /**파이어베이스 로그인을 위한 객체*/
     private FirebaseAuth mAuth;
 
+
+    FragmentManager fragmentManager;
+    FragmentTransaction transaction;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_basics_activity);
+
+        fragmentManager = getSupportFragmentManager();
+        transaction = fragmentManager.beginTransaction();
 
 
         // Initialize Firebase Auth
@@ -92,12 +98,19 @@ public class Basics_LogInView extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!id_edit.equals("")&&!password_edit.equals("")){
-                    String email = id_edit.getText().toString();
-                    String password = password_edit.getText().toString();
+
+                String email = id_edit.getText().toString().trim();
+                String password = password_edit.getText().toString().trim();
+
+
+                if(!email.isEmpty() && !password.isEmpty()) {
+
 
                     login_m(email,password);
                 }
+                ChoiceDialog choiceDialog = new ChoiceDialog();
+                choiceDialog.show(getSupportFragmentManager(), "menuChoiceDialog");
+
             }
         });
 
@@ -108,8 +121,7 @@ public class Basics_LogInView extends AppCompatActivity {
         close_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                id_layout.setVisibility(View.INVISIBLE);
-                login_layout.setVisibility(View.VISIBLE);
+                layout_visibility(1);
             }
         });
 
@@ -133,7 +145,7 @@ public class Basics_LogInView extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             //Toast.makeText(getApplicationContext(),"로그인 성공",Toast.LENGTH_LONG).show();
                             Log.e("tㄷst","성공");
-                            //updateUI(user);
+                            updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
                             //Toast.makeText(EmailPasswordActivity.this, "Authentication failed.",Toast.LENGTH_SHORT).show(); // 실패 로직
@@ -153,21 +165,38 @@ public class Basics_LogInView extends AppCompatActivity {
             // reload(); 재 로그인 로직 알아서 짜십쇼 _ 토스트 메시지로 알림 주고 로그인 화면으로 이동
         }
     }
-
+    private void updateUI(FirebaseUser user){
+        ChoiceDialog choiceDialog = new ChoiceDialog();
+        choiceDialog.show(getSupportFragmentManager(), "menuChoiceDialog");
+        layout_visibility(2);
+    }
+    private void layout_visibility(int i){
+        switch(i){
+            case 0:
+                id_layout.setVisibility(View.VISIBLE);
+                login_layout.setVisibility(View.INVISIBLE);
+                break;
+            case 1:
+                id_layout.setVisibility(View.INVISIBLE);
+                login_layout.setVisibility(View.VISIBLE);
+                break;
+            case 2:
+                id_layout.setVisibility(View.INVISIBLE);
+                login_layout.setVisibility(View.INVISIBLE);
+                break;
+        }
+    }
 
     /**어떤 TextView를 선택했는지 확인하는 이벤트 리스너*/
     class id_clickListene implements View.OnClickListener {
         @Override
         public void onClick(View v) {
+            transaction = getSupportFragmentManager().beginTransaction();
             Fragment fragment = null;
 
-            id_layout.setVisibility(View.VISIBLE);
-            login_layout.setVisibility(View.INVISIBLE);
+            layout_visibility(0);
 
             // FragmentTransaction을 시작하고, replace 메서드를 사용하여 Fragment 교체
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction transaction = fragmentManager.beginTransaction();
-
 
 
             if(v.getId() == R.id.find_id_textView){                 // 아이디 찾기를 누르면

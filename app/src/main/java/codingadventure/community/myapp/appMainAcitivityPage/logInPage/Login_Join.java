@@ -22,7 +22,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.security.NoSuchAlgorithmException;
+
 import codingadventure.community.myapp.R;
+import codingadventure.community.myapp.security.Change_String;
 
 
 public class Login_Join extends Fragment {
@@ -58,10 +61,18 @@ public class Login_Join extends Fragment {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String hash_password = "";
                 Log.e("onclick확인", "시작");
                 String password1 = pass.getText().toString();
 
                 if(check_password(password1) /*&& id_check*/) {
+                   /* try {
+                        hash_password = Change_String.hashString(password1,"SHA-256");
+                    } catch (NoSuchAlgorithmException e) {
+                        Log.e("해쉬 오류",e.toString());
+                    }*/
+
+
                     String idconfirm = id.getText().toString();
                     String emailconfirm = email.getText().toString();
                     // 서버 적용

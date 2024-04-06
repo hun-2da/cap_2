@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/catholic_church"
-    tools:context=".appMainAcitivityPage.Basics_Activity">
+    android:elevation="-0.1dp"
+    tools:context=".appMainAcitivityPage.Choice_Activity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/login_cardView"
@@ -13,7 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="400dp"
         android:layout_marginBottom="200dp"
-        android:backgroundTint="#99FFFFFF"
+        android:backgroundTint="#C6E3E5EF"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,18 +27,28 @@
             app:cardCornerRadius="4dp"
             app:cardElevation="4dp">
 
-            <TextView
-                android:id="@+id/textView"
+            <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginBottom="10dp"
-                android:text="@string/login"
-                android:textColor="#000000"
-                android:textSize="25sp"
-                android:textStyle="bold"
+                android:layout_marginBottom="25dp"
+                android:backgroundTint="#AEE3E1E1"
                 app:layout_constraintBottom_toTopOf="@+id/cardview_id"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="9dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="9dp"
+                    android:layout_marginBottom="4dp"
+                    android:text="@string/login"
+                    android:textAllCaps="true"
+                    android:textColor="#72606060"
+                    android:textSize="17sp" />
+            </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
 
@@ -46,12 +58,12 @@
                 android:layout_height="wrap_content"
 
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="50dp"
-                android:backgroundTint="#81FFFFFF"
+                android:backgroundTint="#E8E6E6"
                 app:cardCornerRadius="8dp"
-                app:cardElevation="-5dp"
+                app:cardElevation="7dp"
                 app:layout_constraintBottom_toBottomOf="parent"
 
                 app:layout_constraintEnd_toEndOf="parent"
@@ -127,15 +139,30 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <Button
-                android:id="@+id/basiclogin_ok_button"
+            <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:text="@string/button_name"
+                android:layout_marginTop="-2dp"
+                android:layout_marginEnd="23dp"
+                android:backgroundTint="#E7E5E5"
+                app:cardCornerRadius="3dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardview_id" />
+                app:layout_constraintTop_toBottomOf="@+id/cardview_id">
+
+                <android.widget.Button
+                    android:id="@+id/basiclogin_ok_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="2dp"
+                    android:backgroundTint="#C7C5DA"
+                    android:text="@string/button_name"
+                    android:textColor="#85393939"
+                    android:textSize="17sp" />
+            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:id="@+id/find_id_textView"
@@ -143,6 +170,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="17dp"
                 android:layout_marginTop="15dp"
+                android:elevation="3dp"
                 android:text="@string/find"
                 android:textColor="#000000"
                 android:textStyle="bold|italic"
@@ -156,6 +184,7 @@
                 android:layout_marginStart="17dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="20dp"
+                android:elevation="3dp"
                 android:text="@string/newuser"
                 android:textColor="#000000"
                 android:textStyle="bold|italic"
@@ -181,8 +210,8 @@
         android:id="@+id/clayouto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="350dp"
-        android:layout_marginBottom="120dp"
+        android:layout_marginTop="330dp"
+        android:layout_marginBottom="140dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -194,7 +223,8 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
 
-            android:background="@drawable/close_icon"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/close_img"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -202,7 +232,7 @@
             android:id="@+id/login_layouto"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#ABFFFFFF"
+            android:background="#ABB4B4D1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
