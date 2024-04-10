@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
 
             android:layout_gravity="center"
-            android:layout_marginTop="45dp"
+            android:layout_marginTop="20dp"
             android:backgroundTint="#E5E5F8"
             app:cardCornerRadius="6dp"
             app:cardElevation="5dp">
@@ -100,7 +100,7 @@
             android:layout_gravity="right"
             android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
-            android:backgroundTint="#D75435A9"
+            android:backgroundTint="#E4E4F7"
             app:cardCornerRadius="10dp"
             app:cardElevation="10dp">
 
@@ -111,8 +111,9 @@
 
                 android:padding="5dp"
                 android:text="@string/find_id_check_textView"
-                android:textColor="#CEFFFFFF"
-                android:textSize="14sp" />
+                android:textColor="#D75435A9"
+                android:textSize="14sp"
+                android:textStyle="bold" />
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -171,7 +172,7 @@
             android:layout_width="85dp"
             android:layout_height="52dp"
             android:layout_gravity="center"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="35dp"
             android:background="@drawable/ok_button" />
 
     </LinearLayout>

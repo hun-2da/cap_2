@@ -30,6 +30,7 @@ android {
 }
 
 dependencies {
+    implementation("jp.wasabeef:richeditor-android:2.0.0") //editer 추가
 
     //----------------------------------------------------------------------- 파이어베이스 로그인용
     implementation(platform("com.google.firebase:firebase-bom:32.3.1"))

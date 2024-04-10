@@ -13,6 +13,12 @@
         android:theme="@style/Theme.ConfessionDiary"
         tools:targetApi="31">
         <activity
+            android:name=".myDiary.newdiarypage.Diary_editDiary"
+            android:exported="false" />
+        <activity
+            android:name=".myDiary.Diary_Main"
+            android:exported="false" />
+        <activity
             android:name=".appMainAcitivityPage.logInPage.Basics_LogInView"
             android:exported="false" />
         <activity

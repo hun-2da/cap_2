@@ -1,6 +1,7 @@
 package codingadventure.community.myapp;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
@@ -10,6 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+
+import codingadventure.community.myapp.appMainAcitivityPage.logInPage.Basics_LogInView;
+import codingadventure.community.myapp.myDiary.Diary_Main;
 
 public class ChoiceDialog extends DialogFragment {
 
@@ -26,7 +30,8 @@ public class ChoiceDialog extends DialogFragment {
         diarybutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // 버튼 클릭시 동작 정의
+                Intent diaty_Intent = new Intent(getContext(), Diary_Main.class);
+                startActivity(diaty_Intent);
                 dismiss(); // 다이어로그 닫기
             }
         });

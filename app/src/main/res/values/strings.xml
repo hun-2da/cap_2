@@ -26,8 +26,26 @@
     <string name="joinpassconfirm_hint">PASSWORD를 다시 입력해주세요</string>
     <string name="joinemail_hint">EMAIL을 입력해주세요</string>
 
-    <!-- choice Fragment에서 사용 -->
+    <!-- choice dialog 사용 -->
     <string name="choiceText_Diary">Diary</string>
     <string name="choiceText_Community">Community</string>
+
+    <!-- choice diary 사용 -->
+    <string name="diary_textView">퀘스트 목록</string>
+
+
+    <!-- new diary_edit_choice_dialog -->
+    <string name="newdiary_basics_choice_textView">Basics</string>
+    <string name="newdiary_template_choice_textView">Template</string>
+
+
+    <!-- Bubble_ClickListener(Class)에서 사용 -->
+    <string name="Bubble_ClickListener_click0">안녕 왔구나?</string>
+    <string name="Bubble_ClickListener_click1">어느 날 이었어?</string>
+    <string name="Bubble_ClickListener_click3">다음은 카테고리를 선택해줘</string>
+    <string name="Bubble_ClickListener_click4">우선 카테고리를 선택해줘</string>
+
+
+
 
 </resources>
