@@ -17,6 +17,7 @@ import androidx.fragment.app.DialogFragment;
 
 import codingadventure.community.myapp.R;
 import codingadventure.community.myapp.myDiary.Diary_Main;
+import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.Bubble_ClickListener;
 
 public class NewDiaryEdit_ChoiceDialog extends DialogFragment {
     int image_id = 0;
@@ -59,6 +60,7 @@ public class NewDiaryEdit_ChoiceDialog extends DialogFragment {
         basicsbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Bubble_ClickListener.touch_count = 6;
                 dismiss(); // 다이어로그 닫기
             }
         });
@@ -69,6 +71,7 @@ public class NewDiaryEdit_ChoiceDialog extends DialogFragment {
         tamplatebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Bubble_ClickListener.touch_count = 6;
                 // 버튼 클릭시 동작 정의
                 dismiss(); // 다이어로그 닫기
             }

@@ -18,7 +18,7 @@ public class Diary_editDiary extends AppCompatActivity {
     Handler handler = new Handler(Looper.getMainLooper());
 
     /**대화 창 뒤의 이미지뷰 클릭이벤트로 진행시켜줄꺼*/
-    ImageView bubble_backView;
+    public static ImageView bubble_backView;
 
     FrameLayout bubble_layout;
 

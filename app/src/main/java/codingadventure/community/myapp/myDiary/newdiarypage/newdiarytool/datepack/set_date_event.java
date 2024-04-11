@@ -3,6 +3,7 @@ package codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.datepa
 import android.util.Log;
 import android.widget.DatePicker;
 
+import codingadventure.community.myapp.myDiary.newdiarypage.Diary_editDiary;
 import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.Bubble_ClickListener;
 
 public class set_date_event {
@@ -10,5 +11,6 @@ public class set_date_event {
         //view.updateDate(year, monthOfYear, dayOfMonth);
         Log.e("","실행중");
         Bubble_ClickListener.touch_count = 3;
+        Diary_editDiary.bubble_backView.performClick();
     }
 }
