@@ -6,7 +6,8 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 
 import codingadventure.community.myapp.R;
-import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.categorypack.categorylistener.ALL_SALIGIAListener;
+import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.categorypack.categorylistener.SALIGIAListener;
+
 
 public class CategoryMenuClass {
     View view;
@@ -15,6 +16,7 @@ public class CategoryMenuClass {
 
     LayoutInflater layoutInflater;
 
+    /**Category의 버튼 component들의 id값을 연결 및 onclicklistener과 연결해주는 클레스*/
     public CategoryMenuClass(View view, FrameLayout bubble_layout, LayoutInflater layoutInflater) {
         this.view = view;
         this.layoutInflater = layoutInflater;
@@ -22,8 +24,9 @@ public class CategoryMenuClass {
         setListener();
 
     }
+    /**버튼 연결 및 초기화를 위한 메소드 + Listener연결 */
     private void setListener(){
-        ALL_SALIGIAListener all_saligiaListener = new ALL_SALIGIAListener();
+        SALIGIAListener saligiaListener = new SALIGIAListener();
 
         Button SALIGIA[] = new Button[7];
         for(int i =0; i<7; i++){
@@ -50,27 +53,9 @@ public class CategoryMenuClass {
                     SALIGIA[i] = view.findViewById(R.id.icon7_button7);
                     break;
             }
-            SALIGIA[i].setOnClickListener(all_saligiaListener);
+            SALIGIA[i].setOnClickListener(saligiaListener);
         }
-       /* Button pride = view.findViewById(R.id.icon7_button1);
-        pride.setOnClickListener(new PrideListener());
-
-        Button greed = view.findViewById(R.id.icon7_button2);
-        greed.setOnClickListener(new GreedListener());
-
-        Button lust = view.findViewById(R.id.icon7_button3);
-        lust.setOnClickListener(new LustListener());
-
-        Button envy = view.findViewById(R.id.icon7_button4);
-        envy.setOnClickListener(new EnvyListener());
-
-        Button gluttony = view.findViewById(R.id.icon7_button5);
-        gluttony.setOnClickListener(new Gluttony());
-
-        Button wrath = view.findViewById(R.id.icon7_button6);
-        wrath.setOnClickListener(new WrathListener());
-
-        Button sloth = view.findViewById(R.id.icon7_button7);
-        sloth.setOnClickListener(new SlothListener());*/
     }
+
+
 }

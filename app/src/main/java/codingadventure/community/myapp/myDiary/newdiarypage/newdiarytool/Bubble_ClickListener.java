@@ -9,9 +9,21 @@ import android.widget.FrameLayout;
 
 import codingadventure.community.myapp.R;
 import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.categorypack.CategoryMenuClass;
+import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.categorypack.categorylistener.saligiapack.EnvyChoice;
+import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.categorypack.categorylistener.saligiapack.GluttonyChoice;
+import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.categorypack.categorylistener.saligiapack.GreedChoice;
+import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.categorypack.categorylistener.saligiapack.LustChoice;
+import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.categorypack.categorylistener.saligiapack.PrideChoice;
+import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.categorypack.categorylistener.saligiapack.SlothChoice;
+import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.categorypack.categorylistener.saligiapack.WrathChoice;
 import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.datepack.DateEventClass;
+import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.editorpack.Editor_Initialization;
+import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.editorpack.Editor_KeyboardListener;
+import jp.wasabeef.richeditor.RichEditor;
 
 public class Bubble_ClickListener implements View.OnClickListener {
+
+    /**터치 카운트는 페이지를 의미함. static인 이유는 다른 class에서 값의 변경을 시켜주기 위함. */
     public static int touch_count;
 
     /** text를 animation으로 만들어 주기 위한 클레스 객체*/
@@ -35,12 +47,40 @@ public class Bubble_ClickListener implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch(touch_count){
-            case 1:
-                touch_count1(); break;
-            case 3:
-                touch_count3(); break;
-            case 4:
-                touch_count4(); break;
+            case Touch_Constant_Name.DATE_EVENT:
+                touch_count1();
+                break;
+            case Touch_Constant_Name.CATEGORY_EVENT:
+                touch_count3();
+                break;
+            case Touch_Constant_Name.CATEGORY_BUBBLE:
+                touch_count4();
+                break;
+            case Touch_Constant_Name.PRIDE:
+                touch_count6();
+                break;
+            case Touch_Constant_Name.GREED:
+                touch_count8();
+                break;
+            case Touch_Constant_Name.LUST:
+                touch_count10();
+                break;
+            case Touch_Constant_Name.ENVY:
+                touch_count12();
+                break;
+            case Touch_Constant_Name.GLUTTONY:
+                touch_count14();
+                break;
+            case Touch_Constant_Name.WRATH:
+                touch_count16();
+                break;
+            case Touch_Constant_Name.SLOTH:
+                touch_count18();
+                break;
+            case Touch_Constant_Name.BASICS:
+                touch_count20();
+                break;
+
             default:
                 return;
         }
@@ -53,10 +93,11 @@ public class Bubble_ClickListener implements View.OnClickListener {
     }
     private void touch_count0(){
         bubble.animationText(bubble_layout.getContext().getString(R.string.Bubble_ClickListener_click0));
+        //bubble_layout.getViewTreeObserver().addOnGlobalLayoutListener(new Editor_KeyboardListener(bubble_layout));   // 키보드 로직 리스너로 연결
     }
 
 
-    /**날짜 가져 오기 페이지*/
+    /**실질적 1 번의 터치 페이지 _ 날짜 가져 오기 페이지*/
     private void touch_count1(){
         bubble.animationText(bubble_layout.getContext().getString(R.string.Bubble_ClickListener_click1));
 
@@ -72,20 +113,120 @@ public class Bubble_ClickListener implements View.OnClickListener {
 
         }
     }
-    /**카레고리 선택 페이지*/
+    /**실질적 2번의 터치 페이지_ 카레고리 선택 페이지*/
     private void touch_count3(){
         bubble.animationText(bubble_layout.getContext().getString(R.string.Bubble_ClickListener_click3));
 
         bubble_layout.removeAllViews();
         View newView = layoutInflater.inflate(R.layout.newdiary_edit_icon,bubble_layout,false);
-
-        CategoryMenuClass categoryMenuClass = new CategoryMenuClass(newView,bubble_layout,layoutInflater);
+        new CategoryMenuClass(newView,bubble_layout,layoutInflater);
 
         bubble_layout.addView(newView);
     }
+    /**실질적 3번의 터치 페이지 _ 대화만 바뀌는 메소드*/
     private void touch_count4(){
         bubble.animationText(bubble_layout.getContext().getString(R.string.Bubble_ClickListener_click4));
 
     }
 
+    /*실질적 4번의 터치 페이지 _ 사용자가 pride를 선택했을 때 호출될 메소드 **/
+    private void touch_count6(){
+        bubble.animationText(bubble_layout.getContext().getString(R.string.Bubble_ClickListener_click6));
+        PrideChoice pridePage = new PrideChoice(
+                "",
+                "",
+                "",
+                "",
+                load_editor()
+        );
+
+    }
+
+    /*실질적 4번의 터치 페이지 _ 사용자가 greedPage를 선택했을 때 호출될 메소드 **/
+    private void touch_count8(){
+        bubble.animationText(bubble_layout.getContext().getString(R.string.Bubble_ClickListener_click8));
+        GreedChoice greedPage = new GreedChoice(
+                "",
+                "",
+                "",
+                "",
+                load_editor()
+        );
+    }
+
+    /**실질적 4번의 터치 페이지 _ 사용자가 lustPage를 선택했을 때 호출될 메소드*/
+    private void touch_count10(){
+        bubble.animationText(bubble_layout.getContext().getString(R.string.Bubble_ClickListener_click10));
+        LustChoice lustPage = new LustChoice(
+                "",
+                "",
+                "",
+                "",
+                load_editor()
+        );
+    }
+
+    /**실질적 4번의 터치 페이지 _ 사용자가 envyPage를 선택했을 때 호출될 메소드 */
+    private void touch_count12(){
+        bubble.animationText(bubble_layout.getContext().getString(R.string.Bubble_ClickListener_click12));
+        EnvyChoice envyPage = new EnvyChoice(
+                "",
+                "",
+                "",
+                "",
+                load_editor()
+        );
+    }
+
+    /**실질적 4번의 터치 페이지 _ 사용자가 gluttonyPage를 선택했을 떄 호출될 메소드 */
+    private void touch_count14(){
+        bubble.animationText(bubble_layout.getContext().getString(R.string.Bubble_ClickListener_click14));
+        GluttonyChoice gluttonyPage = new GluttonyChoice(
+                "",
+                "",
+                "",
+                "",
+                load_editor()
+        );
+    }
+
+    /**실질적 4번의 터치 페이지 _ 사용자가 wrathPage를 선택 했을 때 호출될 메소드*/
+    private void touch_count16(){
+        bubble.animationText(bubble_layout.getContext().getString(R.string.Bubble_ClickListener_click16));
+        WrathChoice wrathPage = new WrathChoice(
+                "",
+                "",
+                "",
+                "",
+                load_editor()
+        );
+    }
+
+    /**실질적 4번의 터치 페이지 _ 사용자가 slothPage를 선택 했을 때 호출될 메소드*/
+    private void touch_count18(){
+        bubble.animationText(bubble_layout.getContext().getString(R.string.Bubble_ClickListener_click18));
+
+        SlothChoice slothChoice = new SlothChoice(
+                "",
+                "",
+                "",
+                "",
+                load_editor()
+        );
+    }
+
+    /**실질적 4번의 터치 페이지 _ 사용자가 BASICS을 선택 했을 때 호출될 메소드*/
+    private void touch_count20(){
+        bubble.animationText(bubble_layout.getContext().getString(R.string.Bubble_ClickListener_click20));
+        load_editor();
+    }
+    /**Layout Inplater해서 FrameLayout에다가 editor.xml을 띄울 메소드*/
+    private RichEditor load_editor(){
+        bubble_layout.removeAllViews();
+        View newView = layoutInflater.inflate(R.layout.newdiary_edit_editor,bubble_layout,false);
+        RichEditor richEditor = new Editor_Initialization(newView).component_Initialization();
+
+        bubble_layout.addView(newView);
+        return richEditor;
+    }
 }

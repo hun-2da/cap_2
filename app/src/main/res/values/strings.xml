@@ -40,11 +40,18 @@
 
 
     <!-- Bubble_ClickListener(Class)에서 사용 -->
-    <string name="Bubble_ClickListener_click0">안녕 왔구나?</string>
-    <string name="Bubble_ClickListener_click1">어느 날 이었어?</string>
+    <string name="Bubble_ClickListener_click0">안녕 어서와</string>
+    <string name="Bubble_ClickListener_click1">어떤 날 이었어?</string>
     <string name="Bubble_ClickListener_click3">다음은 카테고리를 선택해줘</string>
     <string name="Bubble_ClickListener_click4">우선 카테고리를 선택해줘</string>
-
+    <string name="Bubble_ClickListener_click6">주변 상황을 인지할 수 있어 도움이 될거야 </string>
+    <string name="Bubble_ClickListener_click8">관대해지면 긍정적일 수 있어</string>
+    <string name="Bubble_ClickListener_click10">너는 너를 이해할 테니 더 도움이 될거야</string>
+    <string name="Bubble_ClickListener_click12">남이 아닌 자신에게 집중 할테니 너는 탐구해 낼 수 있을 거야</string>
+    <string name="Bubble_ClickListener_click14">인식할 수 있으니 대처할 수 있을 거야</string>
+    <string name="Bubble_ClickListener_click16">이해할 수 있을 꺼고 통제할 수 있을 거야</string>
+    <string name="Bubble_ClickListener_click18">짧게라도 좋아 해소에 도움이 될거야</string>
+    <string name="Bubble_ClickListener_click20">자유롭게 말해줘</string>
 
 
 

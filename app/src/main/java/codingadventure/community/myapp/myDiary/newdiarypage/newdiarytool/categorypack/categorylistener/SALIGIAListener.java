@@ -6,31 +6,46 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
-import codingadventure.community.myapp.ChoiceDialog;
 import codingadventure.community.myapp.R;
+import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.Touch_Constant_Name;
 
-public class ALL_SALIGIAListener implements View.OnClickListener {
+public class SALIGIAListener implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
 
         int id = v.getId();
         int image_id = 0;
+        int category_ID = 0;
 
         if(id == R.id.icon7_button1){
             image_id = R.drawable.icon7_pride;
+            category_ID = Touch_Constant_Name.PRIDE;
+
         }else if(id == R.id.icon7_button2){
             image_id = R.drawable.icon7_greed;
+            category_ID = Touch_Constant_Name.GREED;
+
         }else if(id == R.id.icon7_button3){
             image_id = R.drawable.icon7_lust;
+            category_ID = Touch_Constant_Name.LUST;
+
         }else if(id == R.id.icon7_button4){
             image_id = R.drawable.icon7_envy;
+            category_ID = Touch_Constant_Name.ENVY;
+
         }else if(id == R.id.icon7_button5){
             image_id = R.drawable.icon7_glutth;
+            category_ID = Touch_Constant_Name.GLUTTONY;
+
         }else if(id == R.id.icon7_button6){
             image_id = R.drawable.icon7_lath;
+            category_ID = Touch_Constant_Name.WRATH;
+
         }else if(id == R.id.icon7_button7){
             image_id = R.drawable.icon7_sloth;
+            category_ID = Touch_Constant_Name.SLOTH;
+
         }else{
 
         }
@@ -40,7 +55,7 @@ public class ALL_SALIGIAListener implements View.OnClickListener {
         if (context instanceof AppCompatActivity) {
             AppCompatActivity activity = (AppCompatActivity) context;
             FragmentManager fragmentManager = activity.getSupportFragmentManager();
-            NewDiaryEdit_ChoiceDialog newDiaryEditChoiceDialog = new NewDiaryEdit_ChoiceDialog(image_id);
+            NewDiaryEdit_ChoiceDialog newDiaryEditChoiceDialog = new NewDiaryEdit_ChoiceDialog(image_id,category_ID);
 
             newDiaryEditChoiceDialog.show(fragmentManager, "DiaryChoiceDialog");
         }
