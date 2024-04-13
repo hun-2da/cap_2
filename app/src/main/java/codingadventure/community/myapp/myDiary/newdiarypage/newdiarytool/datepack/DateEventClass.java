@@ -11,6 +11,9 @@ import androidx.appcompat.app.AlertDialog;
 import java.util.Calendar;
 import java.util.Date;
 
+import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.Diary_db_Write;
+
+/**버전에 상관없이 해당 클레스에서 date를 처리*/
 public class DateEventClass {
     Context context;
 
@@ -19,9 +22,12 @@ public class DateEventClass {
 
     int date_day = 0;
 
-    public DateEventClass(Context context) {
+
+    public DateEventClass(Context context ) {
         this.context = context;
+
     }
+
 
     /**일반 적으로 보여줄 date*/
     public void getDate(DatePicker datePicker){
@@ -30,11 +36,11 @@ public class DateEventClass {
         int month = datePicker.getMonth(); // 주의: 월은 0부터 시작하므로 실제 월보다 1이 작음.
         int day = datePicker.getDayOfMonth();
 
-        month += 1;
+        //month += 1;
         //
 
         Calendar calendar = Calendar.getInstance();
-        calendar.set(year, month - 1, day); // Calendar 월은 0부터 시작합니다.
+        calendar.set(year, month, day); // Calendar 월은 0부터 시작합니다.
         Date date = calendar.getTime();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -43,7 +49,8 @@ public class DateEventClass {
 
 
     }
-    /**다이얼로그로 보여줄 date*/
+
+    /**다이얼로그로 보여줄 date ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ  버전이 낮은 경우만 실행되는 메소드*/
     public void get_date_Dialog(){
         final Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
@@ -58,6 +65,7 @@ public class DateEventClass {
                         // 여기서 날짜 변경 처리
                         // 예를 들어, DatePicker의 날짜를 설정할 수 있습니다.
 
+
                     }
                 }, year, month, day);
         datePickerDialog.show();
@@ -68,15 +76,15 @@ public class DateEventClass {
 
         @Override
         public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-            int month = monthOfYear +1 ;
+            //int month = monthOfYear +1 ;
 
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
             builder.setTitle("확인"); // 다이얼로그 제목 설정
-            builder.setMessage(year+"년 "+month + "월 "+dayOfMonth+"일로 할까?"); // 다이얼로그 메시지 설정
+            builder.setMessage(year+"년 "+monthOfYear + "월 "+dayOfMonth+"일로 할까?"); // 다이얼로그 메시지 설정
             builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    set_date_event.setDate(view,year,month,dayOfMonth);
+                    set_date_event.setDate(view,year,monthOfYear,dayOfMonth);
 
                 }
             }); // 확인 버튼 설정

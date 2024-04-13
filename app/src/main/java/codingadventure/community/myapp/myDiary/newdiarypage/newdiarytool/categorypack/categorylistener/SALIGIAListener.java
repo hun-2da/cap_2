@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
 import codingadventure.community.myapp.R;
+import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.Bubble_ClickListener;
 import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.Touch_Constant_Name;
 
 public class SALIGIAListener implements View.OnClickListener {
@@ -49,6 +50,8 @@ public class SALIGIAListener implements View.OnClickListener {
         }else{
 
         }
+
+        Bubble_ClickListener.diaryDbWrite.setCategory(category_ID);
 
         Context context = v.getContext();
 

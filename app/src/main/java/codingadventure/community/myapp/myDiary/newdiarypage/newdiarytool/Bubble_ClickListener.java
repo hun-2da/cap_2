@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.FrameLayout;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.Random;
 
 import codingadventure.community.myapp.R;
@@ -35,6 +37,10 @@ public class Bubble_ClickListener implements View.OnClickListener {
     FrameLayout bubble_layout;
 
     LayoutInflater layoutInflater;
+
+
+    /**database에 저장해주기 위한 객체*/
+    public static Diary_db_Write diaryDbWrite;
 
 
     public Bubble_ClickListener(BubbleTextViewAnimation bubble, FrameLayout bubble_layout,LayoutInflater layoutInflater) {
@@ -95,6 +101,7 @@ public class Bubble_ClickListener implements View.OnClickListener {
     }
     private void touch_count0(){
         bubble.animationText(bubble_layout.getContext().getString(R.string.Bubble_ClickListener_click0));
+        diaryDbWrite = new Diary_db_Write("","",null,0);
         //bubble_layout.getViewTreeObserver().addOnGlobalLayoutListener(new Editor_KeyboardListener(bubble_layout));   // 키보드 로직 리스너로 연결
     }
 
@@ -224,7 +231,7 @@ public class Bubble_ClickListener implements View.OnClickListener {
         bubble_layout.addView(newView);
         return richEditor;
     }
-    private  void randomBubble(){
+    private void randomBubble(){
         int randomIntBounded = new Random().nextInt(8);
         int choice_bubble = 0;
         switch(randomIntBounded){

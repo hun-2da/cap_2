@@ -60,7 +60,7 @@ public class NewDiaryEdit_ChoiceDialog extends DialogFragment {
                 Bubble_ClickListener.touch_count = Touch_Constant_Name.BASICS;
                 Diary_editDiary.bubble_backView.performClick();
 
-                // category_id 저장 필요---------------------------------------------------------------------------------------------------
+
 
                 dismiss(); // 다이어로그 닫기
             }
@@ -75,7 +75,7 @@ public class NewDiaryEdit_ChoiceDialog extends DialogFragment {
                 Bubble_ClickListener.touch_count = category_id;
                 Diary_editDiary.bubble_backView.performClick();
 
-                // category_id 저장 필요---------------------------------------------------------------------------------------------------
+
 
                 dismiss(); // 다이어로그 닫기
             }

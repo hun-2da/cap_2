@@ -21,11 +21,19 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import codingadventure.community.myapp.ChoiceDialog;
 import codingadventure.community.myapp.R;
+import codingadventure.community.myapp.appMainAcitivityPage.logInPage.login_joinPack.Login_Join;
+import codingadventure.community.myapp.appMainAcitivityPage.logInPage.loginfindPack.Login_Find;
 
 public class Basics_LogInView extends AppCompatActivity {
+
+    /**firebase의 사용자 데이터에 추가 및 접근을 위한 객체*/
+    FirebaseFirestore firestore_db;
 
     ConstraintLayout id_layout;
 
@@ -61,6 +69,9 @@ public class Basics_LogInView extends AppCompatActivity {
     /**파이어베이스 로그인을 위한 객체*/
     private FirebaseAuth mAuth;
 
+    /**파이어베이스 캐시 정보*/
+    FirebaseUser currentUser;
+
 
     FragmentManager fragmentManager;
     FragmentTransaction transaction;
@@ -70,12 +81,18 @@ public class Basics_LogInView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_basics_activity);
 
+        firestore_db = FirebaseFirestore.getInstance();
+
+
         fragmentManager = getSupportFragmentManager();
         transaction = fragmentManager.beginTransaction();
 
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
+        //mAuth.signOut();//--------------------------------------------------------------------------------
+
+        currentUser = mAuth.getCurrentUser();
 
 
         id_edit = findViewById(R.id.basiclogin_id_editTextText);
@@ -91,7 +108,11 @@ public class Basics_LogInView extends AppCompatActivity {
         login_layout = findViewById(R.id.login_cardView);
 
         loginFind = new Login_Find(id_layout,imageView);
-        loginJoin = new Login_Join(id_layout,imageView,mAuth);
+        loginJoin = new Login_Join(firestore_db,id_layout,imageView,mAuth);
+
+
+
+
 
 
         loginButton = findViewById(R.id.basiclogin_ok_button);
@@ -108,8 +129,8 @@ public class Basics_LogInView extends AppCompatActivity {
 
                     login_m(email,password);
                 }
-                ChoiceDialog choiceDialog = new ChoiceDialog();
-                choiceDialog.show(getSupportFragmentManager(), "menuChoiceDialog");
+                /*ChoiceDialog choiceDialog = new ChoiceDialog();
+                choiceDialog.show(getSupportFragmentManager(), "menuChoiceDialog");*/
 
             }
         });
@@ -132,8 +153,8 @@ public class Basics_LogInView extends AppCompatActivity {
 
 
 
-
     }
+
     private void login_m(String email,String password){
         Log.e("test","시작");
         mAuth.signInWithEmailAndPassword(email, password)
@@ -161,14 +182,21 @@ public class Basics_LogInView extends AppCompatActivity {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            // reload(); 재 로그인 로직 알아서 짜십쇼 _ 토스트 메시지로 알림 주고 로그인 화면으로 이동
+        if(currentUser == null){
+             //reload();  앱 재실행 코드
+        }else{
+            updateUI(currentUser);
         }
     }
     private void updateUI(FirebaseUser user){
         ChoiceDialog choiceDialog = new ChoiceDialog();
         choiceDialog.show(getSupportFragmentManager(), "menuChoiceDialog");
-        layout_visibility(2);
+        //layout_visibility(2);
+
+
+
+
+
     }
     private void layout_visibility(int i){
         switch(i){

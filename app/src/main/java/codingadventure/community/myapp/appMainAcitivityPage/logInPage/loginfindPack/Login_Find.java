@@ -1,4 +1,4 @@
-package codingadventure.community.myapp.appMainAcitivityPage.logInPage;
+package codingadventure.community.myapp.appMainAcitivityPage.logInPage.loginfindPack;
 
 import android.os.Bundle;
 
@@ -12,7 +12,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.google.firebase.database.DatabaseReference;
+
 import codingadventure.community.myapp.R;
+import codingadventure.community.myapp.appMainAcitivityPage.logInPage.Key_Check_EditText;
 
 
 public class Login_Find extends Fragment {
@@ -27,12 +30,16 @@ public class Login_Find extends Fragment {
     /**아이디만 찾기 위한 버튼*/
     Button check_button;
 
+
+
     ImageView imageView;
 
-    public Login_Find(ConstraintLayout constraintLayout, ImageView imageView){
+    public Login_Find( ConstraintLayout constraintLayout, ImageView imageView){
+
         this.constraintLayout = constraintLayout;
         this.imageView = imageView;
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

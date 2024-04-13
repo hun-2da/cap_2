@@ -1,4 +1,4 @@
-package codingadventure.community.myapp.appMainAcitivityPage.logInPage;
+package codingadventure.community.myapp.appMainAcitivityPage.logInPage.login_joinPack;
 
 import android.os.Bundle;
 
@@ -21,14 +21,20 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.security.NoSuchAlgorithmException;
 
 import codingadventure.community.myapp.R;
+import codingadventure.community.myapp.appMainAcitivityPage.logInPage.Key_Check_EditText;
 import codingadventure.community.myapp.security.Change_String;
 
 
 public class Login_Join extends Fragment {
+
+    FirebaseFirestore firestore_db;
     ConstraintLayout constraintLayout;
     EditText id, pass, passconfirm, email;
     Button idconfirm, confirm;
@@ -40,7 +46,8 @@ public class Login_Join extends Fragment {
     FirebaseAuth mAuth;
 
 
-    public Login_Join(ConstraintLayout constraintLayout, ImageView imageView,FirebaseAuth mAuth){
+    public Login_Join(FirebaseFirestore firestore_db, ConstraintLayout constraintLayout, ImageView imageView,FirebaseAuth mAuth){
+        this.firestore_db = firestore_db;
         this.constraintLayout = constraintLayout;
         this.imageView = imageView;
         this.mAuth = mAuth;
@@ -76,7 +83,9 @@ public class Login_Join extends Fragment {
                     String idconfirm = id.getText().toString();
                     String emailconfirm = email.getText().toString();
                     // 서버 적용
-                    new_log(emailconfirm,password1);
+                    new User_auth_Write(firestore_db,mAuth).new_log(getActivity(),emailconfirm,password1,idconfirm);
+
+
                 }
                 Log.e("onclick확인", "종료");
             }
@@ -102,24 +111,6 @@ public class Login_Join extends Fragment {
         imageView.setImageResource(R.drawable.key_image2);
 
         return view;
-    }
-    private void new_log(String email,String password){
-        Log.e("test", "시작");
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.e("test", "createUserWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            //updateUI(user);
-                        } else {
-                            Log.e("test", "createUserWithEmail:failure", task.getException());
-                            //updateUI(null);
-                        }
-                    }
-                });
     }
 
     /**비밀번호가 동일한지 확인하는 메소드*/

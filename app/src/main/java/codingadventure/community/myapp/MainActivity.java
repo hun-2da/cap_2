@@ -9,6 +9,7 @@ import codingadventure.community.myapp.appMainAcitivityPage.logInPage.Basics_Log
 
 public class MainActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
