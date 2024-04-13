@@ -6,6 +6,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
+import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
 
@@ -18,6 +19,7 @@ import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.editorp
 import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.editorpack.editorlistenerPack.SeventhButtonListener;
 import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.editorpack.editorlistenerPack.ThirdButtonListener;
 import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.editorpack.editorlistenerPack.SixthButtonListener;
+import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.editorpack.editorlistenerPack.TitleEditListener;
 import jp.wasabeef.richeditor.RichEditor;
 
 public class Editor_Initialization {
@@ -25,6 +27,9 @@ public class Editor_Initialization {
     View view;
 
     RichEditor richEditor;
+
+    TextView title_TextView;
+    TextView content_TextView;
 
     /**editor의 onclickListener */
     EditorListener editorListener;
@@ -103,14 +108,22 @@ public class Editor_Initialization {
 
     public Editor_Initialization(View view) {
         this.view = view;
+        sort_count = 0;
 
     }
     public RichEditor component_Initialization(){
+
          richEditor = (RichEditor) view.findViewById(R.id.editor_category_richeditor);
          editText = view.findViewById(R.id.editor_Title_editText);
 
-         editorListener = new EditorListener();
-         richEditor.setOnClickListener(editorListener);
+         title_TextView = view.findViewById(R.id.editor_title_TextView);
+         content_TextView = view.findViewById(R.id.editor_content_TextView);
+
+
+         editText.addTextChangedListener(new TitleEditListener(title_TextView));
+         richEditor.setOnTextChangeListener(new EditorListener(richEditor,content_TextView));
+
+
          //editText.setOnClickListener(editorFocusListener);
          //--------------------------------------------------------------------- 첫번째 버튼 객체
 

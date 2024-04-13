@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.FrameLayout;
 
+import java.util.Random;
+
 import codingadventure.community.myapp.R;
 import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.categorypack.CategoryMenuClass;
 import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.categorypack.categorylistener.saligiapack.EnvyChoice;
@@ -131,7 +133,6 @@ public class Bubble_ClickListener implements View.OnClickListener {
 
     /*실질적 4번의 터치 페이지 _ 사용자가 pride를 선택했을 때 호출될 메소드 **/
     private void touch_count6(){
-        bubble.animationText(bubble_layout.getContext().getString(R.string.Bubble_ClickListener_click6));
         PrideChoice pridePage = new PrideChoice(
                 "",
                 "",
@@ -144,7 +145,6 @@ public class Bubble_ClickListener implements View.OnClickListener {
 
     /*실질적 4번의 터치 페이지 _ 사용자가 greedPage를 선택했을 때 호출될 메소드 **/
     private void touch_count8(){
-        bubble.animationText(bubble_layout.getContext().getString(R.string.Bubble_ClickListener_click8));
         GreedChoice greedPage = new GreedChoice(
                 "",
                 "",
@@ -156,7 +156,6 @@ public class Bubble_ClickListener implements View.OnClickListener {
 
     /**실질적 4번의 터치 페이지 _ 사용자가 lustPage를 선택했을 때 호출될 메소드*/
     private void touch_count10(){
-        bubble.animationText(bubble_layout.getContext().getString(R.string.Bubble_ClickListener_click10));
         LustChoice lustPage = new LustChoice(
                 "",
                 "",
@@ -168,7 +167,6 @@ public class Bubble_ClickListener implements View.OnClickListener {
 
     /**실질적 4번의 터치 페이지 _ 사용자가 envyPage를 선택했을 때 호출될 메소드 */
     private void touch_count12(){
-        bubble.animationText(bubble_layout.getContext().getString(R.string.Bubble_ClickListener_click12));
         EnvyChoice envyPage = new EnvyChoice(
                 "",
                 "",
@@ -180,7 +178,6 @@ public class Bubble_ClickListener implements View.OnClickListener {
 
     /**실질적 4번의 터치 페이지 _ 사용자가 gluttonyPage를 선택했을 떄 호출될 메소드 */
     private void touch_count14(){
-        bubble.animationText(bubble_layout.getContext().getString(R.string.Bubble_ClickListener_click14));
         GluttonyChoice gluttonyPage = new GluttonyChoice(
                 "",
                 "",
@@ -192,7 +189,6 @@ public class Bubble_ClickListener implements View.OnClickListener {
 
     /**실질적 4번의 터치 페이지 _ 사용자가 wrathPage를 선택 했을 때 호출될 메소드*/
     private void touch_count16(){
-        bubble.animationText(bubble_layout.getContext().getString(R.string.Bubble_ClickListener_click16));
         WrathChoice wrathPage = new WrathChoice(
                 "",
                 "",
@@ -204,7 +200,6 @@ public class Bubble_ClickListener implements View.OnClickListener {
 
     /**실질적 4번의 터치 페이지 _ 사용자가 slothPage를 선택 했을 때 호출될 메소드*/
     private void touch_count18(){
-        bubble.animationText(bubble_layout.getContext().getString(R.string.Bubble_ClickListener_click18));
 
         SlothChoice slothChoice = new SlothChoice(
                 "",
@@ -217,16 +212,39 @@ public class Bubble_ClickListener implements View.OnClickListener {
 
     /**실질적 4번의 터치 페이지 _ 사용자가 BASICS을 선택 했을 때 호출될 메소드*/
     private void touch_count20(){
-        bubble.animationText(bubble_layout.getContext().getString(R.string.Bubble_ClickListener_click20));
         load_editor();
     }
     /**Layout Inplater해서 FrameLayout에다가 editor.xml을 띄울 메소드*/
     private RichEditor load_editor(){
         bubble_layout.removeAllViews();
+        randomBubble();
         View newView = layoutInflater.inflate(R.layout.newdiary_edit_editor,bubble_layout,false);
         RichEditor richEditor = new Editor_Initialization(newView).component_Initialization();
 
         bubble_layout.addView(newView);
         return richEditor;
+    }
+    private  void randomBubble(){
+        int randomIntBounded = new Random().nextInt(8);
+        int choice_bubble = 0;
+        switch(randomIntBounded){
+            case 0:
+                choice_bubble = R.string.Bubble_ClickListener_click6_0; break;
+            case 1:
+                choice_bubble = R.string.Bubble_ClickListener_click6_1; break;
+            case 2:
+                choice_bubble = R.string.Bubble_ClickListener_click6_2; break;
+            case 3:
+                choice_bubble = R.string.Bubble_ClickListener_click6_3; break;
+            case 4:
+                choice_bubble = R.string.Bubble_ClickListener_click6_4; break;
+            case 5:
+                choice_bubble = R.string.Bubble_ClickListener_click6_5; break;
+            case 6:
+                choice_bubble = R.string.Bubble_ClickListener_click6_6; break;
+            case 7:
+                choice_bubble = R.string.Bubble_ClickListener_click6_7; break;
+        }
+        bubble.animationText(bubble_layout.getContext().getString(choice_bubble));
     }
 }

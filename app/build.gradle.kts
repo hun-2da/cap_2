@@ -33,6 +33,8 @@ dependencies {
     implementation("jp.wasabeef:richeditor-android:2.0.0") //editer 추가
     implementation ("com.github.yukuku:ambilwarna:2.0.1")  // 팔레트
 
+    implementation("org.jsoup:jsoup:1.17.2") // json 파싱용
+
     //----------------------------------------------------------------------- 파이어베이스 로그인용
     implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
     implementation("com.google.firebase:firebase-auth")
