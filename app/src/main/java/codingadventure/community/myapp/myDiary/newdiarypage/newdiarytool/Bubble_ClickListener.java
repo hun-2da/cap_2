@@ -1,5 +1,7 @@
 package codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -7,11 +9,12 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.FrameLayout;
 
-import com.google.firebase.firestore.FirebaseFirestore;
-
 import java.util.Random;
 
+import codingadventure.community.myapp.MainActivity;
 import codingadventure.community.myapp.R;
+import codingadventure.community.myapp.myDiary.Diary_db_Write;
+import codingadventure.community.myapp.myDiary.newdiarypage.Diary_editDiary;
 import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.categorypack.CategoryMenuClass;
 import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.categorypack.categorylistener.saligiapack.EnvyChoice;
 import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.categorypack.categorylistener.saligiapack.GluttonyChoice;
@@ -20,9 +23,9 @@ import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.categor
 import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.categorypack.categorylistener.saligiapack.PrideChoice;
 import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.categorypack.categorylistener.saligiapack.SlothChoice;
 import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.categorypack.categorylistener.saligiapack.WrathChoice;
+import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.d_s_choice.AddLastPage;
 import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.datepack.DateEventClass;
 import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.editorpack.Editor_Initialization;
-import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.editorpack.Editor_KeyboardListener;
 import jp.wasabeef.richeditor.RichEditor;
 
 public class Bubble_ClickListener implements View.OnClickListener {
@@ -88,6 +91,15 @@ public class Bubble_ClickListener implements View.OnClickListener {
             case Touch_Constant_Name.BASICS:
                 touch_count20();
                 break;
+            case Touch_Constant_Name.DIARLAST:
+                touch_count22();
+                break;
+            case Touch_Constant_Name.ByeMessage:
+                touch_count24();
+                break;
+            case Touch_Constant_Name.finish:
+                touch_count25(v);
+                break;
 
             default:
                 return;
@@ -101,7 +113,7 @@ public class Bubble_ClickListener implements View.OnClickListener {
     }
     private void touch_count0(){
         bubble.animationText(bubble_layout.getContext().getString(R.string.Bubble_ClickListener_click0));
-        diaryDbWrite = new Diary_db_Write("","",null,0);
+        diaryDbWrite = new Diary_db_Write("","",null,"",false);
         //bubble_layout.getViewTreeObserver().addOnGlobalLayoutListener(new Editor_KeyboardListener(bubble_layout));   // 키보드 로직 리스너로 연결
     }
 
@@ -222,6 +234,26 @@ public class Bubble_ClickListener implements View.OnClickListener {
         load_editor();
     }
     /**Layout Inplater해서 FrameLayout에다가 editor.xml을 띄울 메소드*/
+
+
+    private void touch_count22(){
+        bubble_layout.removeAllViews();
+        View newView = layoutInflater.inflate(R.layout.newdiary_edit_lastpage,bubble_layout,false);
+        new AddLastPage(newView);
+        bubble.animationText(bubble_layout.getContext().getString(R.string.Bubble_ClickListener_lastclick));
+        bubble_layout.addView(newView);
+    }
+    private void touch_count24(){
+        bubble_layout.removeAllViews();
+        bubble.animationText(bubble_layout.getContext().getString(R.string.Bubble_ClickListener_lastclick2));
+    }
+    private void touch_count25(View v){
+        Context context = v.getContext();
+        if (context instanceof Activity) {
+            ((Activity) context).finish();
+        }
+    }
+
     private RichEditor load_editor(){
         bubble_layout.removeAllViews();
         randomBubble();
@@ -231,6 +263,8 @@ public class Bubble_ClickListener implements View.OnClickListener {
         bubble_layout.addView(newView);
         return richEditor;
     }
+
+
     private void randomBubble(){
         int randomIntBounded = new Random().nextInt(8);
         int choice_bubble = 0;

@@ -1,4 +1,4 @@
-package codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool;
+package codingadventure.community.myapp.myDiary;
 
 import java.util.Date;
 
@@ -6,13 +6,19 @@ public class Diary_db_Write {
     String Title;
     String Content;
     Date diary_date;
-    int Category;
+    String Category;
 
-    public Diary_db_Write(String title, String content, Date diary_date, int category) {
+    boolean user_choice;
+
+    public Diary_db_Write() {
+    }
+
+    public Diary_db_Write(String title, String content, Date diary_date, String category, boolean user_choice) {
         Title = title;
         Content = content;
         this.diary_date = diary_date;
         Category = category;
+        this.user_choice = user_choice;
     }
 
     public String getTitle() {
@@ -39,11 +45,19 @@ public class Diary_db_Write {
         this.diary_date = diary_date;
     }
 
-    public int getCategory() {
+    public String getCategory() {
         return Category;
     }
 
-    public void setCategory(int category) {
+    public void setCategory(String category) {
         Category = category;
+    }
+
+    public boolean isUser_choice() {
+        return user_choice;
+    }
+
+    public void setUser_choice(boolean user_choice) {
+        this.user_choice = user_choice;
     }
 }

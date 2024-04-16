@@ -11,8 +11,6 @@ import androidx.appcompat.app.AlertDialog;
 import java.util.Calendar;
 import java.util.Date;
 
-import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.Diary_db_Write;
-
 /**버전에 상관없이 해당 클레스에서 date를 처리*/
 public class DateEventClass {
     Context context;
@@ -76,11 +74,11 @@ public class DateEventClass {
 
         @Override
         public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-            //int month = monthOfYear +1 ;
+            int month = monthOfYear +1 ;
 
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
             builder.setTitle("확인"); // 다이얼로그 제목 설정
-            builder.setMessage(year+"년 "+monthOfYear + "월 "+dayOfMonth+"일로 할까?"); // 다이얼로그 메시지 설정
+            builder.setMessage(year+"년 "+month + "월 "+dayOfMonth+"일로 할까?"); // 다이얼로그 메시지 설정
             builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {

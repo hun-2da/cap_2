@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -36,6 +38,13 @@ public class Diary_editDiary extends AppCompatActivity {
 
         bubble_backView = findViewById(R.id.editdiary_smallbackimage_imageView);
         bubble_backView.setOnClickListener(bubbleClick);
+
+        findViewById(R.id.editdiary_back_Button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Diary_editDiary.this.finish();
+            }
+        });
 
     }
 }

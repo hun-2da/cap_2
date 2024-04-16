@@ -19,4 +19,8 @@ public class Touch_Constant_Name {
     /**일반 자유형 카테고리를 선택할 시 처리*/
     public static final int BASICS = 20;
 
+    public static final int DIARLAST = 22;
+    public static final int ByeMessage = 24;
+    public static final int finish = 25;
+
 }

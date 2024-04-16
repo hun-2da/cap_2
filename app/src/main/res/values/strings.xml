@@ -3,15 +3,15 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="login">Confession Diary</string>
-    <string name="id">ID</string>
+    <string name="id">EM</string>
     <string name="find"> 아이디/비밀번호 찾기</string>
     <string name="newuser">회원가입</string>
     <string name="password">PW</string>
     <string name="button_name">LOGIN</string>
 
     <!-- find Fragment에서 사용 -->
-    <string name="find_id_textView">아이디 찾기 </string>
-    <string name="find_email_EditText">이메일을 입력해 주십쇼</string>
+    <string name="find_id_textView">이메일 입력</string>
+    <string name="find_email_EditText">입력후 오른쪽 버튼을 눌러 주세요</string>
     <string name="find_password_textView">비밀번호 찾기 </string>
     <string name="find_id_editText">아이디를 입력해주십시오</string>
     <string name="find_id_check_textView">비밀번호를 찾으려면 이메일을 체크</string>
@@ -43,6 +43,14 @@
     <string name="editor_Title_textView">Title (0/30)</string>
     <string name="editor_Conent_textView">Content (0/300)</string>
     <string name="warning"> 경고 : 글자 수가 넘어가면 글자 효과가 풀립니다</string>
+    <string name="editor_lastpage_textView">공개 여부를 선택해 주십시오</string>
+    <string name="editor_lastpage_r_button1">공개로 할래</string>
+    <string name="editor_lastpage_r_button2">비공개로 할래</string>
+    <string name="editor_lastpage_ok_button">작성</string>
+
+
+    <!-- diarylist_RecyclerXml에서 사용 -->
+    <string name="listRecycler_check_Switch">공개</string>
 
     <!-- Bubble_ClickListener(Class)에서 사용 -->
     <string name="Bubble_ClickListener_click0">안녕 어서와</string>
@@ -59,9 +67,8 @@
     <string name="Bubble_ClickListener_click6_6">짧게라도 좋아 해소에 도움이 될거야</string>
     <string name="Bubble_ClickListener_click6_7">자유롭게 말해줘</string>
 
-
-
-
+    <string name="Bubble_ClickListener_lastclick">마지막으로 공개 여부를 알려줘</string>
+    <string name="Bubble_ClickListener_lastclick2">고마워!</string>
 
 
 

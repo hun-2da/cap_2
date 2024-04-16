@@ -107,7 +107,7 @@ public class Basics_LogInView extends AppCompatActivity {
         id_layout = findViewById(R.id.clayouto);
         login_layout = findViewById(R.id.login_cardView);
 
-        loginFind = new Login_Find(id_layout,imageView);
+        loginFind = new Login_Find(id_layout,imageView,mAuth);
         loginJoin = new Login_Join(firestore_db,id_layout,imageView,mAuth);
 
 

@@ -66,7 +66,9 @@
                 android:layout_gravity="center"
                 android:layout_margin="30dp"
                 android:layout_weight="1"
-                android:src="@android:drawable/btn_star" />
+                android:background="#00FFFFFF"
+                android:scaleType="centerCrop"
+                android:src="@drawable/diary_main_date" />
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -83,7 +85,9 @@
                 android:layout_gravity="center"
                 android:layout_margin="20dp"
                 android:layout_weight="1"
-                android:src="@android:drawable/btn_star" />
+                android:background="#00FFFFFF"
+                android:scaleType="centerCrop"
+                android:src="@drawable/diary_main_adddiary" />
         </androidx.cardview.widget.CardView>
 
 
@@ -95,13 +99,15 @@
             app:cardElevation="0dp">
 
             <ImageButton
-                android:id="@+id/imageButton3"
+                android:id="@+id/diary_diarylist_Button"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:layout_margin="30dp"
                 android:layout_weight="1"
-                android:src="@android:drawable/btn_star" />
+                android:background="#00FFFFFF"
+                android:scaleType="centerCrop"
+                android:src="@drawable/diary_main_listdiary" />
         </androidx.cardview.widget.CardView>
 
 

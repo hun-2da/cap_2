@@ -11,6 +11,7 @@ import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.Bubble_
 import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.Touch_Constant_Name;
 
 public class SALIGIAListener implements View.OnClickListener {
+    String categoryName="";
 
     @Override
     public void onClick(View v) {
@@ -22,36 +23,42 @@ public class SALIGIAListener implements View.OnClickListener {
         if(id == R.id.icon7_button1){
             image_id = R.drawable.icon7_pride;
             category_ID = Touch_Constant_Name.PRIDE;
+            categoryName = "PRIDE";
 
         }else if(id == R.id.icon7_button2){
             image_id = R.drawable.icon7_greed;
             category_ID = Touch_Constant_Name.GREED;
+            categoryName = "GREED";
 
         }else if(id == R.id.icon7_button3){
             image_id = R.drawable.icon7_lust;
             category_ID = Touch_Constant_Name.LUST;
+            categoryName = "LUST";
 
         }else if(id == R.id.icon7_button4){
             image_id = R.drawable.icon7_envy;
             category_ID = Touch_Constant_Name.ENVY;
+            categoryName = "ENVY";
 
         }else if(id == R.id.icon7_button5){
             image_id = R.drawable.icon7_glutth;
             category_ID = Touch_Constant_Name.GLUTTONY;
+            categoryName = "GLUTTONY";
 
         }else if(id == R.id.icon7_button6){
             image_id = R.drawable.icon7_lath;
             category_ID = Touch_Constant_Name.WRATH;
+            categoryName = "WRATH";
 
         }else if(id == R.id.icon7_button7){
             image_id = R.drawable.icon7_sloth;
             category_ID = Touch_Constant_Name.SLOTH;
-
+            categoryName = "SLOTH";
         }else{
 
         }
 
-        Bubble_ClickListener.diaryDbWrite.setCategory(category_ID);
+        Bubble_ClickListener.diaryDbWrite.setCategory(categoryName);
 
         Context context = v.getContext();
 

@@ -12,13 +12,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.auth.FirebaseAuth;
 
 import codingadventure.community.myapp.R;
 import codingadventure.community.myapp.appMainAcitivityPage.logInPage.Key_Check_EditText;
 
 
 public class Login_Find extends Fragment {
+
+    FirebaseAuth mAuth;
 
     /**basics에서 사용된 레이아웃*/
     ConstraintLayout constraintLayout;
@@ -30,12 +32,10 @@ public class Login_Find extends Fragment {
     /**아이디만 찾기 위한 버튼*/
     Button check_button;
 
-
-
     ImageView imageView;
 
-    public Login_Find( ConstraintLayout constraintLayout, ImageView imageView){
-
+    public Login_Find( ConstraintLayout constraintLayout, ImageView imageView,FirebaseAuth mAuth){
+        this.mAuth = mAuth;
         this.constraintLayout = constraintLayout;
         this.imageView = imageView;
     }
@@ -53,21 +53,11 @@ public class Login_Find extends Fragment {
         imageView.setImageResource(R.drawable.key_image);
 
         ok_button = view.findViewById(R.id.find_ok_Button);
-        ok_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String id_string = id.getText().toString();
-            }
-        });
+        ok_button.setOnClickListener(new Login_password_find_Listener(mAuth,email,id));
 
 
         check_button = view.findViewById(R.id.find_idSearch_Button);
-        check_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String email1_string = email.getText().toString();
-            }
-        });
+        //check_button.setOnClickListener(new Login_email_find_Listener(email));
 
         Key_Check_EditText key_edit = new Key_Check_EditText(constraintLayout,imageView);
         email.setOnFocusChangeListener(key_edit);
