@@ -7,7 +7,7 @@
     tools:context=".myDiary.diartlistPage.DiaryList_Main">
 
     <FrameLayout
-        android:id="@+id/diarlist_main_getFragment_frameLayout"
+        android:id="@+id/diarylist_main_getFragment_frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -17,4 +17,24 @@
         app:layout_constraintTop_toTopOf="parent">
 
     </FrameLayout>
+
+    <android.widget.Button
+        android:id="@+id/diarylist_main_left_button"
+        android:layout_width="40dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="10dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.widget.Button
+        android:id="@+id/diarylist_main_right_button"
+        android:layout_width="40dp"
+        android:layout_height="100dp"
+
+        android:layout_marginEnd="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/diarylist_main_getFragment_frameLayout"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

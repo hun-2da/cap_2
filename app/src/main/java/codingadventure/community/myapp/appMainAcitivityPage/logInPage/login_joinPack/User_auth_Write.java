@@ -30,15 +30,12 @@ public class User_auth_Write {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
                             Log.e("test", "createUserWithEmail:success");
                             mAuth.getCurrentUser();
                             User_db_Write join_id = new User_db_Write(email,password,user_id);
                             firestore_db.collection("User").document(email).set(join_id);
-                            //updateUI(user);
                         } else {
                             Log.e("test", "createUserWithEmail:failure", task.getException());
-                            //updateUI(null);
                         }
                     }
                 });

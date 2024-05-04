@@ -9,6 +9,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import codingadventure.community.myapp.FirebasePack.FirebaseDBNameClass;
+import codingadventure.community.myapp.FirebasePack.FirebaseUtils;
 import codingadventure.community.myapp.R;
 import codingadventure.community.myapp.myDiary.newdiarypage.Diary_editDiary;
 import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.Bubble_ClickListener;
@@ -20,16 +22,6 @@ public class AddLastPage {
     RadioGroup choice_radioGroup;
 
     boolean user_choice;
-
-    /**계정 관련 파이어베이스*/
-    FirebaseAuth mAuth;
-
-    /**유저 캐시정보*/
-    FirebaseUser currentUser;
-
-
-    /**클라우드 스토리지 db접근용*/
-    FirebaseFirestore firestore_db;
 
 
     /**캐시에 저장되어있는 아이디 string*/
@@ -57,21 +49,17 @@ public class AddLastPage {
             }else if(radioButtonId == R.id.lastPage_no_radioButton){
                 user_choice = false;
             }
-            Bubble_ClickListener.diaryDbWrite.setUser_choice(user_choice);
+            Bubble_ClickListener.diaryDbWrite.setUser_publicityStatus(user_choice);
             getDB();
 
         }
 
         /**초기화용 메소드*/
         private void getDB(){
-            mAuth = FirebaseAuth.getInstance();
 
-            currentUser = mAuth.getCurrentUser();
-            firestore_db = FirebaseFirestore.getInstance();
-
-            firestore_db.collection("User")
-                    .document(currentUser.getEmail())
-                    .collection("Diary")
+            FirebaseUtils.getFirestore().collection(FirebaseDBNameClass.USER_COLLECTION)
+                    .document(FirebaseUtils.getCurrentUser().getEmail())
+                    .collection(FirebaseDBNameClass.DIARY_COLLECTION)
                     .document(Bubble_ClickListener.diaryDbWrite.getTitle()+Bubble_ClickListener.diaryDbWrite.getDiary_date())
                     .set(Bubble_ClickListener.diaryDbWrite);    // 컬렉션에 저장을 위한 코드
 

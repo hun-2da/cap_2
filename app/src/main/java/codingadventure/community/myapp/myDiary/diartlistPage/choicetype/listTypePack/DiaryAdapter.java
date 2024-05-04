@@ -18,6 +18,12 @@ import jp.wasabeef.richeditor.RichEditor;
 
 public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.ViewHolder>{
     ArrayList<Diary_db_Write> diaryBox = new ArrayList<>();
+    OnItemClickListener onItemClickListener;
+
+    public DiaryAdapter(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -31,6 +37,12 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.ViewHolder>{
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Diary_db_Write item = diaryBox.get(position);
         holder.setItem(item);
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override
@@ -55,11 +67,18 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.ViewHolder>{
     }
 
 
+
+
+
     static class ViewHolder extends RecyclerView.ViewHolder{
         ImageView imageView;
         RichEditor richEditor;
         TextView textView;
         Switch switch_Button;
+
+
+
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -69,15 +88,20 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.ViewHolder>{
             switch_Button = itemView.findViewById(R.id.listCycler_choice_switchButton);
 
         }
+
         public void setItem(Diary_db_Write item){
             String category = item.getCategory();
             imageView.setImageResource(getCategory_res(category));
 
             richEditor.setHtml(item.getContent());
+            richEditor.setEnabled(false);
+
 
             textView.setText(item.getTitle());
 
-            switch_Button.setChecked(item.isUser_choice());
+            boolean user_publicityStatus = item.isUser_publicityStatus();
+            switch_Button.setText(user_publicityStatus?"공개":"비공개");
+            switch_Button.setChecked(user_publicityStatus);
 
 
         }
@@ -104,5 +128,7 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.ViewHolder>{
             }
             return category_id;
         }
+
+
     }
 }
