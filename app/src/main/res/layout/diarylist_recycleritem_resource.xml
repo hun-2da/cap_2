@@ -55,8 +55,12 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:enabled="false"
                         android:gravity="right"
-                        android:text="@string/listRecycler_check_Switch" />
+
+                        android:text="@string/listRecycler_check_Switch"
+                        android:thumbTint="#BBCFC7"
+                        android:trackTint="#989898" />
 
                 </LinearLayout>
 

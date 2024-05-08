@@ -1,4 +1,4 @@
-package codingadventure.community.myapp.myDiary.diartlistPage.choicetype.listTypePack;
+package codingadventure.community.myapp.listEventPack;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;

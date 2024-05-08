@@ -13,8 +13,12 @@
         android:theme="@style/Theme.ConfessionDiary"
         tools:targetApi="31">
         <activity
-            android:name=".myDiary.diartlistPage.DiaryList_Main"
+            android:name=".myCommunity.MainCommunity"
             android:exported="false" />
+        <activity
+            android:name=".myDiary.diartlistPage.DiaryList_Main"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".myDiary.newdiarypage.Diary_editDiary"
             android:exported="false"

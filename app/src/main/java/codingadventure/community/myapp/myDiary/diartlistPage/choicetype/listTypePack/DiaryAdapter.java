@@ -11,10 +11,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import codingadventure.community.myapp.R;
+import codingadventure.community.myapp.listEventPack.OnItemClickListener;
 import codingadventure.community.myapp.myDiary.Diary_db_Write;
 import jp.wasabeef.richeditor.RichEditor;
+
+
 
 public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.ViewHolder>{
     ArrayList<Diary_db_Write> diaryBox = new ArrayList<>();
@@ -23,6 +28,9 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.ViewHolder>{
     public DiaryAdapter(OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
     }
+
+
+
 
     @NonNull
     @Override
@@ -37,12 +45,9 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.ViewHolder>{
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Diary_db_Write item = diaryBox.get(position);
         holder.setItem(item);
-        holder.imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
+
+        holder.bind(diaryBox.get(position), onItemClickListener);
     }
 
     @Override
@@ -128,6 +133,16 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.ViewHolder>{
             }
             return category_id;
         }
+
+        public void bind(final Diary_db_Write item, final OnItemClickListener listener) {
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onItemClick(v, getAdapterPosition());
+                }
+            });
+        }
+
 
 
     }

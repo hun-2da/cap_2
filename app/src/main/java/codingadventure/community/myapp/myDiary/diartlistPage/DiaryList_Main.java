@@ -1,6 +1,7 @@
 package codingadventure.community.myapp.myDiary.diartlistPage;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -25,19 +26,30 @@ public class DiaryList_Main extends AppCompatActivity {
         setContentView(R.layout.diarylist_main_activity);
         Log.e("일단 실행됨","흠냐링");
 
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.diarylist_main_getFragment_frameLayout, new DiaryList_ListType())
-                .commit();
-
         Button rightButton = findViewById(R.id.diarylist_main_right_button);
         Button leftButton = findViewById(R.id.diarylist_main_left_button);
+
+        DiaryList_ListType listType = new DiaryList_ListType(rightButton);
+        DiaryList_CalenderType calenderType = new DiaryList_CalenderType();
+
+
+
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.diarylist_main_getFragment_frameLayout,listType)
+                .add(R.id.diarylist_main_getFragment_frameLayout, calenderType)
+                .hide(calenderType)
+                .show(listType)
+                .commit();
+
 
         rightButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.diarylist_main_getFragment_frameLayout, new DiaryList_CalenderType())
-                        .commit();
+                .hide(listType)
+                .show(calenderType)
+                .commit();
+
                 leftButton.setVisibility(View.VISIBLE);
                 rightButton.setVisibility(View.INVISIBLE);
             }
@@ -48,8 +60,11 @@ public class DiaryList_Main extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.diarylist_main_getFragment_frameLayout, new DiaryList_ListType())
+                        .hide(calenderType)
+                        .show(listType)
                         .commit();
+
+
                 leftButton.setVisibility(View.INVISIBLE);
                 rightButton.setVisibility(View.VISIBLE);
             }

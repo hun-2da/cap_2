@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import codingadventure.community.myapp.appMainAcitivityPage.logInPage.Basics_LogInView;
+import codingadventure.community.myapp.myCommunity.MainCommunity;
 import codingadventure.community.myapp.myDiary.Diary_Main;
 
 public class ChoiceDialog extends DialogFragment {
@@ -30,8 +31,8 @@ public class ChoiceDialog extends DialogFragment {
         diarybutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent diaty_Intent = new Intent(getContext(), Diary_Main.class);
-                startActivity(diaty_Intent);
+                Intent diary_Intent = new Intent(getContext(), Diary_Main.class);
+                startActivity(diary_Intent);
                 dismiss(); // 다이어로그 닫기
             }
         });
@@ -40,7 +41,8 @@ public class ChoiceDialog extends DialogFragment {
         communitybutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // 버튼 클릭시 동작 정의
+                Intent community_Intent = new Intent(getContext(), MainCommunity.class);
+                startActivity(community_Intent);
                 dismiss(); // 다이어로그 닫기
             }
         });

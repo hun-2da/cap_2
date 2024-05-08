@@ -50,6 +50,9 @@ dependencies {
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.core:core-ktx:1.13.1")
 
+    //--------------------------------------------------------------------------- 리싸이클러뷰 업데이트 (android x 전체 업데이트 할 시 필요없지만 코드 호환성을 위해 개별 업데이트)
+    implementation ("androidx.recyclerview:recyclerview:1.3.2")
+
     //---------------------------------------------------------------------------
 
     implementation("androidx.appcompat:appcompat:1.6.1")

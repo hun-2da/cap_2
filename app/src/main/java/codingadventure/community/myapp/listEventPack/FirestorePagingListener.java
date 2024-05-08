@@ -1,4 +1,4 @@
-package codingadventure.community.myapp.myDiary.diartlistPage.choicetype.listTypePack;
+package codingadventure.community.myapp.listEventPack;
 
 import android.util.Log;
 import android.view.View;
@@ -13,11 +13,14 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
+import codingadventure.community.myapp.myCommunity.CommunityTool.CommunityAdapter;
 import codingadventure.community.myapp.myDiary.Diary_db_Write;
+import codingadventure.community.myapp.myDiary.diartlistPage.choicetype.listTypePack.DiaryAdapter;
 
 public class FirestorePagingListener implements OnCompleteListener<QuerySnapshot> {
     private final ArrayList<Diary_db_Write> diaryBox;
-    private final DiaryAdapter adapter;
+    private DiaryAdapter diaryadapter;
+    private CommunityAdapter communityadapter;
 
     private ProgressBar progressBar;
 
@@ -25,7 +28,12 @@ public class FirestorePagingListener implements OnCompleteListener<QuerySnapshot
 
     public FirestorePagingListener(ArrayList<Diary_db_Write> diaryBox, DiaryAdapter adapter, ProgressBar progressBar) {
         this.diaryBox = diaryBox;
-        this.adapter = adapter;
+        diaryadapter = adapter;
+        this.progressBar = progressBar;
+    }
+    public FirestorePagingListener(ArrayList<Diary_db_Write> diaryBox, CommunityAdapter adapter, ProgressBar progressBar) {
+        this.diaryBox = diaryBox;
+        communityadapter = adapter;
         this.progressBar = progressBar;
     }
 
@@ -38,7 +46,12 @@ public class FirestorePagingListener implements OnCompleteListener<QuerySnapshot
                 fetchedItems.add(document.toObject(Diary_db_Write.class));
             }
             diaryBox.addAll(fetchedItems);
-            adapter.notifyDataSetChanged();
+
+            if(diaryadapter != null)
+                diaryadapter.notifyDataSetChanged();
+            else if(communityadapter != null)
+                communityadapter.notifyDataSetChanged();
+
             // 마지막 문서 업데이트
             int lastFetchedIndex = task.getResult().size() - 1;
 
@@ -55,6 +68,11 @@ public class FirestorePagingListener implements OnCompleteListener<QuerySnapshot
 
     public DocumentSnapshot getDocumentSnapshot(){
         return lastVisible;
+    }
+
+    public Diary_db_Write getListBox(int position){
+        Log.e("asd","일단 클릭임");
+        return diaryBox.get(position);
     }
 
 

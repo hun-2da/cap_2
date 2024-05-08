@@ -48,6 +48,9 @@
     <string name="editor_lastpage_r_button2">비공개로 할래</string>
     <string name="editor_lastpage_ok_button">작성</string>
 
+    <!-- full size diary xml에서 사용 -->
+    <string name="fulldiary_Title_textView">Title</string>
+    <string name="fulldiary_Conent_textView">Content</string>
 
     <!-- diarylist_RecyclerXml에서 사용 -->
     <string name="listRecycler_check_Switch">공개</string>
@@ -69,6 +72,10 @@
 
     <string name="Bubble_ClickListener_lastclick">마지막으로 공개 여부를 알려줘</string>
     <string name="Bubble_ClickListener_lastclick2">고마워!</string>
+
+
+    <!-- MainCommunity(Class)에서 사용 -->
+
 
 
 </resources>

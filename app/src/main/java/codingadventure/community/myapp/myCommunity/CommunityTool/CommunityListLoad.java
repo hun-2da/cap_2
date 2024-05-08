@@ -1,13 +1,12 @@
-package codingadventure.community.myapp.myDiary.diartlistPage.choicetype.listTypePack;
+package codingadventure.community.myapp.myCommunity.CommunityTool;
 
 import com.google.firebase.firestore.Query;
 
 import codingadventure.community.myapp.FirebasePack.FirebaseDBNameClass;
 import codingadventure.community.myapp.FirebasePack.FirebaseUtils;
 
-public class DiaryListLoad {
-
-    protected static Query getMyDiaryQury(){
+public class CommunityListLoad {
+    public static Query getMyCommunityQury(){
         Query query = FirebaseUtils.getFirestore()
                 .collection(FirebaseDBNameClass.USER_COLLECTION)
                 .document(FirebaseUtils.getCurrentUser().getEmail())
@@ -17,5 +16,4 @@ public class DiaryListLoad {
 
         return query;
     }
-
 }
