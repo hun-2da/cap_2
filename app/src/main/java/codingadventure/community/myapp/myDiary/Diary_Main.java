@@ -11,11 +11,13 @@ import codingadventure.community.myapp.MainActivity;
 import codingadventure.community.myapp.R;
 import codingadventure.community.myapp.appMainAcitivityPage.logInPage.Basics_LogInView;
 import codingadventure.community.myapp.myDiary.diartlistPage.DiaryList_Main;
+import codingadventure.community.myapp.myDiary.diartlistPage.choicetype.calenderTypePack.DiaryList_CalenderType;
 import codingadventure.community.myapp.myDiary.newdiarypage.Diary_editDiary;
 
 public class Diary_Main extends AppCompatActivity {
     ImageButton new_diary_Button;
     ImageButton diary_list_Button;
+    ImageButton diary_diaryCalendar_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,19 @@ public class Diary_Main extends AppCompatActivity {
             public void onClick(View v) {
                 Intent login_Intent = new Intent(Diary_Main.this, DiaryList_Main.class);
                 startActivity(login_Intent);
+            }
+        });
+
+        diary_diaryCalendar_button = findViewById(R.id.diary_diaryCalendar_button);
+        diary_diaryCalendar_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent calendar_Intent = new Intent(getApplicationContext(), Diary_Main.class);
+
+                getSupportFragmentManager().beginTransaction()
+                        .add(android.R.id.content, new DiaryList_CalenderType())
+                        .addToBackStack(null)
+                        .commit();
             }
         });
 

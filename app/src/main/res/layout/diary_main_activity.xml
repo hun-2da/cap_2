@@ -60,7 +60,7 @@
             app:cardElevation="0dp">
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/diary_diaryCalendar_button"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"

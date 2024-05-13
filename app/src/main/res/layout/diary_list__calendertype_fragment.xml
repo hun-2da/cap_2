@@ -8,6 +8,8 @@
     android:layout_marginRight="5dp"
     tools:context=".myDiary.diartlistPage.choicetype.calenderTypePack.DiaryList_CalenderType">
 
+
+
     <androidx.cardview.widget.CardView
         android:id="@+id/calendarView"
         android:layout_width="0dp"
@@ -17,7 +19,17 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <com.shuhart.materialcalendarview.MaterialCalendarView
+            android:id="@+id/calendarView1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:mcv_showOtherDates="all"
+            app:mcv_selectionColor="#9F81F7" />
+
+    </androidx.cardview.widget.CardView>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/CalenderType_backblur_ConstraintLayout"
@@ -28,6 +40,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
 
         <FrameLayout
             android:id="@+id/CalenderType_fullSizeDiary_FrameLayout"
@@ -42,7 +55,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+
         </FrameLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
