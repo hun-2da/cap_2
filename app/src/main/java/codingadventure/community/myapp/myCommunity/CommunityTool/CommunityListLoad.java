@@ -5,6 +5,7 @@ import com.google.firebase.firestore.Query;
 import codingadventure.community.myapp.FirebasePack.FirebaseDBNameClass;
 import codingadventure.community.myapp.FirebasePack.FirebaseUtils;
 
+// 변경필요
 public class CommunityListLoad {
     public static Query getMyCommunityQury(){
         Query query = FirebaseUtils.getFirestore()
