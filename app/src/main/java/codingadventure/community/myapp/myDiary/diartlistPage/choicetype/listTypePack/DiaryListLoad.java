@@ -10,7 +10,7 @@ public class DiaryListLoad {
     protected static Query getMyDiaryQury(){
         Query query = FirebaseUtils.getFirestore()
                 .collection(FirebaseDBNameClass.USER_COLLECTION)
-                .document(FirebaseUtils.getCurrentUser().getEmail())
+                .document(FirebaseUtils.getCurrentUser().getUid())
                 .collection(FirebaseDBNameClass.DIARY_COLLECTION)
                 .orderBy(FirebaseDBNameClass.DIARY_DOCUMENT_DATE)
                 .limit(7);  // 한번에 몇개의 다이어리를 보여줄 것 인가에 대한 코드

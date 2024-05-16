@@ -1,7 +1,6 @@
 package codingadventure.community.myapp.myDiary.diartlistPage;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -11,13 +10,13 @@ import android.widget.Button;
 import java.util.ArrayList;
 
 import codingadventure.community.myapp.R;
-import codingadventure.community.myapp.myDiary.Diary_db_Write;
+import codingadventure.community.myapp.FirebasePack.ObjectPack.UserDiaryWrite;
 import codingadventure.community.myapp.myDiary.diartlistPage.choicetype.calenderTypePack.DiaryList_CalenderType;
 import codingadventure.community.myapp.myDiary.diartlistPage.choicetype.listTypePack.DiaryList_ListType;
 
 public class DiaryList_Main extends AppCompatActivity {
 
-    ArrayList<Diary_db_Write> diaryBox = new ArrayList<>();
+    ArrayList<UserDiaryWrite> diaryBox = new ArrayList<>();
     boolean switch_visibility = true;
 
     @Override

@@ -11,10 +11,8 @@ import android.widget.FrameLayout;
 
 import java.util.Random;
 
-import codingadventure.community.myapp.MainActivity;
 import codingadventure.community.myapp.R;
-import codingadventure.community.myapp.myDiary.Diary_db_Write;
-import codingadventure.community.myapp.myDiary.newdiarypage.Diary_editDiary;
+import codingadventure.community.myapp.FirebasePack.ObjectPack.UserDiaryWrite;
 import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.categorypack.CategoryMenuClass;
 import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.categorypack.categorylistener.saligiapack.EnvyChoice;
 import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.categorypack.categorylistener.saligiapack.GluttonyChoice;
@@ -43,7 +41,8 @@ public class Bubble_ClickListener implements View.OnClickListener {
 
 
     /**database에 저장해주기 위한 객체*/
-    public static Diary_db_Write diaryDbWrite;
+    public static UserDiaryWrite diaryDbWrite;
+
 
 
     public Bubble_ClickListener(BubbleTextViewAnimation bubble, FrameLayout bubble_layout,LayoutInflater layoutInflater) {
@@ -113,7 +112,7 @@ public class Bubble_ClickListener implements View.OnClickListener {
     }
     private void touch_count0(){
         bubble.animationText(bubble_layout.getContext().getString(R.string.Bubble_ClickListener_click0));
-        diaryDbWrite = new Diary_db_Write("","",null,"",false);
+        diaryDbWrite = new UserDiaryWrite();
         //bubble_layout.getViewTreeObserver().addOnGlobalLayoutListener(new Editor_KeyboardListener(bubble_layout));   // 키보드 로직 리스너로 연결
     }
 
@@ -253,6 +252,8 @@ public class Bubble_ClickListener implements View.OnClickListener {
             ((Activity) context).finish();
         }
     }
+
+    //------------------------------------------------------------------------------------------------------------------------------------
 
     private RichEditor load_editor(){
         bubble_layout.removeAllViews();

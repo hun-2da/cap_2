@@ -8,10 +8,9 @@ import codingadventure.community.myapp.FirebasePack.FirebaseUtils;
 public class CommunityListLoad {
     public static Query getMyCommunityQury(){
         Query query = FirebaseUtils.getFirestore()
-                .collection(FirebaseDBNameClass.USER_COLLECTION)
-                .document(FirebaseUtils.getCurrentUser().getEmail())
-                .collection(FirebaseDBNameClass.DIARY_COLLECTION)
-                .orderBy(FirebaseDBNameClass.DIARY_DOCUMENT_DATE)
+                .collection(FirebaseDBNameClass.COMMUNITY_COLLECTION)
+                .orderBy(FirebaseDBNameClass.COMMUNITY_COMMENT_COUNT, Query.Direction.ASCENDING)  // 댓글 수에 대해 오름차순 정렬
+                .orderBy(FirebaseDBNameClass.COMMUNITY_DATE, Query.Direction.DESCENDING)
                 .limit(7);  // 한번에 몇개의 다이어리를 보여줄 것 인가에 대한 코드
 
         return query;

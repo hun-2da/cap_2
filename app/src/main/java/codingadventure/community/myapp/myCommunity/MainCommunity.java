@@ -1,11 +1,9 @@
 package codingadventure.community.myapp.myCommunity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -25,13 +23,11 @@ import codingadventure.community.myapp.listEventPack.OnItemClickListener;
 import codingadventure.community.myapp.myCommunity.CommunityTool.CommunityAdapter;
 import codingadventure.community.myapp.myCommunity.CommunityTool.CommunityListLoad;
 import codingadventure.community.myapp.myCommunity.CommunityTool.SpinnerSelectedListener;
-import codingadventure.community.myapp.myDiary.Diary_db_Write;
-import codingadventure.community.myapp.myDiary.diartlistPage.choicetype.listTypePack.DiaryAdapter;
-import codingadventure.community.myapp.myDiary.diartlistPage.choicetype.listTypePack.DiaryListLoad;
+import codingadventure.community.myapp.FirebasePack.ObjectPack.UserDiaryWrite;
 
 public class MainCommunity extends AppCompatActivity {
     private String[] spinner_Items = new String[]{"ALL","Pride", "Greed", "Lust", "Envy", "Gluttony","Wrath","Sloth"};
-    ArrayList<Diary_db_Write> diaryBox = new ArrayList<>();
+    ArrayList<UserDiaryWrite> diaryBox = new ArrayList<>();
 
     FirestorePagingListener pagingListener;
     ProgressBar progressBar;
@@ -67,6 +63,9 @@ public class MainCommunity extends AppCompatActivity {
         pagingListener = new FirestorePagingListener(diaryBox,adapter,progressBar);
 
         Query query = CommunityListLoad.getMyCommunityQury();
+
+        // 스피너 값 찾아서 변경되는 조건
+        // 다이어리로 직접 찾아가는 로직
         query.get().addOnCompleteListener(pagingListener);
 
         setRecyclerViewScroll(layoutManager);
@@ -92,7 +91,7 @@ public class MainCommunity extends AppCompatActivity {
             @Override
             public void onItemClick(View view, int position) {
 
-                Diary_db_Write diary_data = pagingListener.getListBox(position);
+                UserDiaryWrite diary_data = pagingListener.getListBox(position);
 
                 /*fulldiaryLayout_back.setVisibility(View.VISIBLE);
                 closeButton.setVisibility(View.VISIBLE);

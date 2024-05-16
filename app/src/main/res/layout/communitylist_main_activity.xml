@@ -5,7 +5,7 @@
     android:id="@+id/community_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#6748A1"
+    android:background="#7053A5"
     android:orientation="vertical"
     tools:context=".myCommunity.MainCommunity">
 
@@ -71,11 +71,18 @@
             </FrameLayout>
         </LinearLayout>
 
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"
+            android:background="#26FFFFFF">
+
+        </FrameLayout>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/community_recyclerView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="15dp"
             android:layout_weight="11" />
 
     </LinearLayout>

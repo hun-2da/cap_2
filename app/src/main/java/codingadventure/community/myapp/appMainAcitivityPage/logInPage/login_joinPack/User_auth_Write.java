@@ -13,27 +13,39 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class User_auth_Write {
-    FirebaseFirestore firestore_db;
-    FirebaseAuth mAuth;
+import java.util.HashMap;
 
-    public User_auth_Write(FirebaseFirestore firestore_db, FirebaseAuth mAuth) {
-        this.firestore_db = firestore_db;
-        this.mAuth = mAuth;
+import codingadventure.community.myapp.FirebasePack.FirebaseDBNameClass;
+import codingadventure.community.myapp.FirebasePack.FirebaseUtils;
+
+public class User_auth_Write {
+
+
+    public User_auth_Write() {
+
     }
 
     /**Authentication로 보내기위한 메소드*/
     protected void new_log(Activity activity,String email, String password,String user_id){
-        Log.e("test", "시작");
-        mAuth.createUserWithEmailAndPassword(email, password)
+
+        FirebaseUtils.getFirebaseAuth().createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(activity, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Log.e("test", "createUserWithEmail:success");
-                            mAuth.getCurrentUser();
-                            User_db_Write join_id = new User_db_Write(email,password,user_id);
-                            firestore_db.collection("User").document(email).set(join_id);
+
+                            FirebaseUtils.getCurrentUser();
+
+                            //User_db_Write join_id = new User_db_Write(email,password,user_id);
+
+                            HashMap updates = new HashMap<>();
+                            updates.put("NickName",user_id);
+
+                            FirebaseUtils.getFirestore()
+                                    .collection(FirebaseDBNameClass.USER_COLLECTION)
+                                    .document(FirebaseUtils.getCurrentUser().getUid())
+                                    .set(updates);
+
                         } else {
                             Log.e("test", "createUserWithEmail:failure", task.getException());
                         }

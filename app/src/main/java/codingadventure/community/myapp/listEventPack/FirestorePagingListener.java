@@ -14,11 +14,11 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 
 import codingadventure.community.myapp.myCommunity.CommunityTool.CommunityAdapter;
-import codingadventure.community.myapp.myDiary.Diary_db_Write;
+import codingadventure.community.myapp.FirebasePack.ObjectPack.UserDiaryWrite;
 import codingadventure.community.myapp.myDiary.diartlistPage.choicetype.listTypePack.DiaryAdapter;
 
 public class FirestorePagingListener implements OnCompleteListener<QuerySnapshot> {
-    private final ArrayList<Diary_db_Write> diaryBox;
+    private final ArrayList<UserDiaryWrite> diaryBox;
     private DiaryAdapter diaryadapter;
     private CommunityAdapter communityadapter;
 
@@ -26,12 +26,12 @@ public class FirestorePagingListener implements OnCompleteListener<QuerySnapshot
 
     private DocumentSnapshot lastVisible;
 
-    public FirestorePagingListener(ArrayList<Diary_db_Write> diaryBox, DiaryAdapter adapter, ProgressBar progressBar) {
+    public FirestorePagingListener(ArrayList<UserDiaryWrite> diaryBox, DiaryAdapter adapter, ProgressBar progressBar) {
         this.diaryBox = diaryBox;
         diaryadapter = adapter;
         this.progressBar = progressBar;
     }
-    public FirestorePagingListener(ArrayList<Diary_db_Write> diaryBox, CommunityAdapter adapter, ProgressBar progressBar) {
+    public FirestorePagingListener(ArrayList<UserDiaryWrite> diaryBox, CommunityAdapter adapter, ProgressBar progressBar) {
         this.diaryBox = diaryBox;
         communityadapter = adapter;
         this.progressBar = progressBar;
@@ -41,9 +41,9 @@ public class FirestorePagingListener implements OnCompleteListener<QuerySnapshot
     public void onComplete(@NonNull Task<QuerySnapshot> task) {
         if (task.isSuccessful()) {
             progressBar.setVisibility(View.VISIBLE);
-            ArrayList<Diary_db_Write> fetchedItems = new ArrayList<>();
+            ArrayList<UserDiaryWrite> fetchedItems = new ArrayList<>();
             for (DocumentSnapshot document : task.getResult()) {
-                fetchedItems.add(document.toObject(Diary_db_Write.class));
+                fetchedItems.add(document.toObject(UserDiaryWrite.class));
             }
             diaryBox.addAll(fetchedItems);
 
@@ -70,7 +70,7 @@ public class FirestorePagingListener implements OnCompleteListener<QuerySnapshot
         return lastVisible;
     }
 
-    public Diary_db_Write getListBox(int position){
+    public UserDiaryWrite getListBox(int position){
         Log.e("asd","일단 클릭임");
         return diaryBox.get(position);
     }

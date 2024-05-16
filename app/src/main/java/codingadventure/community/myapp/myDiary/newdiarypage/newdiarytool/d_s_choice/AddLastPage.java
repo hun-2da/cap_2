@@ -8,9 +8,11 @@ import android.widget.RadioGroup;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 import codingadventure.community.myapp.FirebasePack.FirebaseDBNameClass;
 import codingadventure.community.myapp.FirebasePack.FirebaseUtils;
+import codingadventure.community.myapp.FirebasePack.QueryPack.NewDiaryQuery;
 import codingadventure.community.myapp.R;
 import codingadventure.community.myapp.myDiary.newdiarypage.Diary_editDiary;
 import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.Bubble_ClickListener;
@@ -49,19 +51,20 @@ public class AddLastPage {
             }else if(radioButtonId == R.id.lastPage_no_radioButton){
                 user_choice = false;
             }
-            Bubble_ClickListener.diaryDbWrite.setUser_publicityStatus(user_choice);
-            getDB();
+            getDB(user_choice);
 
         }
 
         /**초기화용 메소드*/
-        private void getDB(){
-
-            FirebaseUtils.getFirestore().collection(FirebaseDBNameClass.USER_COLLECTION)
+        private void getDB(boolean user_choice){
+           /* FirebaseUtils.getFirestore().collection(FirebaseDBNameClass.USER_COLLECTION)
                     .document(FirebaseUtils.getCurrentUser().getEmail())
                     .collection(FirebaseDBNameClass.DIARY_COLLECTION)
                     .document(Bubble_ClickListener.diaryDbWrite.getTitle()+Bubble_ClickListener.diaryDbWrite.getDiary_date())
-                    .set(Bubble_ClickListener.diaryDbWrite);    // 컬렉션에 저장을 위한 코드
+                    .set(Bubble_ClickListener.diaryDbWrite);    // 컬렉션에 저장을 위한 코드*/
+
+            NewDiaryQuery.set_userDiary(user_choice);
+
 
 
             Bubble_ClickListener.touch_count = Touch_Constant_Name.ByeMessage;

@@ -26,14 +26,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import codingadventure.community.myapp.ChoiceDialog;
+import codingadventure.community.myapp.FirebasePack.FirebaseUtils;
 import codingadventure.community.myapp.R;
 import codingadventure.community.myapp.appMainAcitivityPage.logInPage.login_joinPack.Login_Join;
 import codingadventure.community.myapp.appMainAcitivityPage.logInPage.loginfindPack.Login_Find;
 
 public class Basics_LogInView extends AppCompatActivity {
-
-    /**firebase의 사용자 데이터에 추가 및 접근을 위한 객체*/
-    FirebaseFirestore firestore_db;
 
     ConstraintLayout id_layout;
 
@@ -67,10 +65,6 @@ public class Basics_LogInView extends AppCompatActivity {
     EditText password_edit;
 
     /**파이어베이스 로그인을 위한 객체*/
-    private FirebaseAuth mAuth;
-
-    /**파이어베이스 캐시 정보*/
-    FirebaseUser currentUser;
 
 
     FragmentManager fragmentManager;
@@ -81,18 +75,12 @@ public class Basics_LogInView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_basics_activity);
 
-        firestore_db = FirebaseFirestore.getInstance();
-
 
         fragmentManager = getSupportFragmentManager();
         transaction = fragmentManager.beginTransaction();
 
 
-        // Initialize Firebase Auth
-        mAuth = FirebaseAuth.getInstance();
-        //mAuth.signOut();//--------------------------------------------------------------------------------
 
-        currentUser = mAuth.getCurrentUser();
 
 
         id_edit = findViewById(R.id.basiclogin_id_editTextText);
@@ -107,8 +95,8 @@ public class Basics_LogInView extends AppCompatActivity {
         id_layout = findViewById(R.id.clayouto);
         login_layout = findViewById(R.id.login_cardView);
 
-        loginFind = new Login_Find(id_layout,imageView,mAuth);
-        loginJoin = new Login_Join(firestore_db,id_layout,imageView,mAuth);
+        loginFind = new Login_Find(id_layout,imageView);
+        loginJoin = new Login_Join(id_layout,imageView);
 
 
 
@@ -157,16 +145,16 @@ public class Basics_LogInView extends AppCompatActivity {
 
     private void login_m(String email,String password){
         Log.e("test","시작");
-        mAuth.signInWithEmailAndPassword(email, password)
+        FirebaseUtils.getFirebaseAuth().signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            FirebaseUser user = mAuth.getCurrentUser();
+
                             //Toast.makeText(getApplicationContext(),"로그인 성공",Toast.LENGTH_LONG).show();
                             Log.e("tㄷst","성공");
-                            updateUI(user);
+                            updateUI();
                         } else {
                             // If sign in fails, display a message to the user.
                             //Toast.makeText(EmailPasswordActivity.this, "Authentication failed.",Toast.LENGTH_SHORT).show(); // 실패 로직
@@ -181,21 +169,18 @@ public class Basics_LogInView extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser == null){
+        //FirebaseUser currentUser = FirebaseUtils.getFirebaseAuth().getCurrentUser();
+        if(FirebaseUtils.getCurrentUser() == null){
              //reload();  앱 재실행 코드
         }else{
-            updateUI(currentUser);
+            updateUI();
         }
     }
-    private void updateUI(FirebaseUser user){
+    private void updateUI(){
+
         ChoiceDialog choiceDialog = new ChoiceDialog();
         choiceDialog.show(getSupportFragmentManager(), "menuChoiceDialog");
         //layout_visibility(2);
-
-
-
-
 
     }
     private void layout_visibility(int i){

@@ -24,7 +24,7 @@ import codingadventure.community.myapp.R;
 import codingadventure.community.myapp.listEventPack.DiaryRecyclerViewScrollListener;
 import codingadventure.community.myapp.listEventPack.FirestorePagingListener;
 import codingadventure.community.myapp.listEventPack.OnItemClickListener;
-import codingadventure.community.myapp.myDiary.Diary_db_Write;
+import codingadventure.community.myapp.FirebasePack.ObjectPack.UserDiaryWrite;
 import jp.wasabeef.richeditor.RichEditor;
 
 
@@ -34,7 +34,7 @@ public class DiaryList_ListType extends Fragment{
     //private DocumentSnapshot lastVisible;
 
     /**리스트 (파이어베이스에서 가져와 입력)*/
-    ArrayList<Diary_db_Write> diaryBox = new ArrayList<>();
+    ArrayList<UserDiaryWrite> diaryBox = new ArrayList<>();
 
     FirestorePagingListener pagingListener;
 
@@ -79,7 +79,7 @@ public class DiaryList_ListType extends Fragment{
             public void onItemClick(View view,int position) {
                 rightButton.setVisibility(View.INVISIBLE);
 
-                Diary_db_Write diary_data = pagingListener.getListBox(position);
+                UserDiaryWrite diary_data = pagingListener.getListBox(position);
 
                 fulldiaryLayout_back.setVisibility(View.VISIBLE);
                 closeButton.setVisibility(View.VISIBLE);
@@ -91,7 +91,7 @@ public class DiaryList_ListType extends Fragment{
                 contentEditor.setHtml(diary_data.getContent());
 
                 //Switch choice_switch = view.findViewById(R.id.listCycler_choice_switchButton);
-                publicityStatus.setChecked(diary_data.isUser_publicityStatus());
+                publicityStatus.setChecked(diary_data.isPublicityStatus());
 
             }
         });  // 어댑터 객체 생성

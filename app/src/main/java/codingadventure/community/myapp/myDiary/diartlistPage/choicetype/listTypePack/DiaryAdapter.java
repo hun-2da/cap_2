@@ -11,18 +11,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 
 import codingadventure.community.myapp.R;
 import codingadventure.community.myapp.listEventPack.OnItemClickListener;
-import codingadventure.community.myapp.myDiary.Diary_db_Write;
+import codingadventure.community.myapp.FirebasePack.ObjectPack.UserDiaryWrite;
 import jp.wasabeef.richeditor.RichEditor;
 
 
 
 public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.ViewHolder>{
-    ArrayList<Diary_db_Write> diaryBox = new ArrayList<>();
+    ArrayList<UserDiaryWrite> diaryBox = new ArrayList<>();
     OnItemClickListener onItemClickListener;
 
     public DiaryAdapter(OnItemClickListener onItemClickListener) {
@@ -43,7 +41,7 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Diary_db_Write item = diaryBox.get(position);
+        UserDiaryWrite item = diaryBox.get(position);
         holder.setItem(item);
 
 
@@ -56,18 +54,18 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.ViewHolder>{
     }
 
     /**item을 하나씩(객체를 하나씩 저장하는 메소드 _ 현재의 경우 가져와서 사용함으로 굳이 필요 x) */
-    public void addItem(Diary_db_Write item){
+    public void addItem(UserDiaryWrite item){
         diaryBox.add(item);
     }
     /**해당 메소드를 사용하여 list를 초기화 및 사용할 예정*/
-    public void setItems(ArrayList<Diary_db_Write> diaryBox){
+    public void setItems(ArrayList<UserDiaryWrite> diaryBox){
         this.diaryBox = diaryBox;
     }
-    public Diary_db_Write getItem(int position){
+    public UserDiaryWrite getItem(int position){
         return diaryBox.get(position);
     }
     /**다이어리 변경 (사용 예정 없)*/
-    public void setItem(int position,Diary_db_Write item){
+    public void setItem(int position, UserDiaryWrite item){
         diaryBox.set(position, item);
     }
 
@@ -94,7 +92,7 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.ViewHolder>{
 
         }
 
-        public void setItem(Diary_db_Write item){
+        public void setItem(UserDiaryWrite item){
             String category = item.getCategory();
             imageView.setImageResource(getCategory_res(category));
 
@@ -104,7 +102,7 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.ViewHolder>{
 
             textView.setText(item.getTitle());
 
-            boolean user_publicityStatus = item.isUser_publicityStatus();
+            boolean user_publicityStatus = item.isPublicityStatus();
             switch_Button.setText(user_publicityStatus?"공개":"비공개");
             switch_Button.setChecked(user_publicityStatus);
 
@@ -134,7 +132,7 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.ViewHolder>{
             return category_id;
         }
 
-        public void bind(final Diary_db_Write item, final OnItemClickListener listener) {
+        public void bind(final UserDiaryWrite item, final OnItemClickListener listener) {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

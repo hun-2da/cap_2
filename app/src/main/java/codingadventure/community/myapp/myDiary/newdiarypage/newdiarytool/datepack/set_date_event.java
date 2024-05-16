@@ -27,7 +27,7 @@ public class set_date_event {
 
         Date date = calendar.getTime();
 
-        Bubble_ClickListener.diaryDbWrite.setDiary_date(date);
+        Bubble_ClickListener.diaryDbWrite.setDiaryDate(date);
 
         Diary_editDiary.bubble_backView.performClick();
 

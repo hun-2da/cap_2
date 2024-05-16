@@ -4,7 +4,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,12 +17,10 @@ import java.util.Date;
 
 import codingadventure.community.myapp.R;
 import codingadventure.community.myapp.listEventPack.OnItemClickListener;
-import codingadventure.community.myapp.myDiary.Diary_db_Write;
-import codingadventure.community.myapp.myDiary.diartlistPage.choicetype.listTypePack.DiaryAdapter;
-import jp.wasabeef.richeditor.RichEditor;
+import codingadventure.community.myapp.FirebasePack.ObjectPack.UserDiaryWrite;
 
 public class CommunityAdapter extends RecyclerView.Adapter<CommunityAdapter.ViewHolder>{
-    ArrayList<Diary_db_Write> diaryBox = new ArrayList<>();
+    ArrayList<UserDiaryWrite> diaryBox = new ArrayList<>();
     OnItemClickListener onItemClickListener;
 
     public CommunityAdapter(OnItemClickListener onItemClickListener) {
@@ -41,7 +38,7 @@ public class CommunityAdapter extends RecyclerView.Adapter<CommunityAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Diary_db_Write item = diaryBox.get(position);
+        UserDiaryWrite item = diaryBox.get(position);
         holder.setItem(item);
 
 
@@ -54,18 +51,18 @@ public class CommunityAdapter extends RecyclerView.Adapter<CommunityAdapter.View
     }
 
     /**item을 하나씩(객체를 하나씩 저장하는 메소드 _ 현재의 경우 가져와서 사용함으로 굳이 필요 x) */
-    public void addItem(Diary_db_Write item){
+    public void addItem(UserDiaryWrite item){
         diaryBox.add(item);
     }
     /**해당 메소드를 사용하여 list를 초기화 및 사용할 예정*/
-    public void setItems(ArrayList<Diary_db_Write> diaryBox){
+    public void setItems(ArrayList<UserDiaryWrite> diaryBox){
         this.diaryBox = diaryBox;
     }
-    public Diary_db_Write getItem(int position){
+    public UserDiaryWrite getItem(int position){
         return diaryBox.get(position);
     }
     /**다이어리 변경 (사용 예정 없)*/
-    public void setItem(int position,Diary_db_Write item){
+    public void setItem(int position, UserDiaryWrite item){
         diaryBox.set(position, item);
     }
 
@@ -91,7 +88,7 @@ public class CommunityAdapter extends RecyclerView.Adapter<CommunityAdapter.View
 
         }
 
-        public void setItem(Diary_db_Write item) {
+        public void setItem(UserDiaryWrite item) {
             String category = item.getCategory();
             imageView.setImageResource(getCategory_res(category));
             title_textView.setText(item.getTitle());
@@ -103,7 +100,7 @@ public class CommunityAdapter extends RecyclerView.Adapter<CommunityAdapter.View
             content_textView.setText(content);
 
 
-            setDate(item.getDiary_date());
+            setDate(item.getDiaryDate());
 
 
         }
@@ -143,7 +140,7 @@ public class CommunityAdapter extends RecyclerView.Adapter<CommunityAdapter.View
 
         }
 
-        public void bind(final Diary_db_Write item, final OnItemClickListener listener) {
+        public void bind(final UserDiaryWrite item, final OnItemClickListener listener) {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

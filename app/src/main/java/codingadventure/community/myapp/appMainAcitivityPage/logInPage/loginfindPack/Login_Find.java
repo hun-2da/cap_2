@@ -20,7 +20,6 @@ import codingadventure.community.myapp.appMainAcitivityPage.logInPage.Key_Check_
 
 public class Login_Find extends Fragment {
 
-    FirebaseAuth mAuth;
 
     /**basics에서 사용된 레이아웃*/
     ConstraintLayout constraintLayout;
@@ -34,8 +33,7 @@ public class Login_Find extends Fragment {
 
     ImageView imageView;
 
-    public Login_Find( ConstraintLayout constraintLayout, ImageView imageView,FirebaseAuth mAuth){
-        this.mAuth = mAuth;
+    public Login_Find( ConstraintLayout constraintLayout, ImageView imageView){
         this.constraintLayout = constraintLayout;
         this.imageView = imageView;
     }
@@ -53,7 +51,7 @@ public class Login_Find extends Fragment {
         imageView.setImageResource(R.drawable.key_image);
 
         ok_button = view.findViewById(R.id.find_ok_Button);
-        ok_button.setOnClickListener(new Login_password_find_Listener(mAuth,email,id));
+        ok_button.setOnClickListener(new Login_password_find_Listener(email,id));
 
 
         check_button = view.findViewById(R.id.find_idSearch_Button);

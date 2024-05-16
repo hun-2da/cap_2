@@ -34,7 +34,7 @@ import codingadventure.community.myapp.security.Change_String;
 
 public class Login_Join extends Fragment {
 
-    FirebaseFirestore firestore_db;
+
     ConstraintLayout constraintLayout;
     EditText id, pass, passconfirm, email;
     Button idconfirm, confirm;
@@ -43,14 +43,13 @@ public class Login_Join extends Fragment {
 
     ImageView imageView;
 
-    FirebaseAuth mAuth;
 
 
-    public Login_Join(FirebaseFirestore firestore_db, ConstraintLayout constraintLayout, ImageView imageView,FirebaseAuth mAuth){
-        this.firestore_db = firestore_db;
+    public Login_Join( ConstraintLayout constraintLayout, ImageView imageView){
+
         this.constraintLayout = constraintLayout;
         this.imageView = imageView;
-        this.mAuth = mAuth;
+
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -83,7 +82,7 @@ public class Login_Join extends Fragment {
                     String idconfirm = id.getText().toString();
                     String emailconfirm = email.getText().toString();
                     // 서버 적용
-                    new User_auth_Write(firestore_db,mAuth).new_log(getActivity(),emailconfirm,password1,idconfirm);
+                    new User_auth_Write().new_log(getActivity(),emailconfirm,password1,idconfirm);
 
 
                 }
