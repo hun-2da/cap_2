@@ -60,8 +60,10 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
 
-    implementation("com.github.shuhart:material-calendar:1.1.0")
-    //implementation("com.prolificinteractive.materialcalendarview:material-calendarview:2.0.0")
+    //implementation("com.github.shuhart:material-calendar:1.1.0")
+    //implementation("com.github.prolificinteractive:material-calendarview:2.0.1")
+    implementation ("com.applandeo:material-calendar-view:1.9.2")
+
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
