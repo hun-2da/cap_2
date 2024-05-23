@@ -10,11 +10,17 @@ public class UserDiaryWrite {
 
     //---------------------------------------.
     private boolean publicityStatus;
+    private int Quest;
 
     //--------------------------------------
 
     private int limit;
     private int commentCount;
+
+    private String NickName;
+
+    //------------------------------------
+
 
 
     public UserDiaryWrite() {
@@ -29,25 +35,28 @@ public class UserDiaryWrite {
     }
 
     // user diary의 경우 이렇게 처리된다.
-    public UserDiaryWrite(String title, String content, Date diaryDate, String category, boolean publicityStatus) {
+    public UserDiaryWrite(String title, String content, Date diaryDate, String category, boolean publicityStatus, int quest) {
         Title = title;
         Content = content;
         DiaryDate = diaryDate;
         Category = category;
         this.publicityStatus = publicityStatus;
+        this.Quest = quest;
     }
+
 
     // community의 경우 이렇게 처리된다.
 
-
-    public UserDiaryWrite(String title, String content, Date diaryDate, String category, int limit, int commentCount) {
+    public UserDiaryWrite(String title, String content, Date diaryDate, String category, int limit, int commentCount,String NickName) {
         Title = title;
         Content = content;
         DiaryDate = diaryDate;
         Category = category;
         this.limit = limit;
         this.commentCount = commentCount;
+        this.NickName = NickName;
     }
+
 
     public String getTitle() {
         return Title;
@@ -89,6 +98,14 @@ public class UserDiaryWrite {
         this.publicityStatus = publicityStatus;
     }
 
+    public int getQuest() {
+        return Quest;
+    }
+
+    public void setQuest(int quest) {
+        this.Quest = quest;
+    }
+
     public int getLimit() {
         return limit;
     }
@@ -103,5 +120,13 @@ public class UserDiaryWrite {
 
     public void setCommentCount(int commentCount) {
         this.commentCount = commentCount;
+    }
+
+    public String getNickName() {
+        return NickName;
+    }
+
+    public void setNickName(String nickName) {
+        NickName = nickName;
     }
 }

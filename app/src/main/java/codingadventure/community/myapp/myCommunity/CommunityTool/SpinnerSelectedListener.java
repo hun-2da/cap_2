@@ -12,10 +12,10 @@ public class SpinnerSelectedListener implements AdapterView.OnItemSelectedListen
     protected int imageRes = 0;
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        Query query = CommunityListLoad.getMyCommunityQury();
+        //Query query = CommunityListLoad.getMyCommunityQury();
 
         switch(position){
-            case 0: imageRes = R.drawable.app_icon_diary;
+            case 0: imageRes = R.drawable.community_diaryimage_all;
                 break;
             case 1:
                 //colorString = "#D5A7A8";

@@ -64,15 +64,30 @@
 
                 </LinearLayout>
 
-                <jp.wasabeef.richeditor.RichEditor
-                    android:id="@+id/listCycler_content_RecyclerRichEditor"
+                <TextView
+                    android:id="@+id/listCycler_content_cTextView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="3dp" />
+                    android:layout_marginTop="3dp"
+                    android:textSize="20sp" />
 
             </LinearLayout>
 
         </LinearLayout>
+
+        <View
+            android:id="@+id/listCycler_touch_View"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/listCycler_borderline_imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.7"
+            android:scaleType="fitXY" />
+
     </androidx.cardview.widget.CardView>
 
 </LinearLayout>

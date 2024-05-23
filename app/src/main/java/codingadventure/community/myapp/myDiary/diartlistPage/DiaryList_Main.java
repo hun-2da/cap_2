@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import java.util.ArrayList;
 
@@ -25,8 +26,8 @@ public class DiaryList_Main extends AppCompatActivity {
         setContentView(R.layout.diarylist_main_activity);
         Log.e("일단 실행됨","흠냐링");
 
-        Button rightButton = findViewById(R.id.diarylist_main_right_button);
-        Button leftButton = findViewById(R.id.diarylist_main_left_button);
+        ImageButton rightButton = findViewById(R.id.diarylist_main_right_button);
+        ImageButton leftButton = findViewById(R.id.diarylist_main_left_button);
 
         DiaryList_ListType listType = new DiaryList_ListType(rightButton);
         DiaryList_CalenderType calenderType = new DiaryList_CalenderType();

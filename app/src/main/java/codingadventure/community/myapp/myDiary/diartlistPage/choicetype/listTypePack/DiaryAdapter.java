@@ -10,13 +10,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.jsoup.Jsoup;
+
 import java.util.ArrayList;
 
+import codingadventure.community.myapp.FirebasePack.FirebaseDBNameClass;
 import codingadventure.community.myapp.R;
 import codingadventure.community.myapp.listEventPack.OnItemClickListener;
 import codingadventure.community.myapp.FirebasePack.ObjectPack.UserDiaryWrite;
-import jp.wasabeef.richeditor.RichEditor;
-
 
 
 public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.ViewHolder>{
@@ -43,7 +44,6 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.ViewHolder>{
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         UserDiaryWrite item = diaryBox.get(position);
         holder.setItem(item);
-
 
         holder.bind(diaryBox.get(position), onItemClickListener);
     }
@@ -74,8 +74,12 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.ViewHolder>{
 
 
     static class ViewHolder extends RecyclerView.ViewHolder{
-        ImageView imageView;
-        RichEditor richEditor;
+        ImageView categoryImageView;
+        ImageView borderLineImageView;
+
+        View touchView;
+        TextView contentTextView;
+        //RichEditor richEditor;
         TextView textView;
         Switch switch_Button;
 
@@ -85,8 +89,12 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.ViewHolder>{
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            imageView = itemView.findViewById(R.id.listCycler_category_imageView);
-            richEditor = itemView.findViewById(R.id.listCycler_content_RecyclerRichEditor);
+            categoryImageView = itemView.findViewById(R.id.listCycler_category_imageView);
+            borderLineImageView = itemView.findViewById(R.id.listCycler_borderline_imageView);
+            touchView = itemView.findViewById(R.id.listCycler_touch_View);
+
+            contentTextView = itemView.findViewById(R.id.listCycler_content_cTextView);
+            //richEditor = itemView.findViewById(R.id.listCycler_content_RecyclerRichEditor);
             textView = itemView.findViewById(R.id.listCycler_title_TextView);
             switch_Button = itemView.findViewById(R.id.listCycler_choice_switchButton);
 
@@ -94,39 +102,61 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.ViewHolder>{
 
         public void setItem(UserDiaryWrite item){
             String category = item.getCategory();
-            imageView.setImageResource(getCategory_res(category));
+            categoryImageView.setImageResource(getCategory_res(category));
 
-            richEditor.setHtml(item.getContent());
-            richEditor.setEnabled(false);
+            getBorderLine(item.getQuest());
+
+            //richEditor.setHtml(item.getContent());
+            String content = item.getContent();
+            if(content !=null)
+                content = Jsoup.parse(item.getContent()).text();
+            contentTextView.setText(content);
+            //richEditor.setEnabled(false);
 
 
             textView.setText(item.getTitle());
 
             boolean user_publicityStatus = item.isPublicityStatus();
-            switch_Button.setText(user_publicityStatus?"공개":"비공개");
+            switch_Button.setText(
+                    user_publicityStatus
+                            ?
+                            switch_Button.getContext().getString(R.string.diarylist_publicityStatus_on)
+                            :
+                            switch_Button.getContext().getString(R.string.diarylist_publicityStatus_off)
+            );
             switch_Button.setChecked(user_publicityStatus);
 
+
+
+
+        }
+        private void getBorderLine(int questNum){
+            switch (questNum){
+                case FirebaseDBNameClass.DIARY_QUEST_ONLINE:
+                   borderLineImageView.setImageResource(R.drawable.diarylist_item_borderline_red);
+                   break;
+            }
 
         }
         private int getCategory_res(String category){
             int category_id = 0;
-            if(category.equals("PRIDE")){
+            if(category.equals(FirebaseDBNameClass.DIARY_CATEGORY_PRIDE)){
                 category_id = R.drawable.icon7_pride;
-            }else if(category.equals("GREED")){
+            }else if(category.equals(FirebaseDBNameClass.DIARY_CATEGORY_GREED)){
                 category_id = R.drawable.icon7_greed;
-            }else if(category.equals("LUST")){
+            }else if(category.equals(FirebaseDBNameClass.DIARY_CATEGORY_LUST)){
                 category_id = R.drawable.icon7_lust;
             }
-            else if(category.equals("ENVY")){
+            else if(category.equals(FirebaseDBNameClass.DIARY_CATEGORY_ENVY)){
                 category_id = R.drawable.icon7_envy;
             }
-            else if(category.equals("GLUTTONY")){
+            else if(category.equals(FirebaseDBNameClass.DIARY_CATEGORY_GLUTTONY)){
                 category_id = R.drawable.icon7_glutth;
             }
-            else if(category.equals("WRATH")){
+            else if(category.equals(FirebaseDBNameClass.DIARY_CATEGORY_WRATH)){
                 category_id = R.drawable.icon7_lath;
             }
-            else if(category.equals("SLOTH")){
+            else if(category.equals(FirebaseDBNameClass.DIARY_CATEGORY_SLOTH)){
                 category_id = R.drawable.icon7_sloth;
             }
             return category_id;
@@ -137,6 +167,7 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.ViewHolder>{
                 @Override
                 public void onClick(View v) {
                     listener.onItemClick(v, getAdapterPosition());
+
                 }
             });
         }

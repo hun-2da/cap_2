@@ -15,9 +15,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import codingadventure.community.myapp.FirebasePack.FirebaseDBNameClass;
 import codingadventure.community.myapp.R;
 import codingadventure.community.myapp.listEventPack.OnItemClickListener;
 import codingadventure.community.myapp.FirebasePack.ObjectPack.UserDiaryWrite;
+import codingadventure.community.myapp.myCommunity.GetCategory;
 
 public class CommunityAdapter extends RecyclerView.Adapter<CommunityAdapter.ViewHolder>{
     ArrayList<UserDiaryWrite> diaryBox = new ArrayList<>();
@@ -66,6 +68,11 @@ public class CommunityAdapter extends RecyclerView.Adapter<CommunityAdapter.View
         diaryBox.set(position, item);
     }
 
+    public void clearData() {
+        diaryBox.clear();
+        notifyDataSetChanged();
+    }
+
     static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
 
@@ -90,7 +97,7 @@ public class CommunityAdapter extends RecyclerView.Adapter<CommunityAdapter.View
 
         public void setItem(UserDiaryWrite item) {
             String category = item.getCategory();
-            imageView.setImageResource(getCategory_res(category));
+            imageView.setImageResource(GetCategory.getCategory_res(category));
             title_textView.setText(item.getTitle());
 
             String content = item.getContent();
@@ -105,28 +112,6 @@ public class CommunityAdapter extends RecyclerView.Adapter<CommunityAdapter.View
 
         }
 
-        private int getCategory_res(String category) {
-            int category_id = 0;
-
-            if (category.equals("PRIDE")) {
-                category_id = R.drawable.community_diaryimage_pride;
-            } else if (category.equals("GREED")) {
-                category_id = R.drawable.community_diaryimage_greed;
-            } else if (category.equals("LUST")) {
-                category_id = R.drawable.community_diaryimage_lust;
-            } else if (category.equals("ENVY")) {
-                category_id = R.drawable.community_diaryimage_envy;
-            } else if (category.equals("GLUTTONY")) {
-                category_id = R.drawable.community_diaryimage_gluth;
-            } else if (category.equals("WRATH")) {
-                category_id = R.drawable.community_diaryimage_wrath;
-            } else if (category.equals("SLOTH")) {
-                category_id = R.drawable.community_diaryimage_sloth;
-            }   else {
-                category_id = R.drawable.app_icon_diary;
-            }
-            return category_id;
-        }
 
         private void setDate(Date date) {
             Calendar calendar = Calendar.getInstance();  // 캘린더 인스턴스 생성

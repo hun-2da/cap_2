@@ -6,6 +6,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import codingadventure.community.myapp.FirebasePack.FirebaseDBNameClass;
 import codingadventure.community.myapp.R;
 import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.Bubble_ClickListener;
 import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.Touch_Constant_Name;
@@ -23,37 +24,37 @@ public class SALIGIAListener implements View.OnClickListener {
         if(id == R.id.icon7_button1){
             image_id = R.drawable.icon7_pride;
             category_ID = Touch_Constant_Name.PRIDE;
-            categoryName = "PRIDE";
+            categoryName =  FirebaseDBNameClass.DIARY_CATEGORY_PRIDE;
 
         }else if(id == R.id.icon7_button2){
             image_id = R.drawable.icon7_greed;
             category_ID = Touch_Constant_Name.GREED;
-            categoryName = "GREED";
+            categoryName =  FirebaseDBNameClass.DIARY_CATEGORY_GREED;
 
         }else if(id == R.id.icon7_button3){
             image_id = R.drawable.icon7_lust;
             category_ID = Touch_Constant_Name.LUST;
-            categoryName = "LUST";
+            categoryName = FirebaseDBNameClass.DIARY_CATEGORY_LUST;
 
         }else if(id == R.id.icon7_button4){
             image_id = R.drawable.icon7_envy;
             category_ID = Touch_Constant_Name.ENVY;
-            categoryName = "ENVY";
+            categoryName = FirebaseDBNameClass.DIARY_CATEGORY_ENVY;
 
         }else if(id == R.id.icon7_button5){
             image_id = R.drawable.icon7_glutth;
             category_ID = Touch_Constant_Name.GLUTTONY;
-            categoryName = "GLUTTONY";
+            categoryName = FirebaseDBNameClass.DIARY_CATEGORY_GLUTTONY;
 
         }else if(id == R.id.icon7_button6){
             image_id = R.drawable.icon7_lath;
             category_ID = Touch_Constant_Name.WRATH;
-            categoryName = "WRATH";
+            categoryName = FirebaseDBNameClass.DIARY_CATEGORY_WRATH;
 
         }else if(id == R.id.icon7_button7){
             image_id = R.drawable.icon7_sloth;
             category_ID = Touch_Constant_Name.SLOTH;
-            categoryName = "SLOTH";
+            categoryName = FirebaseDBNameClass.DIARY_CATEGORY_SLOTH;
         }else{
 
         }

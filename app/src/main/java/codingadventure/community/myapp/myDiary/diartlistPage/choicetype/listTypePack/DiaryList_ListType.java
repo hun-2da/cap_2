@@ -7,12 +7,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Switch;
 
@@ -35,6 +37,7 @@ public class DiaryList_ListType extends Fragment{
 
     /**리스트 (파이어베이스에서 가져와 입력)*/
     ArrayList<UserDiaryWrite> diaryBox = new ArrayList<>();
+    ArrayList<String> DocumentIdBox = new ArrayList<>();
 
     FirestorePagingListener pagingListener;
 
@@ -44,13 +47,13 @@ public class DiaryList_ListType extends Fragment{
     RichEditor contentEditor;
     Switch publicityStatus;
 
-    Button rightButton;
+    ImageButton rightButton;
 
     public DiaryList_ListType(){
 
     }
 
-    public DiaryList_ListType(Button rightButton){
+    public DiaryList_ListType(ImageButton rightButton){
         this.rightButton = rightButton;
     }
     @Override
@@ -77,6 +80,7 @@ public class DiaryList_ListType extends Fragment{
         DiaryAdapter adapter = new DiaryAdapter(new OnItemClickListener() {
             @Override
             public void onItemClick(View view,int position) {
+                Log.e("눌리긴 하네 ","흠냐링");
                 rightButton.setVisibility(View.INVISIBLE);
 
                 UserDiaryWrite diary_data = pagingListener.getListBox(position);
@@ -101,7 +105,7 @@ public class DiaryList_ListType extends Fragment{
         recyclerView.setAdapter(adapter);
 
 
-        pagingListener = new FirestorePagingListener(diaryBox,adapter,progressBar);
+        pagingListener = new FirestorePagingListener(DocumentIdBox,diaryBox,adapter,progressBar);
 
         Query query = DiaryListLoad.getMyDiaryQury();
         query.get().addOnCompleteListener(pagingListener);
@@ -115,6 +119,8 @@ public class DiaryList_ListType extends Fragment{
 
                 Query nextQuery = DiaryListLoad.getMyDiaryQury().startAfter(pagingListener.getDocumentSnapshot());
                 nextQuery.get().addOnCompleteListener(pagingListener);
+
+
 
             }
         }); // 리싸이클러 뷰를 스크롤 할 경우의 이벤트 리스너

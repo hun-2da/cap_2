@@ -52,8 +52,33 @@
     <string name="fulldiary_Title_textView">Title</string>
     <string name="fulldiary_Conent_textView">Content</string>
 
+    <!-- quest comment xml에서 사용 -->
+    <string name="quest_comment_ok_Button">확인</string>
+    <string name="quest_comment_success_Button">퀘스트 완료</string>
+
+    <!-- community_diary_full_page xml에서 사용 -->
+    <string name="communityDiary_comment_textView">댓글 작성</string>
+
+
+
+    <!-- DiaryAdapter(class)에서 사용 -->
+    <string name="diarylist_publicityStatus_on">공개</string>
+    <string name="diarylist_publicityStatus_off">비공개</string>
+
+    <!-- QuestAdapter(class)에서 사용 -->
+    <string name="quest_list_false">(진행중)</string>
+    <string name="quest_list_true">(완료)</string>
+
     <!-- diarylist_RecyclerXml에서 사용 -->
     <string name="listRecycler_check_Switch">공개</string>
+
+
+    <!-- DiaryMain_Quest_Dialog(Class)에서 사용 -->
+    <string name="MyQuest_Dialog_Title">주의</string>
+    <string name="MyQuest_Dialog_Message">바르게 이행하였음을 알립니다.</string>
+    <string name="MyQuest_Dialog_OK_Button">예.</string>
+    <string name="MyQuest_Dialog_Cansel_Button">다시 생각해 보겠습니다.</string>
+
 
     <!-- Bubble_ClickListener(Class)에서 사용 -->
     <string name="Bubble_ClickListener_click0">안녕 어서와</string>
@@ -75,7 +100,6 @@
 
 
     <!-- MainCommunity(Class)에서 사용 -->
-
 
 
 </resources>

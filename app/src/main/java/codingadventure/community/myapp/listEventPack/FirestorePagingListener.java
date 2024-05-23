@@ -19,6 +19,8 @@ import codingadventure.community.myapp.myDiary.diartlistPage.choicetype.listType
 
 public class FirestorePagingListener implements OnCompleteListener<QuerySnapshot> {
     private final ArrayList<UserDiaryWrite> diaryBox;
+    private final ArrayList<String> documentIDBox;
+
     private DiaryAdapter diaryadapter;
     private CommunityAdapter communityadapter;
 
@@ -26,12 +28,14 @@ public class FirestorePagingListener implements OnCompleteListener<QuerySnapshot
 
     private DocumentSnapshot lastVisible;
 
-    public FirestorePagingListener(ArrayList<UserDiaryWrite> diaryBox, DiaryAdapter adapter, ProgressBar progressBar) {
+    public FirestorePagingListener(ArrayList<String> documentIDBox,ArrayList<UserDiaryWrite> diaryBox, DiaryAdapter adapter, ProgressBar progressBar) {
+        this.documentIDBox = documentIDBox;
         this.diaryBox = diaryBox;
         diaryadapter = adapter;
         this.progressBar = progressBar;
     }
-    public FirestorePagingListener(ArrayList<UserDiaryWrite> diaryBox, CommunityAdapter adapter, ProgressBar progressBar) {
+    public FirestorePagingListener(ArrayList<String> documentIDBox,ArrayList<UserDiaryWrite> diaryBox, CommunityAdapter adapter, ProgressBar progressBar) {
+        this.documentIDBox = documentIDBox;
         this.diaryBox = diaryBox;
         communityadapter = adapter;
         this.progressBar = progressBar;
@@ -42,10 +46,14 @@ public class FirestorePagingListener implements OnCompleteListener<QuerySnapshot
         if (task.isSuccessful()) {
             progressBar.setVisibility(View.VISIBLE);
             ArrayList<UserDiaryWrite> fetchedItems = new ArrayList<>();
+            ArrayList<String> CommunityDocumentId = new ArrayList<>();
+
             for (DocumentSnapshot document : task.getResult()) {
                 fetchedItems.add(document.toObject(UserDiaryWrite.class));
+                CommunityDocumentId.add(document.getId());
             }
             diaryBox.addAll(fetchedItems);
+            documentIDBox.addAll(CommunityDocumentId);
 
             if(diaryadapter != null)
                 diaryadapter.notifyDataSetChanged();

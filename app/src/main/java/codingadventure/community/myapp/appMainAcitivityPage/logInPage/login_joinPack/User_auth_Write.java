@@ -39,7 +39,8 @@ public class User_auth_Write {
                             //User_db_Write join_id = new User_db_Write(email,password,user_id);
 
                             HashMap updates = new HashMap<>();
-                            updates.put("NickName",user_id);
+                            updates.put(FirebaseDBNameClass.USER_NICKNAME,user_id);
+                            updates.put(FirebaseDBNameClass.USER_TEMPERATURE,36);
 
                             FirebaseUtils.getFirestore()
                                     .collection(FirebaseDBNameClass.USER_COLLECTION)

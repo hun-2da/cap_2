@@ -14,26 +14,33 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
     </FrameLayout>
 
-    <android.widget.Button
+    <ImageButton
         android:id="@+id/diarylist_main_left_button"
         android:layout_width="40dp"
         android:layout_height="100dp"
         android:layout_marginStart="10dp"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleType="centerCrop"
+        android:src="@drawable/diarylist_rightbutton"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <android.widget.Button
+    <ImageButton
         android:id="@+id/diarylist_main_right_button"
         android:layout_width="40dp"
         android:layout_height="100dp"
 
         android:layout_marginEnd="10dp"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleType="centerCrop"
+        android:src="@drawable/diarylist_leftbutton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/diarylist_main_getFragment_frameLayout"
         app:layout_constraintTop_toTopOf="parent" />
