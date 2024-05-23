@@ -64,15 +64,15 @@ public class NewDiaryQuery {
         updates.put(FirebaseDBNameClass.COMMUNITY_limit,limit);
         updates.put(FirebaseDBNameClass.COMMUNITY_COMMENT_COUNT,0);
 
-        getName(updates);
+        getName(updates,diaryDocument);
 
     }
     /**커뮤니티에 저장할 NickName*/
-    private static void getName(Map<String, Object> updates){
-        DocumentReference diaryDocument = FirebaseUtils.getFirestore().collection(FirebaseDBNameClass.USER_COLLECTION)
+    private static void getName(Map<String, Object> updates,DocumentReference diaryDocument){
+        DocumentReference NameDocument = FirebaseUtils.getFirestore().collection(FirebaseDBNameClass.USER_COLLECTION)
                 .document(FirebaseUtils.getCurrentUser().getUid());
 
-        diaryDocument.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        NameDocument.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
