@@ -1,5 +1,7 @@
 package codingadventure.community.myapp.FirebasePack.QueryPack;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -36,6 +38,7 @@ public class NewDiaryQuery {
         Map<String, Object> updates = getMap();
         updates.put(FirebaseDBNameClass.USER_DIARY_publicityStatus, b);
         updates.put(FirebaseDBNameClass.USER_DIARY_QUEST,1);
+        Log.e("xxxx","sss"+b);
 
 
         // 위에서 지정한 도큐먼트(다이어리)에 객체를 set 성공시 && 사용자의 공개 여부가 true일때 community에도 추가
@@ -55,6 +58,7 @@ public class NewDiaryQuery {
     private static void set_CommunityDiary(Map<String, Object> updates,DocumentReference diaryDocument){
         //Map<String, Object> updates = getMap();
 
+        Log.e("xxxx","xxxxxxxxxxxxxx");
         updates.remove(FirebaseDBNameClass.USER_DIARY_publicityStatus);
         int limit = 50;
         updates.put(FirebaseDBNameClass.COMMUNITY_limit,limit);
@@ -66,9 +70,7 @@ public class NewDiaryQuery {
     /**커뮤니티에 저장할 NickName*/
     private static void getName(Map<String, Object> updates){
         DocumentReference diaryDocument = FirebaseUtils.getFirestore().collection(FirebaseDBNameClass.USER_COLLECTION)
-                .document(FirebaseUtils.getCurrentUser().getUid())
-                .collection(FirebaseDBNameClass.DIARY_COLLECTION)
-                .document();
+                .document(FirebaseUtils.getCurrentUser().getUid());
 
         diaryDocument.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -76,7 +78,6 @@ public class NewDiaryQuery {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
-
                         String nickName = document.getString(FirebaseDBNameClass.USER_NICKNAME);
                         updates.put(FirebaseDBNameClass.USER_NICKNAME,nickName);
 
