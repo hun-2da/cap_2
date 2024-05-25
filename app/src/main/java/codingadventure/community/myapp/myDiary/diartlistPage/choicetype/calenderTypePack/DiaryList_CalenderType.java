@@ -1,14 +1,22 @@
 package codingadventure.community.myapp.myDiary.diartlistPage.choicetype.calenderTypePack;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.Switch;
+import android.widget.TextView;
 
 import com.applandeo.materialcalendarview.CalendarDay;
 import com.applandeo.materialcalendarview.CalendarView;
@@ -34,10 +42,10 @@ import java.util.Date;
 import java.util.List;
 
 import codingadventure.community.myapp.R;
+import jp.wasabeef.richeditor.RichEditor;
 
 
 public class DiaryList_CalenderType extends Fragment {
-
 
     public DiaryList_CalenderType() {
         // Required empty public constructor
@@ -93,13 +101,21 @@ public class DiaryList_CalenderType extends Fragment {
                 calendarView.setOnDayClickListener(new OnDayClickListener() {
                     @Override
                     public void onDayClick(EventDay eventDay) {
-                        Calendar clickedDayCalendar = eventDay.getCalendar();
-                        //클릭 이벤트
+                        Calendar clickedDayCalendar = eventDay.getCalendar(); //클릭한 날짜를 calendar 객체로 가져옴
+                        // 클릭한 날짜로 DiaryFullPage 프래그먼트 열기
+                        String clickedDate = formatDate(clickedDayCalendar.getTime());
+                        OpenDiaryFullPage_Calender dialog = new OpenDiaryFullPage_Calender();
+                        dialog.openDiaryFullPageFragment(userEmail, clickedDate, getContext());
                     }
                 });
             }
         });
-
         return view;
+    }
+
+    // 날짜 형식을 "yyyy-MM-dd"로 변환하는 메소드
+    private String formatDate(Date date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(date);
     }
 }
