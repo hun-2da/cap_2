@@ -1,6 +1,7 @@
 package codingadventure.community.myapp.myDiary.questPack;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -108,24 +109,38 @@ public class Quest_DiaryAdapter extends RecyclerView.Adapter<Quest_DiaryAdapter.
             if(category.equals(FirebaseDBNameClass.DIARY_CATEGORY_PRIDE)){
                 drawableId = R.drawable.community_diaryimage_pride;
                 roundColorId = R.drawable.rounded_border_pride;
+                categoryTextView.setTextColor(Color.parseColor(FirebaseDBNameClass.CATEGORY_COLOR_PRIED));
+
             }else if(category.equals(FirebaseDBNameClass.DIARY_CATEGORY_GREED)){
                 drawableId = R.drawable.community_diaryimage_greed;
                 roundColorId = R.drawable.rounded_border_greed;
+                categoryTextView.setTextColor(Color.parseColor(FirebaseDBNameClass.CATEGORY_COLOR_GREED));
+
             }else if(category.equals(FirebaseDBNameClass.DIARY_CATEGORY_LUST)){
                 drawableId = R.drawable.community_diaryimage_lust;
                 roundColorId = R.drawable.rounded_border_lust;
+                categoryTextView.setTextColor(Color.parseColor(FirebaseDBNameClass.CATEGORY_COLOR_LUST));
+
             }else if(category.equals(FirebaseDBNameClass.DIARY_CATEGORY_ENVY)){
                 drawableId = R.drawable.community_diaryimage_envy;
                 roundColorId = R.drawable.rounded_border_envy;
+                categoryTextView.setTextColor(Color.parseColor(FirebaseDBNameClass.CATEGORY_COLOR_ENVY));
+
             }else if(category.equals(FirebaseDBNameClass.DIARY_CATEGORY_GLUTTONY)){
                 drawableId = R.drawable.community_diaryimage_gluth;
                 roundColorId = R.drawable.rounded_border_gluth;
+                categoryTextView.setTextColor(Color.parseColor(FirebaseDBNameClass.CATEGORY_COLOR_GLUTTONY));
+
             }else if(category.equals(FirebaseDBNameClass.DIARY_CATEGORY_WRATH)){
                 drawableId = R.drawable.community_diaryimage_wrath;
                 roundColorId = R.drawable.rounded_border_wrath;
+                categoryTextView.setTextColor(Color.parseColor(FirebaseDBNameClass.CATEGORY_COLOR_WRATH));
+
             }else if(category.equals(FirebaseDBNameClass.DIARY_CATEGORY_SLOTH)){
                 drawableId = R.drawable.community_diaryimage_sloth;
                 roundColorId = R.drawable.rounded_border_sloth;
+                categoryTextView.setTextColor(Color.parseColor(FirebaseDBNameClass.CATEGORY_COLOR_SLOTH));
+
             }
             imageView.setImageResource(drawableId);
             round_backColor.setBackground(ContextCompat.getDrawable(context,roundColorId));

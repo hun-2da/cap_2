@@ -57,7 +57,7 @@
     <string name="quest_comment_success_Button">퀘스트 완료</string>
 
     <!-- community_diary_full_page xml에서 사용 -->
-    <string name="communityDiary_comment_textView">댓글 작성</string>
+    <string name="communityDiary_comment_textView">에게 댓글 작성</string>
 
 
 
@@ -100,6 +100,10 @@
 
 
     <!-- MainCommunity(Class)에서 사용 -->
+
+
+    <!-- CommentPage (Class)에서 사용 -->
+    <string name="comment_SnackBar_fail">저장 오류.</string>
 
 
 </resources>

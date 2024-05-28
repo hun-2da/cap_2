@@ -3,13 +3,19 @@ package codingadventure.community.myapp.myCommunity.viewDiary.CommentPack;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.jsoup.Jsoup;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 import codingadventure.community.myapp.FirebasePack.ObjectPack.DiaryCommentWrite;
 import codingadventure.community.myapp.FirebasePack.ObjectPack.UserDiaryWrite;
@@ -59,17 +65,56 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
     public void clearData() {
         commentBox.clear();
         notifyDataSetChanged();
+
     }
 
 
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
+        TextView name;
+        TextView content;
+        TextView date;
+
+
+        ImageView profile; // 나중에 선택에 따른 변경 또는 일괄
+
+
+        ImageButton like;   // 이벤트 리스너 연결
+        ImageButton dislike;    // 이벤트 리스너 연결
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            name = itemView.findViewById(R.id.commentResource_Name_TextView);
+            content = itemView.findViewById(R.id.commentResource_Content_TextView);
+            date = itemView.findViewById(R.id.commentResource_Date_TextView);
+
+            like = itemView.findViewById(R.id.commentResource_Like_button);
+            like.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+            dislike = itemView.findViewById(R.id.commentResource_Dislike_button);
+            dislike.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+
         }
         public void setItem(DiaryCommentWrite item) {
-
+            name.setText(item.getCommentWriterName());
+            content.setText(item.getContent());
+            date.setText(getDate(item.getDate()));
+        }
+        private String getDate(Date Date){
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+            String formattedDate = dateFormat.format(Date);
+            return formattedDate;
         }
     }
 

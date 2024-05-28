@@ -1,5 +1,6 @@
 package codingadventure.community.myapp.myCommunity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.FragmentManager;
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -18,6 +20,9 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.Query;
 
 import java.util.ArrayList;
@@ -28,7 +33,7 @@ import codingadventure.community.myapp.listEventPack.DiaryRecyclerViewScrollList
 import codingadventure.community.myapp.listEventPack.FirestorePagingListener;
 import codingadventure.community.myapp.listEventPack.OnItemClickListener;
 import codingadventure.community.myapp.myCommunity.CommunityTool.CommunityAdapter;
-import codingadventure.community.myapp.myCommunity.CommunityTool.CommunityListLoad;
+import codingadventure.community.myapp.FirebasePack.QueryPack.CommunityQuery;
 import codingadventure.community.myapp.myCommunity.CommunityTool.SpinnerSelectedListener;
 import codingadventure.community.myapp.FirebasePack.ObjectPack.UserDiaryWrite;
 import codingadventure.community.myapp.myCommunity.viewDiary.UserDiary_SlidingPage;
@@ -66,8 +71,9 @@ public class MainCommunity extends AppCompatActivity {
     Animation translateRightAnim;
 
     UserDiary_SlidingPage communitySlidingPage;
+    public static String NickName = "";
 
-
+    public static String documentID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +85,29 @@ public class MainCommunity extends AppCompatActivity {
         setSpinner();
         setRecyclerView();
         setDiaryPage();
+        getMyNickName();
+
+    }
+
+    private void getMyNickName() {
+        CommunityQuery.getMyName()
+                .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                NickName = document.getString(FirebaseDBNameClass.USER_NICKNAME);
+
+                                // NickName 필드를 사용하여 필요한 작업 수행
+                            } else {
+                                Log.d("Firestore", "No such document");
+                            }
+                        } else {
+                            Log.d("Firestore", "get failed with ", task.getException());
+                        }
+                    }
+                });
 
     }
 
@@ -88,6 +117,7 @@ public class MainCommunity extends AppCompatActivity {
 
         translateLeftAnim = AnimationUtils.loadAnimation(this,R.anim.community_diary_left);
         translateRightAnim = AnimationUtils.loadAnimation(this,R.anim.community_diary_right);
+
 
 
         fragment = new DiaryPage();
@@ -133,7 +163,7 @@ public class MainCommunity extends AppCompatActivity {
             @Override
             public void onLoadMore(int totalItemsCount, RecyclerView view) {
 
-                Query nextQuery =  CommunityListLoad.getMyCommunityQury().startAfter(pagingListener.getDocumentSnapshot());
+                Query nextQuery =  CommunityQuery.getMyCommunityQuery().startAfter(pagingListener.getDocumentSnapshot());
                 int category_num = spinner.getSelectedItemPosition();
                 Query changeQuery = getSpinnerQuery(category_num,nextQuery);
                 changeQuery.get().addOnCompleteListener(pagingListener);
@@ -148,15 +178,17 @@ public class MainCommunity extends AppCompatActivity {
 
                 //UserDiaryWrite diary_data = pagingListener.getListBox(position);
                 UserDiaryWrite diary_data = diaryBox.get(position);
-                String documentID = documentIDBox.get(position);
 
-                fragment.setDiary(diary_data,documentID);
 
-                UserDiary_SlidingPage.fullCommunitySwitch = true;
+                fragment.setDiary(diary_data);
+
+                UserDiary_SlidingPage.fullCommunitySwitch = false;  // 똑똑 닫혀있냐?
 
                 BlurConstraintLayout.setVisibility(View.VISIBLE);
                 FragmentFrameLayout.setVisibility(View.VISIBLE);
+
                 FragmentFrameLayout.startAnimation(translateLeftAnim);
+                documentID = documentIDBox.get(position);
 
             }
         });  // 어댑터 객체 생성
@@ -190,7 +222,7 @@ public class MainCommunity extends AppCompatActivity {
 
                 //diaryBox.clear();
 
-                Query query = CommunityListLoad.getMyCommunityQury();
+                Query query = CommunityQuery.getMyCommunityQuery();
                 Query changeQuery = getSpinnerQuery(position,query);
 
                 changeQuery

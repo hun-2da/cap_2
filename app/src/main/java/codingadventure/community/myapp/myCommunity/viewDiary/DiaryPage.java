@@ -5,10 +5,13 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -34,7 +37,6 @@ import codingadventure.community.myapp.FirebasePack.QueryPack.CommentQuery;
 import codingadventure.community.myapp.R;
 import codingadventure.community.myapp.myCommunity.GetCategory;
 import codingadventure.community.myapp.myCommunity.MainCommunity;
-import codingadventure.community.myapp.myCommunity.viewDiary.CommentPack.CommentOnCompleteListener;
 import codingadventure.community.myapp.myCommunity.viewDiary.CommentPack.CommentPage;
 import codingadventure.community.myapp.myCommunity.viewDiary.CommentPack.CommentSlidingPage;
 import jp.wasabeef.richeditor.RichEditor;
@@ -52,9 +54,17 @@ public class DiaryPage extends Fragment {
     Animation translateRightAnim;
 
     UserDiaryWrite diary_data;
-    String documentID;
 
-    ArrayList<DiaryCommentWrite> commentBox = new ArrayList<>();
+    public static ArrayList<DiaryCommentWrite> commentBox = new ArrayList<>();
+
+    //CommentOnCompleteListener commentListener;
+    CommentPage commentPage;
+    CommentSlidingPage commentAnimListener;
+
+    Animation translateTopAnim;
+    Animation translateDownAnim;
+
+    public static FrameLayout frameLayout;
 
     public DiaryPage() {
 
@@ -65,6 +75,8 @@ public class DiaryPage extends Fragment {
                              Bundle savedInstanceState) {
         ViewGroup view = (ViewGroup) inflater.inflate(R.layout.community_diary_full_page, container, false);
 
+
+        frameLayout = view.findViewById(R.id.communityDiary_comment_FrameLayout);
         cardView = view.findViewById(R.id.communityDiary_CategoryColor_CardView);
         categoryImageView = view.findViewById(R.id.communityDiary_CategoryDiary_imageView);
         categoryTextView = view.findViewById(R.id.communityDiary_Category_TextView);
@@ -74,34 +86,60 @@ public class DiaryPage extends Fragment {
         NameTextView = view.findViewById(R.id.communityDiary_MyName_TextView);
 
         editText = view.findViewById(R.id.communityDiary_comment_EditText);
-        editText.setOnClickListener(new View.OnClickListener() {
+        editText.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View v) {
-
-                Query query = CommentQuery.getQuest(documentID);
-                query.get().addOnCompleteListener(new CommentOnCompleteListener(commentBox));
-
-
-                CommentPage commentPage = new CommentPage(commentBox);
-                CommentSlidingPage commentAnimListener = new CommentSlidingPage();
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    Log.e("눌려 ","ㅁㄴㅇ");
 
 
+                    //query.get().addOnCompleteListener(commentListener);
 
-                /*translateLeftAnim.setAnimationListener(communitySlidingPage);
-                translateRightAnim.setAnimationListener(communitySlidingPage);
+                    CommentSlidingPage.CommentSwitch = false;   // 똑똑 닫혀있냐?
 
-                fragment.setSlidingPage(translateRightAnim);
+                    DiaryPage.frameLayout.setVisibility(View.VISIBLE);
+                    frameLayout.startAnimation(translateTopAnim);
 
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.add(R.id.community_FrameLayout, fragment);
-                fragmentTransaction.commit();*/
+                    commentPage.setComment();
+
+                    return true;
+                }
+                else{
+                    Log.e("왜 안눌려 ","ㅁㄴㅇ");
+                }
+                return false;
             }
+
         });
-
-
+        setCommentFragment();
 
         return view;
+    }
+    private void setAnim(){
+        //commentListener = new CommentOnCompleteListener(/*commentBox*/);
+        commentAnimListener = new CommentSlidingPage();
+
+
+        translateTopAnim  = AnimationUtils.loadAnimation(getActivity(),R.anim.quest_diary_up);
+        translateTopAnim.setAnimationListener(commentAnimListener);
+
+
+        translateDownAnim = AnimationUtils.loadAnimation(requireContext(),R.anim.quest_diary_down);
+        translateDownAnim.setAnimationListener(commentAnimListener);
+
+    }
+    private void setCommentFragment(){
+        setAnim();
+
+        commentPage = new CommentPage(/*commentBox,*/commentAnimListener);
+        commentAnimListener.setSlidingPage(commentPage);
+
+
+        FragmentManager fragmentManager = getChildFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.communityDiary_comment_FrameLayout, commentPage);
+        fragmentTransaction.commit();
+
     }
     public void setCategory(){
         String category = diary_data.getCategory();
@@ -128,20 +166,25 @@ public class DiaryPage extends Fragment {
         NameTextView.setText(diary_data.getNickName());
     }
 
-    public void setDiary(UserDiaryWrite diary_data,String documentID) {
+    public void setDiary(UserDiaryWrite diary_data) {
         this.diary_data = diary_data;
-        this.documentID = documentID;
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // OnBackPressedCallback을 추가합니다.
-        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default*/ ) {
             @Override
             public void handleOnBackPressed() {
-                if(!UserDiary_SlidingPage.fullCommunitySwitch)
-                    MainCommunity.FragmentFrameLayout.startAnimation(translateRightAnim);
+                if(UserDiary_SlidingPage.fullCommunitySwitch)
+                    if(CommentSlidingPage.CommentSwitch){
+                        frameLayout.startAnimation(translateDownAnim);
+                    }
+                    else {
+                        MainCommunity.FragmentFrameLayout.startAnimation(translateRightAnim);
+                        commentPage.setRefresh();
+                    }
                 else{
                     setEnabled(false);
                     requireActivity().onBackPressed();
@@ -156,5 +199,7 @@ public class DiaryPage extends Fragment {
 
     public void setSlidingPage(Animation translateRightAnim) {
        this.translateRightAnim = translateRightAnim;
+
+
     }
 }

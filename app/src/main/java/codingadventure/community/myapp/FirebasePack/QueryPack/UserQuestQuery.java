@@ -12,7 +12,7 @@ public class UserQuestQuery {
                 .document(FirebaseUtils.getCurrentUser().getUid())
                 .collection(FirebaseDBNameClass.DIARY_COLLECTION)
                 .whereNotEqualTo(FirebaseDBNameClass.DIARY_MISSION, null)
-                .orderBy(FirebaseDBNameClass.DIARY_DOCUMENT_DATE);  // 한번에 몇개의 다이어리를 보여줄 것 인가에 대한 코드
+                .orderBy(FirebaseDBNameClass.DIARY_DOCUMENT_DATE);
 
         return query;
     }

@@ -7,10 +7,13 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="420dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#F2F6F6F6"
+
         app:cardCornerRadius="20dp"
+        app:cardElevation="6dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
@@ -48,7 +51,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:backgroundTint="#C5C2C2"
+                        android:backgroundTint="#A6A6A6"
                         app:cardCornerRadius="7dp">
 
                         <TextView
@@ -65,17 +68,25 @@
                         android:id="@+id/commentList_Content_EditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="-10dp"
                         android:ems="10"
                         android:hint="comment"
                         android:inputType="text" />
                 </LinearLayout>
 
                 <ImageButton
-                    android:id="@+id/commentList_writing_Button"
+                    android:id="@+id/commentList_writing_ImageButton"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_gravity="center"
-                    android:layout_weight="0" />
+                    android:layout_weight="0"
+                    android:alpha="0.8"
+                    android:background="#00FFFFFF"
+                    android:paddingTop="15dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="10dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/comment_write_button" />
 
             </LinearLayout>
 
@@ -84,8 +95,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingTop="5dp"
-                android:paddingBottom="15dp" />
+                android:paddingBottom="15dp"
+                android:visibility="visible" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/commentList_NoComment_ImageView"
+        android:layout_width="match_parent"
+        android:layout_height="290dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:alpha="0.85"
+        android:elevation="7dp"
+        android:scaleType="fitXY"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/no_comment_image">
+
+    </ImageView>
 </androidx.constraintlayout.widget.ConstraintLayout>

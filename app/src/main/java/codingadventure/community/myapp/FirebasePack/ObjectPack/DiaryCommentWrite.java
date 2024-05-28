@@ -6,14 +6,18 @@ public class DiaryCommentWrite {
     Date Date;
     String CommentWriterName;
     String Content;
+    int like;
+    int dislike;
 
     public DiaryCommentWrite() {
     }
 
-    public DiaryCommentWrite(java.util.Date date, String commentWriterName, String content) {
+    public DiaryCommentWrite(java.util.Date date, String commentWriterName, String content, int like, int dislike) {
         Date = date;
         CommentWriterName = commentWriterName;
         Content = content;
+        this.like = like;
+        this.dislike = dislike;
     }
 
     public java.util.Date getDate() {
@@ -38,5 +42,21 @@ public class DiaryCommentWrite {
 
     public void setContent(String content) {
         Content = content;
+    }
+
+    public int getLike() {
+        return like;
+    }
+
+    public void setLike(int like) {
+        this.like = like;
+    }
+
+    public int getDislike() {
+        return dislike;
+    }
+
+    public void setDislike(int dislike) {
+        this.dislike = dislike;
     }
 }

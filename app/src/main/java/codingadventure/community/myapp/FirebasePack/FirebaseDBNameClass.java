@@ -40,6 +40,10 @@ public class FirebaseDBNameClass {
     public final static String COMMENT_Writer_NAME = "CommentWriterName";
     public final static String COMMENT_CONTENT = "Content";
 
+    public final static String COMMENT_LIKE_COUNT = "like";
+
+    public final static String COMMENT_DISLIKE_COUNT = "dislike";
+
 
 
     //------------------------------------------------------------------------

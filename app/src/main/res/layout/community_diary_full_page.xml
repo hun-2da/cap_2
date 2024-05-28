@@ -146,8 +146,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
-                        android:enabled="false"
                         android:ems="10"
+                        android:enabled="true"
                         android:hint="@string/communityDiary_comment_textView"
                         android:inputType="text"
                         android:textSize="14sp"
@@ -161,16 +161,15 @@
     </LinearLayout>
 
     <FrameLayout
-        android:layout_width="match_parent"
+        android:id="@+id/communityDiary_comment_FrameLayout"
+        android:layout_width="wrap_content"
         android:layout_height="400dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <include
-            android:id="@+id/choiceCommunity_"
-            layout="@layout/community_comment_page" />
+
 
     </FrameLayout>
 
