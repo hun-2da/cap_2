@@ -26,6 +26,7 @@ import codingadventure.community.myapp.FirebasePack.ObjectPack.UserQuestWrite;
 import codingadventure.community.myapp.FirebasePack.QueryPack.UserQuestQuery;
 import codingadventure.community.myapp.R;
 import codingadventure.community.myapp.listEventPack.OnItemClickListener;
+import codingadventure.community.myapp.myCommunity.MainCommunity;
 import codingadventure.community.myapp.myDiary.diartlistPage.DiaryList_Main;
 import codingadventure.community.myapp.myDiary.newdiarypage.Diary_editDiary;
 import codingadventure.community.myapp.myDiary.questPack.Quest_DiaryAdapter;
@@ -34,6 +35,8 @@ import codingadventure.community.myapp.myDiary.questPack.SlidingPageAnimationLis
 public class Diary_Main extends AppCompatActivity {
     ImageButton new_diary_Button;
     ImageButton diary_list_Button;
+    ImageButton community_Button;
+
     RecyclerView recyclerView;
     ArrayList<UserQuestWrite> QuestDiaryBox = new ArrayList<>();
     Quest_DiaryAdapter adapter;
@@ -56,6 +59,16 @@ public class Diary_Main extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.diary_main_activity);
+
+        community_Button = findViewById(R.id.diary_community_ImageButton);
+        community_Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent community_Intent = new Intent(getApplicationContext(), MainCommunity.class);
+                startActivity(community_Intent);
+            }
+        });
+
 
 
         new_diary_Button = findViewById(R.id.diary_newDiary_button);
