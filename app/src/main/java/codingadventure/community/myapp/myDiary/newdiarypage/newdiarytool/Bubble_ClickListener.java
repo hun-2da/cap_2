@@ -11,6 +11,7 @@ import android.widget.FrameLayout;
 
 import java.util.Random;
 
+import codingadventure.community.myapp.FirebasePack.QueryPack.NewDiaryQuery;
 import codingadventure.community.myapp.R;
 import codingadventure.community.myapp.FirebasePack.ObjectPack.UserDiaryWrite;
 import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.categorypack.CategoryMenuClass;
@@ -22,6 +23,7 @@ import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.categor
 import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.categorypack.categorylistener.saligiapack.SlothChoice;
 import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.categorypack.categorylistener.saligiapack.WrathChoice;
 import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.d_s_choice.AddLastPage;
+import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.d_s_choice.LimitPage;
 import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.datepack.DateEventClass;
 import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.editorpack.Editor_Initialization;
 import jp.wasabeef.richeditor.RichEditor;
@@ -43,6 +45,8 @@ public class Bubble_ClickListener implements View.OnClickListener {
     /**database에 저장해주기 위한 객체*/
     public static UserDiaryWrite diaryDbWrite;
 
+
+    AddLastPage addLastPage;
 
 
     public Bubble_ClickListener(BubbleTextViewAnimation bubble, FrameLayout bubble_layout,LayoutInflater layoutInflater) {
@@ -97,7 +101,10 @@ public class Bubble_ClickListener implements View.OnClickListener {
                 touch_count24();
                 break;
             case Touch_Constant_Name.finish:
-                touch_count25(v);
+                touch_count26(v);
+                break;
+            case Touch_Constant_Name.finish2:
+                touch_count27(v);
                 break;
 
             default:
@@ -238,15 +245,28 @@ public class Bubble_ClickListener implements View.OnClickListener {
     private void touch_count22(){
         bubble_layout.removeAllViews();
         View newView = layoutInflater.inflate(R.layout.newdiary_edit_lastpage,bubble_layout,false);
-        new AddLastPage(newView);
+        addLastPage = new AddLastPage(newView);
         bubble.animationText(bubble_layout.getContext().getString(R.string.Bubble_ClickListener_lastclick));
         bubble_layout.addView(newView);
     }
     private void touch_count24(){
         bubble_layout.removeAllViews();
+        if(addLastPage.user_choice){
+            View seekBarView = layoutInflater.inflate(R.layout.newdiary_edit_lastpage2,bubble_layout,false);
+            bubble.animationText(bubble_layout.getContext().getString(R.string.Bubble_ClickListener_lastclick1_2));
+            bubble_layout.addView(seekBarView);
+            new LimitPage(seekBarView,addLastPage.user_choice);
+
+        }else
+            NewDiaryQuery.set_userDiary(addLastPage.user_choice,36);
+
+    }
+    private void touch_count26(View v){
+        bubble_layout.removeAllViews();
         bubble.animationText(bubble_layout.getContext().getString(R.string.Bubble_ClickListener_lastclick2));
     }
-    private void touch_count25(View v){
+
+    private void touch_count27(View v){
         Context context = v.getContext();
         if (context instanceof Activity) {
             ((Activity) context).finish();

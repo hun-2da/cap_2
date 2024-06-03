@@ -21,6 +21,7 @@ public class Touch_Constant_Name {
 
     public static final int DIARLAST = 22;
     public static final int ByeMessage = 24;
-    public static final int finish = 25;
+    public static final int finish = 26;
+    public static final int finish2 = 27;
 
 }

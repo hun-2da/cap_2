@@ -25,5 +25,21 @@ public class CommunityQuery {
 
         return Document;
     }
+    public static void deleteDocumentID(String DocumentID,boolean Quest){
+        FirebaseUtils.getFirestore()
+                .collection(FirebaseDBNameClass.COMMUNITY_COLLECTION)
+                .document(DocumentID)
+                .delete();
+
+        if(Quest) {
+            FirebaseUtils.getFirestore()
+                    .collection(FirebaseDBNameClass.USER_COLLECTION)
+                    .document(FirebaseUtils.getFirebaseAuth().getUid())
+                    .collection(FirebaseDBNameClass.DIARY_COLLECTION)
+                    .document(DocumentID)
+                    .update(FirebaseDBNameClass.USER_DIARY_publicityStatus, false,
+                            FirebaseDBNameClass.COMMENT_MissionProgress, true);
+        }
+    }
 
 }

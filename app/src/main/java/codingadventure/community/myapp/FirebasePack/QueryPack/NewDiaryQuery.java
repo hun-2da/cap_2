@@ -16,7 +16,9 @@ import java.util.Map;
 
 import codingadventure.community.myapp.FirebasePack.FirebaseDBNameClass;
 import codingadventure.community.myapp.FirebasePack.FirebaseUtils;
+import codingadventure.community.myapp.myDiary.newdiarypage.Diary_editDiary;
 import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.Bubble_ClickListener;
+import codingadventure.community.myapp.myDiary.newdiarypage.newdiarytool.Touch_Constant_Name;
 
 public class NewDiaryQuery {
     //Diary_db_Write diary;
@@ -26,7 +28,7 @@ public class NewDiaryQuery {
 
     }
 
-    public static void set_userDiary(boolean b){
+    public static void set_userDiary(boolean b,int tem){
 
         //user 컬렉션의 현재 uid에 해당하는 문서의 diary 컬렉션에 자동 생성 documentid값으로 diary지정.
         DocumentReference diaryDocument = FirebaseUtils.getFirestore().collection(FirebaseDBNameClass.USER_COLLECTION)
@@ -49,18 +51,22 @@ public class NewDiaryQuery {
                     @Override
                     public void onSuccess(Void unused) {
                         //diaryDocument.update(updates);
-                        if(b) set_CommunityDiary(updates,diaryDocument);
+                        if(b) set_CommunityDiary(updates,diaryDocument,tem);
+                        else {
+                            Bubble_ClickListener.touch_count = Touch_Constant_Name.finish;
+                            Diary_editDiary.bubble_backView.performClick();
+                        }
                     }
                 });    // 컬렉션에 저장을 위한 코드
 
 
     }
-    private static void set_CommunityDiary(Map<String, Object> updates,DocumentReference diaryDocument){
+    private static void set_CommunityDiary(Map<String, Object> updates,DocumentReference diaryDocument,int tem){
         //Map<String, Object> updates = getMap();
 
         Log.e("xxxx","xxxxxxxxxxxxxx");
         updates.remove(FirebaseDBNameClass.USER_DIARY_publicityStatus);
-        int limit = 50;
+        int limit = tem;
         updates.put(FirebaseDBNameClass.COMMUNITY_limit,limit);
         updates.put(FirebaseDBNameClass.COMMUNITY_COMMENT_COUNT,0);
 
@@ -91,6 +97,13 @@ public class NewDiaryQuery {
                         communityDocument
                                 //.set(Bubble_ClickListener.diaryDbWrite)
                                 .set(updates)
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        Bubble_ClickListener.touch_count = Touch_Constant_Name.finish;
+                                        Diary_editDiary.bubble_backView.performClick();
+                                    }
+                                })
                                 .addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {

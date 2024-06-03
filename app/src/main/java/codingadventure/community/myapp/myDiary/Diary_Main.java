@@ -42,6 +42,15 @@ public class Diary_Main extends AppCompatActivity {
     SlidingPageAnimationListener animationListener;
 
     FrameLayout frameLayout;
+    public static UserQuestWrite UserQuest;
+
+
+
+    ArrayList<String> DiaryBOX = new ArrayList<>();
+    public static String DiaryDocumentID = "";
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,10 +99,15 @@ public class Diary_Main extends AppCompatActivity {
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     ArrayList<UserQuestWrite> fetchedItems = new ArrayList<>();
+                    ArrayList<String> DiaryDocumentBOX = new ArrayList<>();
+
                     for (DocumentSnapshot document : task.getResult()) {
                         fetchedItems.add(document.toObject(UserQuestWrite.class));
+                        DiaryDocumentBOX.add(document.getId());
                     }
                     QuestDiaryBox.addAll(fetchedItems);
+                    DiaryBOX.addAll(DiaryDocumentBOX);
+
                     adapter.notifyDataSetChanged();
 
                 } else {
@@ -120,6 +134,10 @@ public class Diary_Main extends AppCompatActivity {
 
                 frameLayout.setVisibility(View.VISIBLE);
                 frameLayout.startAnimation(translateUpAnim);
+
+
+                UserQuest = QuestDiaryBox.get(position);
+                DiaryDocumentID = DiaryBOX.get(position);
             }
         });
         adapter.setItems(QuestDiaryBox);
