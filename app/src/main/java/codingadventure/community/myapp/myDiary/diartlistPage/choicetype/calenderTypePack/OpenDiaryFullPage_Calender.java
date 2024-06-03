@@ -41,6 +41,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import codingadventure.community.myapp.FirebasePack.FirebaseDBNameClass;
 import codingadventure.community.myapp.R;
 import jp.wasabeef.richeditor.RichEditor;
 
@@ -53,7 +54,7 @@ public class OpenDiaryFullPage_Calender {
 
     public void openDiaryFullPageFragment(String userUid, String clickedDate, Context context) {
 
-        CollectionReference diaryRef = db.collection("User").document(userUid).collection("Diary");
+        CollectionReference diaryRef = db.collection(FirebaseDBNameClass.USER_COLLECTION).document(userUid).collection(FirebaseDBNameClass.DIARY_COLLECTION);
 
         // 클릭한 날짜의 시작과 끝을 나타내는 Timestamp 객체 생성
         Calendar calendar = Calendar.getInstance();
@@ -71,17 +72,17 @@ public class OpenDiaryFullPage_Calender {
             Date endDate = calendar.getTime();
 
             // 쿼리를 실행하여 해당 기간에 속하는 문서 가져오기
-            diaryRef.whereGreaterThanOrEqualTo("DiaryDate", startDate)
-                    .whereLessThan("DiaryDate", endDate)
+            diaryRef.whereGreaterThanOrEqualTo(FirebaseDBNameClass.DIARY_DOCUMENT_DATE, startDate)
+                    .whereLessThan(FirebaseDBNameClass.DIARY_DOCUMENT_DATE, endDate)
                     .get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if (task.isSuccessful()) {
                                 for (QueryDocumentSnapshot document : task.getResult()) {
-                                    String title = document.getString("Title");
-                                    String content = document.getString("Content");
-                                    boolean publicityStatus = document.getBoolean("publicityStatus");
+                                    String title = document.getString(FirebaseDBNameClass.DIARY_Title);
+                                    String content = document.getString(FirebaseDBNameClass.DIARY_Content);
+                                    boolean publicityStatus = document.getBoolean(FirebaseDBNameClass.USER_DIARY_publicityStatus);
 
                                     // 다이어리 내용을 표시하는 다이얼로그 생성
                                     AlertDialog.Builder builder = new AlertDialog.Builder(context);
