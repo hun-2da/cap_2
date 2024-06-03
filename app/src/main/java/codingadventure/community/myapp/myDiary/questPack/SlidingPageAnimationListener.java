@@ -3,19 +3,23 @@ package codingadventure.community.myapp.myDiary.questPack;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 
 import java.util.ArrayList;
 
 import codingadventure.community.myapp.FirebasePack.ObjectPack.UserQuestWrite;
+import codingadventure.community.myapp.FirebasePack.QueryPack.CommunityQuery;
 import codingadventure.community.myapp.R;
+import codingadventure.community.myapp.myDiary.Diary_Main;
 import jp.wasabeef.richeditor.RichEditor;
 
 public class SlidingPageAnimationListener implements Animation.AnimationListener{
@@ -80,6 +84,16 @@ public class SlidingPageAnimationListener implements Animation.AnimationListener
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // OK 버튼 클릭 시 실행할 코드
+
+                UserQuestWrite userQuest = Diary_Main.UserQuest;
+                if(userQuest.isMissionProgress()){
+                    //완
+                    Toast.makeText(activity,activity.getString(R.string.SlidingPageAnimationListener_ToastMessage),Toast.LENGTH_SHORT).show();
+                }else{
+                    CommunityQuery.deleteDocumentID(Diary_Main.DiaryDocumentID,true);
+                    Toast.makeText(activity,activity.getString(R.string.SlidingPageAnimationListener_ToastMessage2),Toast.LENGTH_LONG).show();
+                }
+
                 dialog.dismiss();
             }
         });

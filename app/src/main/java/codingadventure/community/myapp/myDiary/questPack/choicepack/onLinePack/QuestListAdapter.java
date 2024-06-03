@@ -1,5 +1,7 @@
 package codingadventure.community.myapp.myDiary.questPack.choicepack.onLinePack;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -92,14 +95,16 @@ public class QuestListAdapter extends RecyclerView.Adapter<QuestListAdapter.View
                 public void onClick(View v) {
                     DocumentReference documentReference = UserQuestQuery.getDiaryPath();
 
+
+
                     Map<String, Object> map = new HashMap<>();
-                    map.put(FirebaseDBNameClass.COMMENT_Writer_NAME, TitleText.getText().toString());
-                    map.put(FirebaseDBNameClass.COMMENT_CONTENT,ContentText.getText().toString());
+
                     map.put(FirebaseDBNameClass.USER_DIARY_QUEST,FirebaseDBNameClass.DIARY_QUEST_ONLINE);
                     map.put(FirebaseDBNameClass.COMMENT_MissionProgress,false);
 
 
-                    UserQuestQuery.setQuest(documentReference,map);
+                    showDialog(v.getContext(),documentReference,map);
+
                 }
             });
 
@@ -119,6 +124,33 @@ public class QuestListAdapter extends RecyclerView.Adapter<QuestListAdapter.View
             imageView.setImageResource(i_res);
             count++;
         }
+
+        private void showDialog(Context context,DocumentReference documentReference,Map<String, Object> map) {
+
+            String Name = TitleText.getText().toString();
+            String Content = ContentText.getText().toString();
+
+            map.put(FirebaseDBNameClass.COMMENT_Writer_NAME, Name);
+            map.put(FirebaseDBNameClass.COMMENT_CONTENT,Content);
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.setTitle(Name + context.getString(R.string.QuestListAdapter_Dialog_name))
+                    .setMessage(Content)
+                    .setPositiveButton(context.getString(R.string.QuestListAdapter_Dialog_ok), new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            UserQuestQuery.setQuest(documentReference,map);
+                        }
+                    })
+                    .setNegativeButton(context.getString(R.string.QuestListAdapter_Dialog_no), new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // User cancelled the dialog
+                        }
+                    });
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
+
+
         private String setDate(Date date){
             String pattern = "yyyy-MM-dd HH:mm:ss";
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);

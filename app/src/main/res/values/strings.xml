@@ -106,14 +106,23 @@
     <string name="Bubble_ClickListener_click6_7">자유롭게 말해줘</string>
 
     <string name="Bubble_ClickListener_lastclick">마지막으로 공개 여부를 알려줘</string>
+
+    <string name="Bubble_ClickListener_lastclick1_2">마지막 온도를 설정해줄래?</string>
     <string name="Bubble_ClickListener_lastclick2">고마워!</string>
 
 
-    <!-- MainCommunity(Class)에서 사용 -->
 
+    <!-- QuestListAdapter(Class)에서 사용 -->
+    <string name="QuestListAdapter_Dialog_name"> 에게 받은 메시지</string>
+    <string name="QuestListAdapter_Dialog_ok"> 퀘스트 수락하기</string>
+    <string name="QuestListAdapter_Dialog_no"> 거부</string>
 
     <!-- CommentPage (Class)에서 사용 -->
     <string name="comment_SnackBar_fail">저장 오류.</string>
 
+
+    <!-- SlidingPageAnimationListener (class)에서 사용 -->
+    <string name="SlidingPageAnimationListener_ToastMessage">이미 완료된 퀘스트 입니다.</string>
+    <string name="SlidingPageAnimationListener_ToastMessage2">많은 이들에게 큰 본보기가 되실 거예요.\n 당신의 여정을 축복합니다. </string>
 
 </resources>
