@@ -5,6 +5,6 @@ import jp.wasabeef.richeditor.RichEditor;
 public class WrathChoice extends ALL_Saligia_Parent_AbstractClass{
 
     public WrathChoice(String target, String question1, String question2, String question3, RichEditor richEditor) {
-        super(target, question1, question2, question3, richEditor);
+        super(SaligiaType.WRATH, target, richEditor);
     }
 }
