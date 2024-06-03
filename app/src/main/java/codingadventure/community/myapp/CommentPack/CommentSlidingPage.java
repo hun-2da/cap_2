@@ -1,4 +1,4 @@
-package codingadventure.community.myapp.myCommunity.viewDiary.CommentPack;
+package codingadventure.community.myapp.CommentPack;
 
 import android.util.Log;
 import android.view.View;

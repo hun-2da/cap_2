@@ -6,16 +6,26 @@ public class DiaryCommentWrite {
     Date Date;
     String CommentWriterName;
     String Content;
+    int QuestPriority;
     int like;
     int dislike;
+
+    public int getQuestPriority() {
+        return QuestPriority;
+    }
+
+    public void setQuestPriority(int questPriority) {
+        QuestPriority = questPriority;
+    }
 
     public DiaryCommentWrite() {
     }
 
-    public DiaryCommentWrite(java.util.Date date, String commentWriterName, String content, int like, int dislike) {
+    public DiaryCommentWrite(java.util.Date date, String commentWriterName, String content, int questPriority, int like, int dislike) {
         Date = date;
         CommentWriterName = commentWriterName;
         Content = content;
+        QuestPriority = questPriority;
         this.like = like;
         this.dislike = dislike;
     }

@@ -18,20 +18,27 @@ import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Switch;
 
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.Query;
 
 import java.util.ArrayList;
 
+import codingadventure.community.myapp.CommentPack.CommentAdapter;
+import codingadventure.community.myapp.CommentPack.CommentListener;
+import codingadventure.community.myapp.FirebasePack.ObjectPack.DiaryCommentWrite;
+import codingadventure.community.myapp.FirebasePack.QueryPack.CommentQuery;
 import codingadventure.community.myapp.R;
 import codingadventure.community.myapp.listEventPack.DiaryRecyclerViewScrollListener;
 import codingadventure.community.myapp.listEventPack.FirestorePagingListener;
 import codingadventure.community.myapp.listEventPack.OnItemClickListener;
 import codingadventure.community.myapp.FirebasePack.ObjectPack.UserDiaryWrite;
+import codingadventure.community.myapp.myDiary.questPack.choicepack.QuestChoiceDialog;
+import codingadventure.community.myapp.myDiary.questPack.choicepack.onLinePack.QuestChoiceOnLineFragment;
 import jp.wasabeef.richeditor.RichEditor;
 
 
 /**리스트 형태로 띄워줄 페이지(프래그먼트) */
-public class DiaryList_ListType extends Fragment{
+public class DiaryList_ListType extends Fragment {
 
     //private DocumentSnapshot lastVisible;
 
@@ -49,6 +56,15 @@ public class DiaryList_ListType extends Fragment{
 
     ImageButton rightButton;
 
+
+    RecyclerView commentRecyclerView;
+
+    ArrayList<DiaryCommentWrite> commentBox = new ArrayList<>();
+    CommentAdapter commentAdapter;
+    Button questButton;
+
+    public static String DocumentID;
+
     public DiaryList_ListType(){
 
     }
@@ -61,6 +77,7 @@ public class DiaryList_ListType extends Fragment{
                              Bundle savedInstanceState) {
 
         ViewGroup view = (ViewGroup) inflater.inflate(R.layout.diarylist_listtype_fragment, container, false);
+
 
         RecyclerView recyclerView = view.findViewById(R.id.listType_userDiary_RecyclerView);
         ProgressBar progressBar = view.findViewById(R.id.listType_paging_progressBar);
@@ -97,6 +114,10 @@ public class DiaryList_ListType extends Fragment{
                 //Switch choice_switch = view.findViewById(R.id.listCycler_choice_switchButton);
                 publicityStatus.setChecked(diary_data.isPublicityStatus());
 
+                DocumentID = DocumentIdBox.get(position);
+
+                setCommentBox();
+
             }
         });  // 어댑터 객체 생성
 
@@ -119,7 +140,6 @@ public class DiaryList_ListType extends Fragment{
 
                 Query nextQuery = DiaryListLoad.getMyDiaryQury().startAfter(pagingListener.getDocumentSnapshot());
                 nextQuery.get().addOnCompleteListener(pagingListener);
-
 
 
             }
@@ -155,7 +175,47 @@ public class DiaryList_ListType extends Fragment{
         titleEditText = childView.findViewById(R.id.fulldiary_Title_editText);
         contentEditor = childView.findViewById(R.id.fulldiary_content_richeditor);
         publicityStatus = childView.findViewById(R.id.fulldiary_publicityStatus_Switch);
+        commentRecyclerView = childView.findViewById(R.id.fulldiary_comments_RecyclerView);
+        questButton = childView.findViewById(R.id.fulldiart_Quest_button);
+
+
+
+        questButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new QuestChoiceDialog().show(getChildFragmentManager(), "QuestChoiceDialog");
+
+            }
+        });
+
+
+        setCommentDiary();
+
     }
+    private void setCommentDiary(){
+        LinearLayoutManager layoutManager =
+                new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false); // LinearLayout형태로 리싸이클러뷰를 지정
+
+        commentRecyclerView.setLayoutManager(layoutManager);
+
+        commentAdapter = new CommentAdapter();
+        commentAdapter.setItems(commentBox);
+
+        commentRecyclerView.setAdapter(commentAdapter);
+    }
+    private void setCommentBox(){
+        try{
+            DocumentReference documentReference = CommentQuery.getDocument(DocumentID);
+            Query query = CommentQuery.getDiaryCommentQuery(documentReference);
+
+            query.get().addOnCompleteListener(new CommentListener(commentAdapter, null));
+            //commentAdapter.notifyDataSetChanged();
+        }
+        catch(IllegalArgumentException e){
+            Log.e("문제 바르생","ㅁㄴㅇ");
+        }
+    }
+
 
 
 }

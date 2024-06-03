@@ -16,29 +16,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.OnBackPressedCallback;
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QuerySnapshot;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import codingadventure.community.myapp.FirebasePack.ObjectPack.DiaryCommentWrite;
 import codingadventure.community.myapp.FirebasePack.ObjectPack.UserDiaryWrite;
-import codingadventure.community.myapp.FirebasePack.QueryPack.CommentQuery;
 import codingadventure.community.myapp.R;
 import codingadventure.community.myapp.myCommunity.GetCategory;
 import codingadventure.community.myapp.myCommunity.MainCommunity;
-import codingadventure.community.myapp.myCommunity.viewDiary.CommentPack.CommentPage;
-import codingadventure.community.myapp.myCommunity.viewDiary.CommentPack.CommentSlidingPage;
+import codingadventure.community.myapp.CommentPack.CommentPage;
+import codingadventure.community.myapp.CommentPack.CommentSlidingPage;
 import jp.wasabeef.richeditor.RichEditor;
 
 public class DiaryPage extends Fragment {

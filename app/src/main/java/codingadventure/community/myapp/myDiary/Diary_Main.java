@@ -125,4 +125,8 @@ public class Diary_Main extends AppCompatActivity {
         adapter.setItems(QuestDiaryBox);
         recyclerView.setAdapter(adapter);
     }
+
+
+
+
 }

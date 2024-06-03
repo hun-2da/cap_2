@@ -3,18 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="395dp"
     android:layout_height="match_parent"
-    android:background="#FDF6FE">
+    android:background="#D7D7EC">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/fulldiart_cardView"
         android:layout_width="0dp"
         android:layout_height="30dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
 
-        >
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:id="@+id/linearLayout3"
@@ -58,12 +59,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="10"
+            android:backgroundTint="#ECDFD7"
             app:cardElevation="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginRight="5dp"
                 android:background="#FFFFFF"
                 android:orientation="vertical">
 
@@ -102,8 +103,10 @@
                             android:id="@+id/fulldiary_Title_editText"
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
+                            android:layout_marginLeft="2dp"
                             android:layout_marginTop="-5dp"
-                            android:background="#EEECFD"
+                            android:layout_marginRight="2dp"
+                            android:background="#D7D7EC"
                             android:ems="10"
                             android:inputType="text"
                             android:maxLength="30"
@@ -151,8 +154,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginTop="-1dp"
-                            android:background="#EEECFD"
-                            android:backgroundTint="#00DF0A0A" />
+                            android:layout_marginBottom="5dp"
+                            android:background="#D7D7EC"
+                            android:backgroundTint="#D7D7EC" />
 
                     </LinearLayout>
 
@@ -164,10 +168,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -176,7 +178,9 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/fulldiary_comments_RecyclerView"

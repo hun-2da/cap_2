@@ -1,19 +1,16 @@
-package codingadventure.community.myapp.myCommunity.viewDiary.CommentPack;
+package codingadventure.community.myapp.CommentPack;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -28,20 +25,14 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import codingadventure.community.myapp.FirebasePack.FirebaseDBNameClass;
-import codingadventure.community.myapp.FirebasePack.FirebaseUtils;
 import codingadventure.community.myapp.FirebasePack.ObjectPack.DiaryCommentWrite;
 import codingadventure.community.myapp.FirebasePack.QueryPack.CommentQuery;
-import codingadventure.community.myapp.FirebasePack.QueryPack.CommunityQuery;
 import codingadventure.community.myapp.R;
 import codingadventure.community.myapp.myCommunity.MainCommunity;
 import codingadventure.community.myapp.myCommunity.viewDiary.DiaryPage;
@@ -111,6 +102,7 @@ public class CommentPage extends Fragment {
                                                     new Date(),
                                                     MainCommunity.NickName,
                                                     getContent,
+                                                    0,
                                                     0,
                                                     0
                                             )).addOnSuccessListener(new OnSuccessListener<Void>() {

@@ -88,7 +88,6 @@ public class Quest_DiaryAdapter extends RecyclerView.Adapter<Quest_DiaryAdapter.
             questProgress = itemView.findViewById(R.id.questResource_progress_TextView);
 
         }
-
         public void setItem(UserQuestWrite item){
             String mission = item.getMission();
             if(mission != null)
@@ -101,6 +100,7 @@ public class Quest_DiaryAdapter extends RecyclerView.Adapter<Quest_DiaryAdapter.
                 questProgress.setText(itemView.getContext().getString(R.string.quest_list_false));
             }
         }
+
         private void getCategoryStyle(UserQuestWrite item){
             String category = item.getCategory();
             int roundColorId = 0;

@@ -44,4 +44,58 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/diarylist_main_getFragment_frameLayout"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/diarylist_blur_FrameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#E69E9E9E"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/diarylist_questList_LinearLayout"
+        android:layout_width="380dp"
+        android:layout_height="200dp"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/diarylist_main_getFragment_frameLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:background="#59636363"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/diarylist_questList_ImageButton"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="right"
+                android:background="@drawable/close_img" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#80F4F4F4">
+
+            <FrameLayout
+                android:id="@+id/diarylist_questList_FrameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_gravity="center">
+
+            </FrameLayout>
+        </LinearLayout>
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

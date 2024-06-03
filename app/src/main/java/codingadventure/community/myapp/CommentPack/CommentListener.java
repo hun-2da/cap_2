@@ -1,4 +1,4 @@
-package codingadventure.community.myapp.myCommunity.viewDiary.CommentPack;
+package codingadventure.community.myapp.CommentPack;
 
 import android.util.Log;
 import android.view.View;
@@ -14,7 +14,6 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 
 import codingadventure.community.myapp.FirebasePack.ObjectPack.DiaryCommentWrite;
-import codingadventure.community.myapp.FirebasePack.ObjectPack.UserDiaryWrite;
 import codingadventure.community.myapp.myCommunity.viewDiary.DiaryPage;
 
 public class CommentListener implements OnCompleteListener<QuerySnapshot> {
@@ -38,12 +37,13 @@ public class CommentListener implements OnCompleteListener<QuerySnapshot> {
                 commentList.add(document.toObject(DiaryCommentWrite.class));
             }
             DiaryPage.commentBox.clear();
-            DiaryPage.commentBox.addAll(commentList);
+            adapter.setItems(commentList);
             adapter.notifyDataSetChanged();
-
+            //Log.e("와이","왜 그러는 거야");
             if(commentList.size() == 0){
                 Log.e("asd","             size : "+DiaryPage.commentBox.size());
-                imageView.setVisibility(View.VISIBLE);
+                if(imageView != null)
+                    imageView.setVisibility(View.VISIBLE);
             }
 
         }else{

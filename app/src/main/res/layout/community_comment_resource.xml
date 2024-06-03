@@ -39,6 +39,7 @@
                     android:layout_width="20dp"
                     android:layout_height="25dp"
                     android:layout_weight="1"
+                    android:alpha="0.65"
                     android:background="#00FFFFFF"
                     android:padding="3dp"
                     android:scaleType="fitXY"
@@ -49,8 +50,11 @@
                     android:layout_width="20dp"
                     android:layout_height="25dp"
                     android:layout_weight="1"
+                    android:alpha="0.65"
                     android:background="#00FFFFFF"
-                    android:padding="3dp" />
+                    android:padding="3dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/comment_dislike_button" />
             </LinearLayout>
         </LinearLayout>
 

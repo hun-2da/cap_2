@@ -1,4 +1,4 @@
-package codingadventure.community.myapp.myCommunity.viewDiary.CommentPack;
+package codingadventure.community.myapp.CommentPack;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,18 +10,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.jsoup.Jsoup;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
 import codingadventure.community.myapp.FirebasePack.ObjectPack.DiaryCommentWrite;
-import codingadventure.community.myapp.FirebasePack.ObjectPack.UserDiaryWrite;
 import codingadventure.community.myapp.R;
-import codingadventure.community.myapp.myCommunity.CommunityTool.CommunityAdapter;
-import codingadventure.community.myapp.myCommunity.GetCategory;
 
 public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHolder>{
     ArrayList<DiaryCommentWrite> commentBox;

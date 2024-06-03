@@ -35,11 +35,18 @@ public class FirebaseDBNameClass {
 
     public final static String DIARY_MISSION = "Mission";
     //---------------------------------------------------------------------
-    //comment 필드
-    public final static String COMMENT_DATE = "Date";
-    public final static String COMMENT_Writer_NAME = "CommentWriterName";
-    public final static String COMMENT_CONTENT = "Content";
+    //Mission 필드
+    public final static String COMMENT_Writer_NAME = "MissionWriter";
+    public final static String COMMENT_CONTENT = "Mission";
+    public final static String COMMENT_MissionProgress = "MissionProgress";
 
+    public final static String COMMENT_QUEST_PRIORITY = "questPriority";
+
+
+
+    //---------------------------------------------------------------------
+    public final static String COMMENT_DATE = "Date";
+    //comment 필드
     public final static String COMMENT_LIKE_COUNT = "like";
 
     public final static String COMMENT_DISLIKE_COUNT = "dislike";

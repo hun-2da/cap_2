@@ -30,6 +30,11 @@
     <string name="choiceText_Diary">Diary</string>
     <string name="choiceText_Community">Community</string>
 
+    <!-- quest dialog 사용 -->
+    <string name="questText_Online">ONLINE</string>
+    <string name="questText_Offline">OFFLINE</string>
+
+
     <!-- choice diary 사용 -->
     <string name="diary_textView">퀘스트 목록</string>
 
@@ -60,6 +65,8 @@
     <string name="communityDiary_comment_textView">에게 댓글 작성</string>
 
 
+    <!-- quest_choice_onlin_page xml 에서 사용 -->
+    <string name="questList_textView">퀘스트 선택</string>
 
     <!-- DiaryAdapter(class)에서 사용 -->
     <string name="diarylist_publicityStatus_on">공개</string>
@@ -71,6 +78,9 @@
 
     <!-- diarylist_RecyclerXml에서 사용 -->
     <string name="listRecycler_check_Switch">공개</string>
+
+    <!-- QuestListAdapter Xml에서 사용 -->
+    <string name="onlineResource_OKbutton">수락</string>
 
 
     <!-- DiaryMain_Quest_Dialog(Class)에서 사용 -->
