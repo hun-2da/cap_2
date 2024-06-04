@@ -109,6 +109,8 @@ public class CommunityAdapter extends RecyclerView.Adapter<CommunityAdapter.View
 
             setDate(item.getDiaryDate());
 
+            limit_textView.setText(item.getLimit()+"%");
+
 
         }
 

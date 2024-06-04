@@ -39,6 +39,7 @@ public class SlidingPageAnimationListener implements Animation.AnimationListener
     AlertDialog dialog;
 
 
+
     public SlidingPageAnimationListener(Activity activity, ArrayList<UserQuestWrite> QuestDiaryBox,FrameLayout frameLayout) {
         this.QuestDiaryBox = QuestDiaryBox;
 
@@ -91,6 +92,8 @@ public class SlidingPageAnimationListener implements Animation.AnimationListener
                     Toast.makeText(activity,activity.getString(R.string.SlidingPageAnimationListener_ToastMessage),Toast.LENGTH_SHORT).show();
                 }else{
                     CommunityQuery.deleteDocumentID(Diary_Main.DiaryDocumentID,true);
+
+
                     Toast.makeText(activity,activity.getString(R.string.SlidingPageAnimationListener_ToastMessage2),Toast.LENGTH_LONG).show();
                 }
 
@@ -143,4 +146,6 @@ public class SlidingPageAnimationListener implements Animation.AnimationListener
     }
 
     public void setSwitch(){b=true;}
+
+
 }

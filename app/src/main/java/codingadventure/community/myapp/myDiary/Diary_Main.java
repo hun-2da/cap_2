@@ -66,6 +66,7 @@ public class Diary_Main extends AppCompatActivity {
             public void onClick(View v) {
                 Intent community_Intent = new Intent(getApplicationContext(), MainCommunity.class);
                 startActivity(community_Intent);
+                finish();
             }
         });
 
@@ -155,6 +156,8 @@ public class Diary_Main extends AppCompatActivity {
         });
         adapter.setItems(QuestDiaryBox);
         recyclerView.setAdapter(adapter);
+
+
     }
 
 

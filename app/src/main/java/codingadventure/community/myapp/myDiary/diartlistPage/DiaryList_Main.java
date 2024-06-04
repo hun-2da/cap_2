@@ -25,9 +25,9 @@ public class DiaryList_Main extends AppCompatActivity  implements QuestChoiceDia
     ArrayList<UserDiaryWrite> diaryBox = new ArrayList<>();
     boolean switch_visibility = true;
 
-    public FrameLayout blurLayout;
+    public static FrameLayout blurLayout;
     public ImageButton closeButton;
-    public LinearLayout questLinearLayout;
+    public static LinearLayout questLinearLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

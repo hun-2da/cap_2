@@ -39,7 +39,7 @@ public class NewDiaryQuery {
         //boolean속성인 user
         Map<String, Object> updates = getMap();
         updates.put(FirebaseDBNameClass.USER_DIARY_publicityStatus, b);
-        updates.put(FirebaseDBNameClass.USER_DIARY_QUEST,1);
+        updates.put(FirebaseDBNameClass.USER_DIARY_QUEST,0);
         Log.e("xxxx","sss"+b);
 
 

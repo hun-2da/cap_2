@@ -38,7 +38,8 @@ public class CommunityQuery {
                     .collection(FirebaseDBNameClass.DIARY_COLLECTION)
                     .document(DocumentID)
                     .update(FirebaseDBNameClass.USER_DIARY_publicityStatus, false,
-                            FirebaseDBNameClass.COMMENT_MissionProgress, true);
+                            FirebaseDBNameClass.COMMENT_MissionProgress, true,
+                            FirebaseDBNameClass.USER_DIARY_QUEST,1);
         }
     }
 
