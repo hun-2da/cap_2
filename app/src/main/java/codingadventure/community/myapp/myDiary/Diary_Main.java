@@ -39,7 +39,7 @@ public class Diary_Main extends AppCompatActivity {
 
     RecyclerView recyclerView;
     ArrayList<UserQuestWrite> QuestDiaryBox = new ArrayList<>();
-    Quest_DiaryAdapter adapter;
+    public static Quest_DiaryAdapter adapter;
     Animation translateUpAnim;
 
     SlidingPageAnimationListener animationListener;

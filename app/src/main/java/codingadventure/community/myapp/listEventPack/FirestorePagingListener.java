@@ -51,14 +51,27 @@ public class FirestorePagingListener implements OnCompleteListener<QuerySnapshot
             for (DocumentSnapshot document : task.getResult()) {
                 fetchedItems.add(document.toObject(UserDiaryWrite.class));
                 CommunityDocumentId.add(document.getId());
+
+                Log.e("sssss","ddddddddd");
             }
+
+
             diaryBox.addAll(fetchedItems);
+
+            /*diaryBox.clear();
+            communityadapter.setItems(fetchedItems);*/
+
+
             documentIDBox.addAll(CommunityDocumentId);
 
-            if(diaryadapter != null)
+
+
+            if(diaryadapter != null){
                 diaryadapter.notifyDataSetChanged();
-            else if(communityadapter != null)
+            }
+            else if(communityadapter != null){
                 communityadapter.notifyDataSetChanged();
+            }
 
             // 마지막 문서 업데이트
             int lastFetchedIndex = task.getResult().size() - 1;

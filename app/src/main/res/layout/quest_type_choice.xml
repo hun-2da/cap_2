@@ -32,9 +32,9 @@
                     <androidx.cardview.widget.CardView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
+                        android:layout_marginLeft="100dp"
                         android:layout_marginTop="5dp"
-                        android:layout_marginRight="5dp"
+                        android:layout_marginRight="100dp"
                         android:layout_marginBottom="5dp"
                         android:layout_weight="1"
                         android:backgroundTint="#FEFEF1"
@@ -59,6 +59,7 @@
                         android:layout_marginBottom="5dp"
                         android:layout_weight="1"
                         android:backgroundTint="#FEFEF1"
+                        android:visibility="gone"
                         app:cardCornerRadius="30dp"
                         app:cardElevation="7dp">
 
@@ -102,7 +103,8 @@
                         android:text="@string/questText_Offline"
                         android:textColor="#686868"
                         android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:visibility="gone" />
                 </LinearLayout>
 
             </LinearLayout>

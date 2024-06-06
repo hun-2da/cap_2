@@ -30,6 +30,7 @@ import codingadventure.community.myapp.FirebasePack.ObjectPack.UserQuestWrite;
 import codingadventure.community.myapp.FirebasePack.QueryPack.UserQuestQuery;
 import codingadventure.community.myapp.R;
 import codingadventure.community.myapp.listEventPack.OnItemClickListener;
+import codingadventure.community.myapp.myDiary.Diary_Main;
 import codingadventure.community.myapp.myDiary.diartlistPage.DiaryList_Main;
 import codingadventure.community.myapp.myDiary.questPack.Quest_DiaryAdapter;
 
@@ -139,9 +140,10 @@ public class QuestListAdapter extends RecyclerView.Adapter<QuestListAdapter.View
                     .setMessage(Content)
                     .setPositiveButton(context.getString(R.string.QuestListAdapter_Dialog_ok), new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            UserQuestQuery.setQuest(documentReference,map);
+                            UserQuestQuery.setQuest(documentReference,map,context);
                             DiaryList_Main.blurLayout.setVisibility(View.INVISIBLE);
                             DiaryList_Main.questLinearLayout.setVisibility(View.INVISIBLE);
+
                         }
                     })
                     .setNegativeButton(context.getString(R.string.QuestListAdapter_Dialog_no), new DialogInterface.OnClickListener() {

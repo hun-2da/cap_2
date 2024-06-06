@@ -72,8 +72,11 @@ public class MainCommunity extends AppCompatActivity {
 
     UserDiary_SlidingPage communitySlidingPage;
     public static String NickName = "";
+    public long Temperature = 0;
+
 
     public static String documentID;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,13 +84,13 @@ public class MainCommunity extends AppCompatActivity {
         setContentView(R.layout.communitylist_main_activity);
         progressBar = findViewById(R.id.community_progressBar);
 
-
-        setSpinner();
-        setRecyclerView();
-        setDiaryPage();
         getMyNickName();
 
+
     }
+
+
+
 
     private void getMyNickName() {
         CommunityQuery.getMyName()
@@ -98,6 +101,7 @@ public class MainCommunity extends AppCompatActivity {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
                                 NickName = document.getString(FirebaseDBNameClass.USER_NICKNAME);
+                                Temperature = document.getLong(FirebaseDBNameClass.USER_TEMPERATURE);
 
                                 // NickName 필드를 사용하여 필요한 작업 수행
                             } else {
@@ -106,6 +110,9 @@ public class MainCommunity extends AppCompatActivity {
                         } else {
                             Log.d("Firestore", "get failed with ", task.getException());
                         }
+                        setSpinner();
+                        setRecyclerView();
+                        setDiaryPage();
                     }
                 });
 
@@ -163,7 +170,8 @@ public class MainCommunity extends AppCompatActivity {
             @Override
             public void onLoadMore(int totalItemsCount, RecyclerView view) {
 
-                Query nextQuery =  CommunityQuery.getMyCommunityQuery().startAfter(pagingListener.getDocumentSnapshot());
+                Query nextQuery =  CommunityQuery.getMyCommunityQuery(Temperature).startAfter(pagingListener.getDocumentSnapshot());
+
                 int category_num = spinner.getSelectedItemPosition();
                 Query changeQuery = getSpinnerQuery(category_num,nextQuery);
                 changeQuery.get().addOnCompleteListener(pagingListener);
@@ -222,7 +230,7 @@ public class MainCommunity extends AppCompatActivity {
 
                 //diaryBox.clear();
 
-                Query query = CommunityQuery.getMyCommunityQuery();
+                Query query = CommunityQuery.getMyCommunityQuery(Temperature);
                 Query changeQuery = getSpinnerQuery(position,query);
 
                 changeQuery
@@ -236,6 +244,7 @@ public class MainCommunity extends AppCompatActivity {
 
     }
     private Query getSpinnerQuery(int category_num,Query query){
+        Log.e("애초에 이것도 실행될거?","아마두 ");
 
         Query changeQuery = query;
         String category = "";

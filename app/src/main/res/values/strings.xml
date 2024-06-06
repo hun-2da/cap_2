@@ -110,6 +110,10 @@
     <string name="Bubble_ClickListener_lastclick1_2">마지막 온도를 설정해줄래?</string>
     <string name="Bubble_ClickListener_lastclick2">고마워!</string>
 
+    <!-- commentAdapter(Class)에서 사용 -->
+    <string name="commentAdapter_like_snakbar"> 좋아요! 👍</string>
+    <string name="commentAdapter_dislike_snakbar"> 싫어요 ㅡ.ㅡ 👎</string>
+
 
 
     <!-- QuestListAdapter(Class)에서 사용 -->

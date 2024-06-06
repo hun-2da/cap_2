@@ -90,9 +90,9 @@ public class SlidingPageAnimationListener implements Animation.AnimationListener
                 if(userQuest.isMissionProgress()){
                     //완
                     Toast.makeText(activity,activity.getString(R.string.SlidingPageAnimationListener_ToastMessage),Toast.LENGTH_SHORT).show();
-                }else{
-                    CommunityQuery.deleteDocumentID(Diary_Main.DiaryDocumentID,true);
 
+                }else{
+                    CommunityQuery.deleteDocumentID(Diary_Main.DiaryDocumentID,true,activity);
 
                     Toast.makeText(activity,activity.getString(R.string.SlidingPageAnimationListener_ToastMessage2),Toast.LENGTH_LONG).show();
                 }

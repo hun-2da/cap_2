@@ -70,7 +70,7 @@ public class CommunityAdapter extends RecyclerView.Adapter<CommunityAdapter.View
 
     public void clearData() {
         diaryBox.clear();
-        notifyDataSetChanged();
+        //notifyDataSetChanged();
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {

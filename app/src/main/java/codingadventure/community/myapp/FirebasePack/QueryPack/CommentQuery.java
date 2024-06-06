@@ -49,4 +49,14 @@ public class CommentQuery {
                 });
 
     }
+    public static void updateLikeComment(){
+        FirebaseUtils.getFirestore()
+                .collection(FirebaseDBNameClass.COMMENT_COLLECTION)
+                .document(MainCommunity.documentID)
+                .collection(FirebaseDBNameClass.COMMENT_DIARY_COMMENT)
+                .document();
+    }
+    public static void updateDisLikeComment(){
+
+    }
 }

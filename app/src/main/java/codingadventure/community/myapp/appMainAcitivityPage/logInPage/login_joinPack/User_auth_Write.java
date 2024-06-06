@@ -47,6 +47,8 @@ public class User_auth_Write {
                                     .document(FirebaseUtils.getCurrentUser().getUid())
                                     .set(updates);
 
+
+
                         } else {
                             Log.e("test", "createUserWithEmail:failure", task.getException());
                         }

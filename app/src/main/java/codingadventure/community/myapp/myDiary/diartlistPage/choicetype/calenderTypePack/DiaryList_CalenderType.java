@@ -45,8 +45,10 @@ import java.util.List;
 import codingadventure.community.myapp.FirebasePack.FirebaseDBNameClass;
 import codingadventure.community.myapp.FirebasePack.FirebaseUtils;
 import codingadventure.community.myapp.R;
+import codingadventure.community.myapp.myDiary.diartlistPage.choicetype.listTypePack.DiaryList_ListType;
 import jp.wasabeef.richeditor.RichEditor;
 
+/*
 public class DiaryList_CalenderType extends Fragment {
 
     public DiaryList_CalenderType() {
@@ -67,7 +69,9 @@ public class DiaryList_CalenderType extends Fragment {
         // Material Calendar View 초기화
         CalendarView calendarView = view.findViewById(R.id.calendarView1);
 
-        /** 사용자의 다이어리를 읽어오기 */
+        */
+/** 사용자의 다이어리를 읽어오기 *//*
+
         userDiaryRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -96,7 +100,9 @@ public class DiaryList_CalenderType extends Fragment {
                 calendarView.setHighlightedDays(highlightedDates);
                 calendarView.setEvents(highlightedEvents);
 
-                /** 날짜 클릭 이벤트 처리 */
+                */
+/** 날짜 클릭 이벤트 처리 *//*
+
                 calendarView.setOnDayClickListener(new OnDayClickListener() {
                     @Override
                     public void onDayClick(EventDay eventDay) {
@@ -105,6 +111,116 @@ public class DiaryList_CalenderType extends Fragment {
                         String clickedDate = formatDate(clickedDayCalendar.getTime());
                         OpenDiaryFullPage_Calender dialog = new OpenDiaryFullPage_Calender();
                         dialog.openDiaryFullPageFragment(userUid, clickedDate, getContext());
+                    }
+                });
+            }
+        });
+        return view;
+    }
+
+    // 카테고리에 맞는 이미지 리소스를 반환하는 메소드
+    private int getCategoryDrawable(String category) {
+        switch (category) {
+            case "PRIDE":
+                return R.drawable.community_diaryimage_pride;
+            case "GREED":
+                return R.drawable.community_diaryimage_greed;
+            case "LUST":
+                return R.drawable.community_diaryimage_lust;
+            case "ENVY":
+                return R.drawable.community_diaryimage_envy;
+            case "GLUTH":
+                return R.drawable.community_diaryimage_gluth;
+            case "WRATH":
+                return R.drawable.community_diaryimage_wrath;
+            case "SLOTH":
+                return R.drawable.community_diaryimage_sloth;
+            default:
+                return 0; // 기본 값: 해당하는 카테고리가 없는 경우
+        }
+    }
+
+    // 날짜 형식을 "yyyy-MM-dd"로 변환하는 메소드
+    private String formatDate(Date date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(date);
+    }
+}*/
+public class DiaryList_CalenderType extends Fragment {
+    private List<QueryDocumentSnapshot> documentList = new ArrayList<>(); // 문서 목록을 저장할 리스트
+
+    public DiaryList_CalenderType() {
+        // Required empty public constructor
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        ViewGroup view = (ViewGroup) inflater.inflate(R.layout.diary_list__calendertype_fragment, container, false);
+
+        FirebaseFirestore db = FirebaseUtils.getFirestore();
+        String userUid = FirebaseUtils.getCurrentUser().getUid();
+
+        // User 컬렉션의 uid 문서의 Diary 컬렉션을 참조
+        CollectionReference userDiaryRef = db.collection(FirebaseDBNameClass.USER_COLLECTION).document(userUid).collection(FirebaseDBNameClass.DIARY_COLLECTION);
+
+        // Material Calendar View 초기화
+        CalendarView calendarView = view.findViewById(R.id.calendarView1);
+
+        /** 사용자의 다이어리를 읽어오기 */
+        userDiaryRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                List<Calendar> highlightedDates = new ArrayList<>();
+                List<EventDay> highlightedEvents = new ArrayList<>();
+
+                // Firestore에서 가져온 문서들을 리스트에 저장
+                for (QueryDocumentSnapshot document : task.getResult()) {
+                    documentList.add(document);
+                    Date date = document.getDate(FirebaseDBNameClass.DIARY_DOCUMENT_DATE);
+                    String category = document.getString(FirebaseDBNameClass.DIARY_Category); // Category 필드 값을 가져옴
+                    int drawableRes = getCategoryDrawable(category); // 카테고리에 따른 이미지 리소스 ID 가져오기
+
+                    if (date != null) {
+                        Calendar calendar = Calendar.getInstance();
+                        calendar.setTime(date);
+                        highlightedDates.add(calendar);
+
+                        if (drawableRes != 0) {
+                            EventDay event = new EventDay(calendar, drawableRes); // 카테고리에 맞는 이미지로 EventDay 생성
+                            highlightedEvents.add(event);
+                        }
+                    }
+                }
+                // 가져온 날짜들을 캘린더에 강조시키기
+                calendarView.setHighlightedDays(highlightedDates);
+                calendarView.setEvents(highlightedEvents);
+
+                /** 날짜 클릭 이벤트 처리 */
+                calendarView.setOnDayClickListener(new OnDayClickListener() {
+                    @Override
+                    public void onDayClick(EventDay eventDay) {
+                        Calendar clickedDayCalendar = eventDay.getCalendar(); // 클릭한 날짜를 calendar 객체로 가져옴
+                        String clickedDate = formatDate(clickedDayCalendar.getTime());
+
+                        // 클릭한 날짜와 일치하는 문서를 찾아 ID를 가져오기
+                        for (QueryDocumentSnapshot document : documentList) {
+                            Date date = document.getDate(FirebaseDBNameClass.DIARY_DOCUMENT_DATE);
+                            if (date != null) {
+                                Calendar calendar = Calendar.getInstance();
+                                calendar.setTime(date);
+                                String documentDate = formatDate(calendar.getTime());
+
+                                if (documentDate.equals(clickedDate)) {
+                                    DiaryList_ListType.DocumentID = document.getId();
+                                    // 문서 ID를 사용하여 필요한 작업 수행
+                                    OpenDiaryFullPage_Calender dialog = new OpenDiaryFullPage_Calender();
+                                    dialog.openDiaryFullPageFragment(userUid, clickedDate, getContext());
+                                    break;
+                                }
+                            }
+                        }
                     }
                 });
             }

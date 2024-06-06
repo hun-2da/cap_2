@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 import codingadventure.community.myapp.R;
 import codingadventure.community.myapp.FirebasePack.ObjectPack.UserDiaryWrite;
+import codingadventure.community.myapp.myDiary.Diary_Main;
 import codingadventure.community.myapp.myDiary.diartlistPage.choicetype.calenderTypePack.DiaryList_CalenderType;
 import codingadventure.community.myapp.myDiary.diartlistPage.choicetype.listTypePack.DiaryList_ListType;
 import codingadventure.community.myapp.myDiary.questPack.choicepack.QuestChoiceDialog;
@@ -105,6 +106,9 @@ public class DiaryList_Main extends AppCompatActivity  implements QuestChoiceDia
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.add(R.id.diarylist_questList_FrameLayout, new QuestChoiceOnLineFragment());
         fragmentTransaction.commit();
+
+
+        Diary_Main.adapter.notifyDataSetChanged();
 
     }
 
