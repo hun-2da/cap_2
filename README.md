@@ -18,7 +18,7 @@
     <td><img src="./myimages/퀘스트확인.png" alt="퀘스트 확인" width="200"></td>
     <td><img src="./myimages/다이어리캘린더확인.png" alt="캘린더" width="200"></td>
      <td><img src="./myimages/다이어리목록.png" alt="다이어리 목록" width="200"></td>
-     <td><img src="./myimages/다이어리작성.gif" alt="다이어리 작성" width="200"></td>
+     <td><img src="./myimages/다이어리작성.gif" alt="다이어리 작성" width="150"></td>
   </tr>
    
 </table>
