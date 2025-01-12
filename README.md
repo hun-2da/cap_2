@@ -19,7 +19,12 @@
     <td><img src="./myimages/다이어리캘린더확인.png" alt="캘린더" width="200"></td>
      <td><img src="./myimages/다이어리목록.png" alt="다이어리 목록" width="200"></td>
   </tr>
-   <tr>
-     <td><img src="./myimages/다이어리작성.mp4" alt="다이어리 작성" width="200"></td> <!-- 중간에 배치 -->
+  <tr>
+    <td>
+      <video width="200" controls>
+        <source src="./myimages/다이어리작성.mp4" type="video/mp4">
+        브라우저가 video 태그를 지원하지 않습니다.
+      </video>
+    </td>
   </tr>
 </table>
