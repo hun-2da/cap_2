@@ -22,3 +22,14 @@
   </tr>
    
 </table>
+
+## 커뮤니티
+<table>
+  <tr>
+    <td><img src="./myimages/커뮤니티목록.png" alt="커뮤니티 메인" width="200"></td>
+    <td><img src="./myimages/커뮤니티확인.png" alt="커뮤니티 글" width="200"></td>
+    <td><img src="./myimages/커뮤니티댓글1.png" alt="커뮤니티 댓글" width="200"></td>
+     <td><img src="./myimages/댓글확인.png" alt="댓글" width="200"></td>
+  </tr>
+   
+</table>
