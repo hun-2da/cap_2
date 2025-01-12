@@ -8,9 +8,12 @@
     <td><img src="./myimages/회원가입.png" alt="회원가입" width="200"></td>
   </tr>
   <tr>
-    <img src="./myimages/선택.png" alt="선택" width="200">
+    <td></td> <!-- 빈 셀 -->
+    <td><img src="./myimages/선택.png" alt="선택" width="200"></td> <!-- 중간에 배치 -->
+    <td></td> <!-- 빈 셀 -->
   </tr>
 </table>
+
 
 ## 다이어리
 <table>
